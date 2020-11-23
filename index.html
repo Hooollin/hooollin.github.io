@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="Coder">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hollin的代码之路">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hollin的代码之路">
+<meta property="og:description" content="Coder">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Hollin">
+<meta property="article:tag" content="Focus">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Hollin的代码之路</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hollin的代码之路</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hollin</p>
+  <div class="site-description" itemprop="description">Coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Hooollin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Hooollin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hollinisme@gmail.com" title="E-Mail → mailto:hollinisme@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Hooollin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/daily-learning/32%E4%BD%8D%E6%AF%94%E7%89%B9%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E5%A5%87%E6%95%B0%E4%B8%AA1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/11/23/daily-learning/32%E4%BD%8D%E6%AF%94%E7%89%B9%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E5%A5%87%E6%95%B0%E4%B8%AA1/" class="post-title-link" itemprop="url">二进制中1的个数的奇偶性判定</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-23 18:42:44" itemprop="dateCreated datePublished" datetime="2020-11-23T18:42:44+08:00">2020-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><blockquote>
+<p>给定一个长度为32比特int，通过调用odd_ones(unsigned)来判断这个int中是否有奇数个1。如果是则返回1， 否则返回0。只能使用位运算和部分逻辑运算符，不能使用分支以及if条件判断。</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这是csapp第二章第65题。这道题如果允许使用条件语句那么难度将会大大降低。现在只能够使用位运算和部分逻辑运算，这个难度一下就高了很多。思考一段时间确实没有思路过后，我在stack overflow上查到了相关的问题，回答仅仅给出了代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int bit_parity(unsigned x)&#123;</span><br><span class="line">    x &#x3D; ( x &gt;&gt; 16 ) ^ x;</span><br><span class="line">    x &#x3D; ( x &gt;&gt; 8 ) ^ x;</span><br><span class="line">    x &#x3D; ( x &gt;&gt; 4 ) ^ x;</span><br><span class="line">    x &#x3D; ( x &gt;&gt; 2 ) ^ x;</span><br><span class="line">    x &#x3D; ( x &gt;&gt; 1 ) ^ x;</span><br><span class="line">    return (x &amp; 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看完代码我仍然是一头雾水。这是什么神仙操作？直到我看到了另一篇相关的stack overflow的解释后才明白。  </p>
+<p>思路就是把所有的位都压倒LSB上，并对他们进行异或操作（利用了异或的性质），很显然如果有奇数个1那么最后异或的结果也为1，否则最后一位应该为0。<br>这里是如何把所有的位压到LSB并进行异或操作的呢？假如说我们有一个8比特数据：$b_7b_6b_5b_4b_3b_2b_1b_0$，当执行<code>x = (x &gt;&gt; 4) ^ x</code>时，这个八比特的数据会变成$b_7b_6b_5b_4\quad b_3xorb_7\quad  b_2xorb_6 \quad b_1xorb_5 b_0xorb_4$。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/course/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E6%94%BE%E7%90%83%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/11/23/course/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E6%94%BE%E7%90%83%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">放球模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-23 18:41:28" itemprop="dateCreated datePublished" datetime="2020-11-23T18:41:28+08:00">2020-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="放球模型"><a href="#放球模型" class="headerlink" title="放球模型"></a>放球模型</h1><p>以下所有放球模型，未作特殊说明，球的数量为$n$, 盒子的数量为$m$。</p>
+<h2 id="球无区别，盒子无区别（允许有空盒）"><a href="#球无区别，盒子无区别（允许有空盒）" class="headerlink" title="球无区别，盒子无区别（允许有空盒）"></a>球无区别，盒子无区别（允许有空盒）</h2><p>整数的拆分，方案数$p_d(n)$。</p>
+<h2 id="球无区别，盒子无区别（不允许有空盒）"><a href="#球无区别，盒子无区别（不允许有空盒）" class="headerlink" title="球无区别，盒子无区别（不允许有空盒）"></a>球无区别，盒子无区别（不允许有空盒）</h2><p>显然当$n &lt; m$时为0。当$n \geq m$时，现在每个盒子里面都放一个球，问题转化为球的个数为$n - m$，盒子的个数为$m$，球无区别，盒子无区别同时允许有空盒的方案数，对应于整数的拆分，方案数为$p_d(n - m)$。</p>
+<h2 id="球有区别，盒子无区别（不允许有空盒）"><a href="#球有区别，盒子无区别（不允许有空盒）" class="headerlink" title="球有区别，盒子无区别（不允许有空盒）"></a>球有区别，盒子无区别（不允许有空盒）</h2><ul>
+<li>当$m &gt; n$时，可行的方案书显然为0，因为一定有空盒存在。</li>
+<li>当$m \leq n$时，将m个小球分成m个集合，且无一空集的方案数。对应的模型为第二类stirling数，方案数为$S_2(n, m)$。</li>
+</ul>
+<blockquote>
+<p>第二类stirling数的性质:  </p>
+<ol>
+<li>$S_2(n + 1, k) = S_2(n, k - 1) + k * S_2(n, k)$   </li>
+<li>$S_2(n, n - 1)$ = $(^n_2)$  </li>
+<li>$S_2(n, 2) = 2^{n - 1} - 1$  </li>
+<li>$n &lt; m, s_2(n, m) = 0$</li>
+</ol>
+</blockquote>
+<h2 id="球有区别，盒子无区别（允许有空盒）"><a href="#球有区别，盒子无区别（允许有空盒）" class="headerlink" title="球有区别，盒子无区别（允许有空盒）"></a>球有区别，盒子无区别（允许有空盒）</h2><p>结论：$S_2(n, 1) + S_2(n, 2) + … + S_2(n, n - 1) + S_2(n, n)$。 </p>
+<p>和第二类stirling数的区别就在于允许有空盒。空盒的数量可以为$0, 1, 2,…,m - 1, m$。当空盒的数量为$k$时，剩余的空盒数量为$m - k$，对应的模型为第二类stirling数，$S_2(n, m - k)$。容易得出方案数为$S_2(n, 1) + S_2(n, 2) + … + S_2(n, n - 1) + S_2(n, n)$。</p>
+<h2 id="球无区别，盒子有区别（允许有空盒）"><a href="#球无区别，盒子有区别（允许有空盒）" class="headerlink" title="球无区别，盒子有区别（允许有空盒）"></a>球无区别，盒子有区别（允许有空盒）</h2><p>结论：方案数为$F(m, n) = C(m + n - 1, n)$。<br>隔板法：$m$个盒子需要$m - 1$个隔板，总共有$m - 1 + n$个位置，从中选出$m - 1$个位置作为隔板或者$n$个位置作为球，得到结果$C(n + m - 1, n)$。<br>等价问题：<br>$$x_1 + x_2 + … + x_m = n \ x_i \geq 0, i=1,2…m$$</p>
+<h2 id="球无区别，盒子有区别（不允许有空盒）"><a href="#球无区别，盒子有区别（不允许有空盒）" class="headerlink" title="球无区别，盒子有区别（不允许有空盒）"></a>球无区别，盒子有区别（不允许有空盒）</h2><p>结论：$F(m, n - m) = C(n - 1, m - 1)$。  </p>
+<p>等价问题：<br>$$x_1 + x_2 + … + x_m = n \ x_i &gt; 0, i=1,2…m$$<br>每个$x_i, i=1,2,…m$都减一，将问题转化为：<br>$$x_1 + x_2 + … + x_m = n - m \ x_i \geq 0, i=1,2…m$$</p>
+<h2 id="球有区别，盒子有区别（不允许有空盒）"><a href="#球有区别，盒子有区别（不允许有空盒）" class="headerlink" title="球有区别，盒子有区别（不允许有空盒）"></a>球有区别，盒子有区别（不允许有空盒）</h2><p>结论：$m!S_2(n, m)$。<br>转换思路：首先我们假设盒子没有区别，对应的模型就是第二类的stirling数。当盒子有区别时，盒子的每一种不同的排列方式都对最后的结果有贡献，易得结论。<br>容斥原理：$p_1$是1号盒子为空，$p_2$是$2$号盒子为空，$…$，$p_m$是$m$号盒子为空，对应的集合为$A_1, A_2, …, A_m$。用容斥原理的公式求解。</p>
+<h2 id="球有区别，盒子有区别（允许有空盒）"><a href="#球有区别，盒子有区别（允许有空盒）" class="headerlink" title="球有区别，盒子有区别（允许有空盒）"></a>球有区别，盒子有区别（允许有空盒）</h2><p>结论：$m^n$。<br>每一个球都可以放在任何一个盒子中，有$m$种选择，最后的结果就是$m^n$。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/21/daily-learning/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/03/21/daily-learning/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/" class="post-title-link" itemprop="url">浮点数的表示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-21 16:51:41" itemprop="dateCreated datePublished" datetime="2020-03-21T16:51:41+08:00">2020-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h1><p>浮点表示对形如$V=x\times2^y$的有理数进行编码。他对执行涉及非常大的数字以及非常接近0的数字，更普遍地作为实数运算的近似值的计算是很有用的。  </p>
+<h2 id="二进制小数"><a href="#二进制小数" class="headerlink" title="二进制小数"></a>二进制小数</h2><p>理解浮点数的第一步是考虑含有小数值的二进制数字。十进制表示法使用如下形式的表示：<br>$$d_md_{m-1}···d_1d_0d_{-1}d_{-2}···d_{-n}$$<br>其中每个十进制数$d_i$的取值范围是$0~9$，这个表达描述的数值$d$的定义如下：<br>$$d=\sum_{i=-n}^m10^i\times d_i$$<br>数字权的定义域十进制小数点符号相关，小数点左边的数字的权是10的正幂，得到整数值，而小数点右边的数字的权是10的负幂，得到小数值。  </p>
+<p>那么，对于二进制的一个数字，<br>$$b_mb_{m-1}···b_1b_0b_{-1}b_{-2}···b_{-n}$$<br>他的每一位的取值范围是0和1，这种表示方法表示的数$b$定义如下：<br>$$b=\sum_{i=-n}^m2^i\times b_i$$<br>从这个等式里面可以容易的看出来，二进制小数点向左移动一位相当于这个数被2除。同理向右移动一位的时候相当于将该数乘2。  </p>
+<p>假设我们只考虑有限长度的编码，那么十进制法不能准确地表达像$\frac{1}{3}$这样的数。同理，小数的二进制表示法只能表示那些能够写成$x\times 2^y$的数。  </p>
+<h2 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h2><p>IEEE浮点标准用$V=(-1)^s\times M\times 2^E$的形式来表示一个数：</p>
+<ul>
+<li>符号（sign） $s$决定这个数是符数还是正数，对于数值0的符号位解释作为特殊情况处理。</li>
+<li>尾数（significand） M是一个二进制小数，他的范围是$1$<del>$2-\epsilon$，或者是$0$</del>$1-\epsilon$。</li>
+<li>阶码（exponent） $E$的最用是对浮点数加权，这个权重是2的$E$次幂（可能是负数）。</li>
+<li>一个单独的符号位$s$直接编码符号$s$。</li>
+<li>k位的阶码字段$exp=e_{k-1}···e_1e_0$编码阶码$E$。</li>
+<li>n位小数字段$frac=f_{n-1}···f_1f_0$编码尾数$M$，编码出来的值依赖于解码字段的值是否等于0。</li>
+</ul>
+<p>在单精度浮点格式中，$s$、$exp$和$frac$字段分别为1位、$k=8$位和$n=23$位。在双精度浮点格式中分别为1位、11位和52位。<br><img src="http://hollin.icu/csapp-2-32.png" alt="2-32">  </p>
+<p>给定位标识，根据$exp$的值，被编码的值可以分为三种不同的情况，图2-33说明了对单精度格式的情况。<br><img src="http://hollin.icu/csapp-2-33.png" alt="2-33">  </p>
+<ul>
+<li>情况1：规格化的值。当$exp$的位模式不全为0，也不全为1的时候，都属于这种情况。在这种情况中，阶码字段被解释为以偏置（biased）形式标识的有符号整数。也就是说，阶码的值是$E=e-Bias$，其中e是无符号数，而$Bias$是一个等于$2^{k-1}-1$的偏置值。因此产生了指数的取值范围，对于单精度来说是-126<del>+127，对于双精度是-1022</del>+1023。（不能全0或全1）小数字段$frac$被解释为描述小数值$f$，其中$0\le f&lt;1$，尾数定义为$M=1+f$，有时这种方式也被称为隐含的以1开头的（implied leading 1）表示。</li>
+<li>情况2：非规格化的值。当阶码域全为0时，所表示的数是非规格化形式。这种情况下，**阶码值是$E=1-Bias$**（非规格化的数向规格化的数的平滑过渡），而尾数的值是$M=f$，不包含隐含的开头的1。非规格化的数有两个用途，首先，他们提供了一种表示数值0的方法。因为在规格化的数中，$M\ge1$，因此我们就不能表示0。</li>
+<li>情况3：特殊值。当阶码全为1的时候出现。当小数域全为0的时候，得到的值表示无穷。当符号位$s=0$时是$+\infin$，当符号位$s=1$时是$-\infin$。当小数域非0的时候，结果值被称为$NaN$。  </li>
+</ul>
+<h2 id="数字示例"><a href="#数字示例" class="headerlink" title="数字示例"></a>数字示例</h2><p><img src="http://hollin.icu/csapp-2-34.png" alt="2-34"><br>图2-34展示了一组数值，可以用假定的6位格式来表示，有$k=3$的阶码位和$n=2$的尾数位。<br>阶码最大值为$110_{(2)}$，尾码最大值$11_{(2)}$，这里最大值为$(-1)^s\times 2^E \times M = 8 \times 1.75 = 14$。  </p>
+<p><img src="http://hollin.icu/csapp-2-35.png" alt="2-35"><br>图2-35展示了假定的八位浮点格式的示例，其中有$k=4$的阶码位和$n=3$的小数位。<br>当阶码位全0时，表示这个浮点数是非规格化数，此时$E=1-Bias$，故为-6。<br>当阶码位$-6\le e \le 14$时，表示这个浮点数是规格化数，此时$E=e-Bias$。<br>当阶码位全1时，且尾码全0，符号位$s=0$表示无穷大。</p>
+<h2 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h2><p>因为表示方法限制了浮点数的范围和精度，所以浮点运算只能近似地表示实数运算。舍入（rounding）运算的任务就是找到最接近一个值，可以用期望的浮点形式表示出来。<br><img src="http://hollin.icu/csapp-2-37.png" alt="2-37"><br>图2-37里面说明了几种舍入方式。<br>为什么选择向偶数舍入（最近值舍入，四舍五入）呢？因为一个数有50%的可能向上舍入，也有50%的可能向下舍入，这样避免了一组数的平均值的偏差。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/11/daily-learning/vim%E4%B8%ADinoremap%E4%B8%8D%E7%94%9F%E6%95%88%E5%8E%9F%E5%9B%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/03/11/daily-learning/vim%E4%B8%ADinoremap%E4%B8%8D%E7%94%9F%E6%95%88%E5%8E%9F%E5%9B%A0/" class="post-title-link" itemprop="url">vim中inoremap不生效原因</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-11 22:57:25" itemprop="dateCreated datePublished" datetime="2020-03-11T22:57:25+08:00">2020-03-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="只是想自动补全-而已"><a href="#只是想自动补全-而已" class="headerlink" title="只是想自动补全{而已"></a>只是想自动补全{而已</h2><p>写代码的时候发现{每次不能补全真的很难受，因此查了一下vim支持在不同模式下的键位映射，了解到：<br><code>inoremap &#123; &#123;&lt;CR&gt;&#125;&lt;ESC&gt;kA</code>应该是可以满足我的需求的，因此便在配置文件中添加了这一行配置。不过无论我在Insert模式下怎么按{都无法自动匹配，真的很恼火。去stack overflow查了一下发现原来是因为这个：</p>
+<blockquote>
+<p>When the ‘paste’ option is switched on (also when it was already on): - mapping in Insert mode and Command-line mode is disabled.</p>
+</blockquote>
+<p>删除<code>set paste</code>果然就可以了。  </p>
+<p>中间还花了大量时间去搞YouCompleteMe，结果还没搞成，本来就只想学习一下线段树，结果一晚上啥都没搞成，头疼。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/04/course/c++/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/03/04/course/c++/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%8E%B0%E4%BB%A3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">C语言程序设计现代方法总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-04 21:46:40" itemprop="dateCreated datePublished" datetime="2020-03-04T21:46:40+08:00">2020-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="C语言程序设计现代方法"><a href="#C语言程序设计现代方法" class="headerlink" title="C语言程序设计现代方法"></a>C语言程序设计现代方法</h1><p>两天把C语言程序设计现代方法过了一遍，总结一下。</p>
+<h2 id="C语言概述"><a href="#C语言概述" class="headerlink" title="C语言概述"></a>C语言概述</h2><p>这章没什么好说的，唯一觉得比较惊艳的就是gcc里面的<code>-Wall</code>选项，这个选项可以更清楚的给出程序中可能存在的问题。更好一点的检查工具是lint，但是目前并不是特别想管这些。</p>
+<h2 id="C语言基本概念"><a href="#C语言基本概念" class="headerlink" title="C语言基本概念"></a>C语言基本概念</h2><h3 id="编译和链接"><a href="#编译和链接" class="headerlink" title="编译和链接"></a>编译和链接</h3><p>C语言源代码转化成机器指令的三个步骤：</p>
+<ul>
+<li><strong>预处理</strong>。把定义的宏以及include的内容直接搞过来。</li>
+<li><strong>编译</strong>。编译器把预处理过的程序翻译成机器指令，生成.o结尾的文件。但是还不能运行。</li>
+<li><strong>链接</strong>。链接器（linker）把编译器产生的目标代码和其他附加代码整合到一起，产生可以执行的程序。</li>
+</ul>
+<p>一般以<code>#</code>开头的称为<strong>指令</strong>。函数里面叫<strong>语句</strong>。</p>
+<h3 id="变量和赋值"><a href="#变量和赋值" class="headerlink" title="变量和赋值"></a>变量和赋值</h3><p>赋值的右侧应该是一个<strong>表达式（expression）</strong>。</p>
+<h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><p>标识符可以含有字母、数字、下划线。但是只能以<strong>字母或下划线</strong>开头。<br>C语言区分大小写。<br>不能用关键字作标识符。  </p>
+<h2 id="格式化的输入-输出"><a href="#格式化的输入-输出" class="headerlink" title="格式化的输入/输出"></a>格式化的输入/输出</h2><p>讲了讲printf，scanf，提了一下gets和puts。  </p>
+<p>字符串有个性质就是<code>int str = &quot;a1&quot; &quot;a2&quot;;</code>这里得到的<code>str</code>是<code>&quot;a1a2&quot;</code>。也就是说拼接两个字符串常量的工作可以直接交给编译器去做。</p>
+<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><p>关键是优先级。</p>
+<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><p>包括：</p>
+<ul>
+<li>一元运算符。只要求一个操作数。如：+、-。<code>int a = -b;</code></li>
+<li>二元运算符。要求两个操作数。如：+、-、*、/、%。</li>
+</ul>
+<p>由实现定义（implementation-defined）：由具体的平台的实现决定。  </p>
+<p>二元运算符是左结合的（从左往右运算），一元运算符是右结合的（从右往左，如<code>+-i</code> = <code>+(-i)</code>）。  </p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>赋值实际上也是一个运算符。因此可以写出这样的代码<code>while(c=*str++)</code>用于遍历一个字符串。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/27/course/database/database-chapter3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/27/course/database/database-chapter3/" class="post-title-link" itemprop="url">数据库系统概念第三章学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-27 22:30:59" itemprop="dateCreated datePublished" datetime="2020-02-27T22:30:59+08:00">2020-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><h2 id="SQL查询语言概览"><a href="#SQL查询语言概览" class="headerlink" title="SQL查询语言概览"></a>SQL查询语言概览</h2><p>SQL的早期版本是IBM开发的，最初被叫做Sequel。Sequel语言发展到现在名称已经变为SQL（Structure Query Language）。<br>最早的SQL标准是SQL-86。1989年ANSI发布了一个SQL的扩充标准：SQL-89。接着又有了下一个版本SQL-92的标准，后面还有很多标准。<br>SQL有以下几个部分：</p>
+<ul>
+<li><strong>数据定义语言（Data-Definition Language）</strong>：SQL DDL提供定义关系模式、删除关系模式以及修改关系模式的命令。</li>
+<li><strong>数据操作语言（Data-Manipulation Language）</strong>: SQL DML提供从数据库中查询信息，以及在数据库中插入元组、删除元组、修改元组的能力。</li>
+<li><strong>完整性（integrity）</strong>：SQL DDL包括定义完整性约束的命令，保存在数据库中的数据必须满足所定义的完整性约束。</li>
+<li><strong>视图定义（view definition）</strong>：SQL DDL包括定义视图的命令。</li>
+<li><strong>事务控制（transaction control）</strong>：SQL包括定义事务开始和结束的命令。</li>
+<li><strong>嵌入式SQL和动态SQL（embedded SQL and dynamic SQL）</strong>：嵌入式和动态SQL定义SQL语句如何其纳入到通用编程语言，如C、C++和Java。</li>
+<li><strong>授权（authorization）</strong>：SQL DDL包括定义对关系和视图的访问权限的命令。</li>
+</ul>
+<h2 id="SQL数据定义"><a href="#SQL数据定义" class="headerlink" title="SQL数据定义"></a>SQL数据定义</h2><h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><p><img src="http://hollin.icu/DB-3-chart1.png" alt="DB-3-chart1">  </p>
+<h3 id="基本模式定义"><a href="#基本模式定义" class="headerlink" title="基本模式定义"></a>基本模式定义</h3><p><strong>create table</strong>命令的通用形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table</span><br><span class="line">    (</span><br><span class="line">        A1, D1,</span><br><span class="line">        A2, D2,</span><br><span class="line">        ···,</span><br><span class="line">        An, Dn,</span><br><span class="line">        &lt;完整性约束1&gt;,</span><br><span class="line">        ···，</span><br><span class="line">        &lt;完整性约束k&gt;</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+<p>SQL禁止破坏完整性约束的任何数据库更新。比如说插入的一条元组的主码和另一个元组相同那么SQL就会阻止这种插入的发生。  </p>
+<p>增加一条元组用<strong>insert</strong>命令；删除一条或者多条元组用<strong>delete</strong>命令；去掉一个关系用<strong>drop</strong>命令；增加属性或者去掉属性用<strong>alter</strong>命令。</p>
+<h2 id="SQL查询的基本结构"><a href="#SQL查询的基本结构" class="headerlink" title="SQL查询的基本结构"></a>SQL查询的基本结构</h2><p>SQL查询的基本结构由三个子句构成：<strong>select、from和where</strong>。查询的输入是在from子句中列出的关系，在这些关系上进行where和select子句中指定的运算，然后产生一个关系作为结果。</p>
+<h3 id="单关系查询"><a href="#单关系查询" class="headerlink" title="单关系查询"></a>单关系查询</h3><p>在关系模式形式化的数学定义中，关系是一个集合。因此重复的元素不会出现在关系里。但是在实践中，去重是相当费时的，所以SQL郧西在关系中以及SQL表达式中出现重复。<br>如果想要强行去重，这个时候需要在select后加入关键词<strong>distinct</strong>。  </p>
+<p>SQL允许在where子句用使用逻辑连词<strong>and、or和not</strong>。逻辑连词的运算对象可以是包含比较运算符&lt;、&lt;=、&lt;&gt;等的表达式。</p>
+<h3 id="多关系查询"><a href="#多关系查询" class="headerlink" title="多关系查询"></a>多关系查询</h3><p>一个典型的SQL查询语句具有如下形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select A1, A2, ···, An</span><br><span class="line">from r1, r2, ···, rn</span><br><span class="line">where P;</span><br></pre></td></tr></table></figure>
+<p>每个Ai表示一个属性，每个ri表示一个关系。P是一个谓词。如果省略了where子句，那么谓词P为true。  </p>
+<p>理解查询所代表运算的最容易的方式是以运算的顺序来考察各子句：首先是from，然后是where，最后是select。  </p>
+<p>通过from子句定义了一个在该子句中所列出关系上的笛卡尔积。它可以用集合理论来形式化地定义，但是最好通过下面的迭代过程来理解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for each tuple_t1 in relation_r1:</span><br><span class="line">    for each tuple_t2 in relation_r2:</span><br><span class="line">        ···</span><br><span class="line">            for each tuple_tm in relation_rm:</span><br><span class="line">                t &#x3D; combine(t1, t2, ···, tm)</span><br><span class="line">                add(t)</span><br></pre></td></tr></table></figure>
+<p>由于在不同的关系中可能出现相同的属性，所以我们可以在属性前面带上关系以指代属性来自于哪个关系。  </p>
+<h3 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h3><p>通过笛卡尔积和where子句谓词可以用来连接来自多个关系的信息。<br>一种常见的情况是通过相同的属性来连接两个关系，因此为了简化SQL编程者的工作，SQL支持自然连接的运算。  </p>
+<p><strong>自然连接（natural join）</strong>：作用于两个关系，并产生一个关系作为结果。不同于两个关系上的笛卡尔积，他将第一个关系的每个元组与第二个关系的所有元组都进行连接，并且只考虑那些再两个关系模式中都出现的属性上取值相同的元组对。<br>比如说instructor和teaches的两个表中都有相同的属性：ID。那么类似这样的查询就可以简化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select name, course_id</span><br><span class="line">from instructor, teaches</span><br><span class="line">where instructor.ID &#x3D; teaches.ID;</span><br></pre></td></tr></table></figure>
+<p>用自然连接简化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name, course_id from instructor natural join teaches;</span><br></pre></td></tr></table></figure>
+
+<p>在一个SQL查询中的from子句，可以用自然连接将多个关系结合在一起：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select A1, A2, ···, An</span><br><span class="line">from r1 natural join r2 natural join ··· natural join rm</span><br><span class="line">where P;</span><br></pre></td></tr></table></figure>
+
+<p>更一般的，from子句可以为如下形式：<br>$$from\ E_1, E_2, ···, E_n$$<br>其中$E_i$可以是单个关系或一个包含自然连接的表达式。  </p>
+<p>例如我们要查询“教师的名字以及他们所讲授课程的名称”可以用SQL写为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select name, title</span><br><span class="line">from instructor natural join teaches, course</span><br><span class="line">where teaches.course_id &#x3D; course.course_id;</span><br></pre></td></tr></table></figure>
+<p>那么这里instructor和teaches自然连接后的关系与course进行笛卡尔运算，最后通过where提取出元组。  </p>
+<p>自然连接要求两个关系相同属性的取值相同，而相同属性可能有多个，那有时候只需要一个属性就够了该怎么操作呢？这里可以用join并附上using关键字来解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select name, title</span><br><span class="line">from (instructor natural join teaches) join course using (course_id);</span><br></pre></td></tr></table></figure>
+
+<h2 id="附加的基本运算"><a href="#附加的基本运算" class="headerlink" title="附加的基本运算"></a>附加的基本运算</h2><h3 id="更名运算"><a href="#更名运算" class="headerlink" title="更名运算"></a>更名运算</h3><p>改变属性的名字使用<strong>as</strong>子句：<br>$$old-name\ as \ new-name$$</p>
+<p>as子句在重命名关系的时候很有用，这样可以少敲一点代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select T.name, S.course_id</span><br><span class="line">from instructor as T, teaches as S</span><br><span class="line">where T.ID &#x3D; S.ID;</span><br></pre></td></tr></table></figure>
+<p>重命名关系的另一个原因是为了适用于比较同一个关系中的元组的情况。比如说要查询：“找出满足下面条件的所有教师的姓名，他们的工资至少比Biology系的某一个教师的工资要高”，可以写出下面的SQL：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name </span><br><span class="line">from instructor as A, instructor as B </span><br><span class="line">where A.salary &gt; B.salary and S.dept_name &#x3D; &#39;Biology&#39;;</span><br><span class="line">(这里笛卡尔积🐂🍺)</span><br></pre></td></tr></table></figure>
+<p>那么这里重命名就很重要了，不然指代不明。T和S用来被重命名关系的标识符在SQL标准中被称为<strong>相关名称（correlation name）</strong>，通常也被称作<strong>别名（table alias）</strong>或者<strong>相关变量（correlation variable）</strong>。  </p>
+<h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><p>了解一下就够了。</p>
+<h3 id="select字句用的属性说明"><a href="#select字句用的属性说明" class="headerlink" title="select字句用的属性说明"></a>select字句用的属性说明</h3><p>*表示所有的属性。</p>
+<h3 id="排列元组的显示次序"><a href="#排列元组的显示次序" class="headerlink" title="排列元组的显示次序"></a>排列元组的显示次序</h3><p><strong>order by</strong>子句可以让查询结果中的元组按排列顺序显示。</p>
+<h3 id="where子句谓词"><a href="#where子句谓词" class="headerlink" title="where子句谓词"></a>where子句谓词</h3><p>为了简化where子句，SQL提供<strong>between</strong>比较运算符来说明一个值是小于或等于某个值，同时大于或登陆另一个值。<br>那么类似的可以用<strong>not between</strong>。  </p>
+<p>SQL允许我们用记号(v1, v2, ···,vn)来表示一个分量值分别为v1, v2,···, vn的n维元组。在元组上可以运用比较运算符，按字典顺序进行比较运算。示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select name, course_id</span><br><span class="line">from instructor, teaches</span><br><span class="line">where (insructor.ID, dept_name) &#x3D; (teaches.ID, &#39;Biology&#39;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h2><p>SQL作用在关系上的<strong>union、intersect和except</strong>对应于数学集合论中的交并差。</p>
+<h3 id="并运算"><a href="#并运算" class="headerlink" title="并运算"></a>并运算</h3><p>SQL中并运算是自动去除重的。如果想要保存重复，那么需要使用<strong>union all</strong>。</p>
+<h3 id="交运算"><a href="#交运算" class="headerlink" title="交运算"></a>交运算</h3><p>SQL中的交运算是自动去重的。如果想要保存重复，那么需要使用<strong>intersect all</strong>。</p>
+<h3 id="差运算"><a href="#差运算" class="headerlink" title="差运算"></a>差运算</h3><p>SQL中的差运算是自动去重的。如果想要保存重复，那么需要使用<strong>except all</strong>。</p>
+<h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>如果算数表达式的任意输入为空，则该算数表达式的结果为空。<br>涉及表控制的任何比较运算的结果视为<strong>unknown</strong>，它既不是is null，也不是is not null。<br><img src="http://hollin.icu/DB-3-chart2.png" alt="DB-3-chart2">  </p>
+<h2 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h2><p><strong>聚集函数</strong>是以值的一个集合（集或多重集）为输入、返回单的值的函数。SQL提供五个固有聚集函数：</p>
+<ul>
+<li>平均值：avg。</li>
+<li>最小值：min。</li>
+<li>最大值：max。</li>
+<li>总和：sum。</li>
+<li>计数：count。</li>
+</ul>
+<h3 id="基本聚集"><a href="#基本聚集" class="headerlink" title="基本聚集"></a>基本聚集</h3><p>有些聚集函数在使用的时候保留重复元组是很重要的，比如说求平均值。如果不保留就会得到错误的结果。而在某些情况下需要先删除重复元组，比如说计算老师的个数，这个时候可以在聚集函数之前使用关键词<strong>distinct</strong>。</p>
+<h3 id="分组聚集"><a href="#分组聚集" class="headerlink" title="分组聚集"></a>分组聚集</h3><p>有时候我们不仅子网将聚集函数作用在单个元组集上，而且也希望将其作用到一组元组集上；在SQL中可以用<strong>group by</strong>子句实现。group by子句中给出的一个或多个属性是用来构造分组的。在group by子句中的所有属性上取值相同的元组将被分在一个组中。<br>例如找出“每个系的平均工资”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select dept_name, avg(salary)</span><br><span class="line">from instructor</span><br><span class="line">group by dept_name;</span><br></pre></td></tr></table></figure>
+<p>当SQL查询使用分组时，一个很重要的事情是需要保证出现在select语句中但没有被聚集的属性只能是出现在group by子句中的那些属性。（这个说法太绕了）<br>也就是说，没有被聚集的属性如果出现在select中，将会导致多个属性的值只能对应一个被聚集的属性的值，那么SQL是不会允许这种情况出现的。</p>
+<h3 id="having子句"><a href="#having子句" class="headerlink" title="having子句"></a>having子句</h3><p>对分组限定条件比对元组限定条件更有用。比如说我们对教师平均工资超过42000美元的系感兴趣，这个条件不针对单个分组，而是针对group by子句构成的分组。为了表达这样的查询，我们使用SQL的<strong>having</strong>子句。having子句中的谓词在形成分组后才起作用，因此可以使用聚集函数。SQL表达如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select dept_name, avg(salary) as avg_salary</span><br><span class="line">from instructor</span><br><span class="line">group by dept_name</span><br><span class="line">having avg(salary) &gt; 42000;</span><br></pre></td></tr></table></figure>
+<p><img src="http://hollin.icu/DB-3-chart3.png" alt="DB-3-chart3">  </p>
+<h3 id="对控制和布尔值的聚集"><a href="#对控制和布尔值的聚集" class="headerlink" title="对控制和布尔值的聚集"></a>对控制和布尔值的聚集</h3><p>了解一下。</p>
+<h2 id="嵌套子查询"><a href="#嵌套子查询" class="headerlink" title="嵌套子查询"></a>嵌套子查询</h2><h3 id="集合成员资格"><a href="#集合成员资格" class="headerlink" title="集合成员资格"></a>集合成员资格</h3><p><strong>in</strong>测试元组是否试集合中的成员，集合试由select子句产生的一组值构成。<strong>not in</strong>测试元组是否不是集合中的成员。  </p>
+<h3 id="集合的比较"><a href="#集合的比较" class="headerlink" title="集合的比较"></a>集合的比较</h3><p>“至少比某一个大”用 <strong>&gt;some</strong>表示。同样的，也有“至少大于等于某个”等。<br><strong>=some</strong>等价于<strong>in</strong>，而 <strong>&lt;&gt;some</strong>并不等价于 <strong>not in</strong>。（很显然&lt;&gt;some就是不等于其中的一个，而not in则是不在这个关系中）  </p>
+<p>同理有<strong>all</strong>。<br><strong>&lt;&gt;all</strong>等价于 <strong>not in</strong>，而 <strong>=all</strong>并不等价于 <strong>in</strong>。（也很显然）</p>
+<h3 id="空关系测试"><a href="#空关系测试" class="headerlink" title="空关系测试"></a>空关系测试</h3><p>exists结构在作为参数的子查询非空时返回true。</p>
+<h3 id="重复元组存在性测试"><a href="#重复元组存在性测试" class="headerlink" title="重复元组存在性测试"></a>重复元组存在性测试</h3><p>SQL提供一个布尔函数，用于测试在一个子查询的结果中是否存在重复元组。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/27/course/database/database-chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/27/course/database/database-chapter2/" class="post-title-link" itemprop="url">数据库系统概念第二章学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-27 21:16:37" itemprop="dateCreated datePublished" datetime="2020-02-27T21:16:37+08:00">2020-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="关系模型介绍"><a href="#关系模型介绍" class="headerlink" title="关系模型介绍"></a>关系模型介绍</h2><h3 id="关系数据库的结构"><a href="#关系数据库的结构" class="headerlink" title="关系数据库的结构"></a>关系数据库的结构</h3><p>关系数据库由<strong>表（table）</strong>的集合构成，每个表有唯一的名字。<br>一般来说，表的一行代表了一组值之间的一种<strong>联系</strong>。一个表就是这种联系的一个集合，所以表的概念和数学上的<strong>关系</strong>是密切相关的，这也是关系数据模型的由来。  </p>
+<p>数学术语中，<strong>元组（tuple）</strong>是一组值的序列。<br>在关系模型的术语中，关系（relation）用来指代<strong>表</strong>，<strong>元组（tuple）</strong>用来指代<strong>行</strong>。<strong>属性（attribute）</strong>指代的是表中的列。  </p>
+<p><img src="http://hollin.icu/DB-2-1.png" alt="DB-2-1"><br>在表2-1中，instructor关系有四个属性：ID、name、dept_name和salary。  </p>
+<p><strong>关系实例（relation instance）</strong>：表示一个关系的特定实例，也就是包含一组特定的行。图2-1所示的instructor的实例有12个元组，对应12个教师。  </p>
+<p>关系是一个元组集合，在集合中，元组的顺序是无关紧要的。  </p>
+<p>属性的<strong>域（domain）</strong>：对于每个属性，都存在一个允许取值的集合，称为这个属性的域。（某属性取值的集合称为域）<br>要求对于所有关系r而言，其所有属性的域都是<strong>原子的（atomic）</strong>。（也可以不是原子的，反之目前要求是原子的）  </p>
+<p><strong>空（NULL）</strong>：特殊值，表示值未知或者不存在。应该尽量避免。  </p>
+<h3 id="数据库模式"><a href="#数据库模式" class="headerlink" title="数据库模式"></a>数据库模式</h3><p><strong>数据库模式（database schema）</strong>：数据库的逻辑设计。<br><strong>数据库实例（database instance）</strong>：给定时刻数据库中数据的一个快照。<br>两者的区别就是关系对应于程序设计语言中变量的概念，<strong>关系模式（relation schema）</strong>对应于程序设计语言中类型定义的概念。关系实例的概念就是程序设计语言中变量的值的概念。变量的值可能随时间发生变化；关系的模式是不常变化的。  </p>
+<h3 id="码"><a href="#码" class="headerlink" title="码"></a>码</h3><p>必须有一种能够区分给定关系的不同元素的方法，这用他们的属性来表明。也就是说，一个元组的属性值必须是能够唯一区分元组的。换句话说，一个关系中没有两个元组在所有的属性上的取值都相同。（真绕啊）  </p>
+<p><strong>超码（superkey）</strong>：一个或多个属性的集合，这些属性的组合可以使我们在一个关系中唯一地标识一个元组。<br>比如说一个人的身份证号可以把这个人区分出来，因此身份证号是一个超码，反之名字不是，因为重名的人千千万。  </p>
+<p>形式化（不说人话）的描述就是：</p>
+<p>$$设R表示关系r模式中的属性集合。\ 如果说R的一个子集K是r的一个超码，\ 则限制了关系R中任意两个不同元组不会在K的所有属性上取值完全相等，\ 即如果t_1和t_2在r中且t_1\neq t_2，则t_1.K\neq t_2.K。$$  </p>
+<p>超码中也可能包含无关紧要的属性。和线代中极大线性无关组与任何一个其他的向量裹在一起也是一个线性无关组是一个道理。如果一个有一个超码，这个超码的真子集一定不是超码，它的任意超集也一定是超码。这样的最小超码称为<strong>候选码（candidate key）</strong>。<br>候选码一定要是最小那个集。也就是说当{attr_1, attr_2}中有一个是超码的时候，那么这个属性的集合就不能当作候选码。  </p>
+<p><strong>外码（foreign key）或参照关系（referencing relation）</strong>：一个关系模式$r_1$可能在它的属性中包括了另一个关系模式$r_2$的主码。这个属性$r_1$被称为参照$r_2$的外码。</p>
+<h2 id="关系查询语句"><a href="#关系查询语句" class="headerlink" title="关系查询语句"></a>关系查询语句</h2><p><strong>查询语句（query language）</strong>：用户用来从数据库中请求获取信息的语言。  </p>
+<p><strong>过程化语言（procedural language）</strong>：用户直到系统对数据库执行一系列操作以计算出所需的结果。</p>
+<p><strong>非过程化语言（nonprocedural language）</strong>：用户只需要描述所需信息，而不用给出获取该信息的具体过程。  </p>
+<p>实际使用的查询语句包含两种成分。  </p>
+<h2 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h2><p>所有的过程化关系查询语言都提供了一组运算，要么施加于单个关系上，要么施加于一对关系上。这些运算具有一个很好的性质：运算的结果总时单个的关系。这样我们可以用模块化的方式来组合几种这样的运算。因为关系查询的结果本身也是关系，所以关系运算可以施加到查询结果上。  </p>
+<p>常用的关系运算有：</p>
+<ul>
+<li>从单个关系中选出满足一些特定谓词的特殊元组。</li>
+<li>从一个关系中选出特定的属性。</li>
+<li>连接运算，把分别来自两个关系的元组对合并成单个元组。</li>
+<li>笛卡尔积运算。</li>
+<li>关系是集合，因此也可以并交差。</li>
+</ul>
+<p><img src="http://hollin.icu/DB-2-table1.jpg" alt="DB-2-table1">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="http://hollin.icu/DB-2-2.png" alt="DB-2-2">  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/27/daily-learning/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E6%AC%A1%E5%BA%8F%E5%AF%BC%E8%87%B4%E7%9A%84%E6%83%A8%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/27/daily-learning/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E6%AC%A1%E5%BA%8F%E5%AF%BC%E8%87%B4%E7%9A%84%E6%83%A8%E6%A1%88/" class="post-title-link" itemprop="url">记一次条件判断次序导致的惨案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-27 11:55:27" itemprop="dateCreated datePublished" datetime="2020-02-27T11:55:27+08:00">2020-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">leetcode第23题</a>。</p>
+<blockquote>
+<p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</p>
+</blockquote>
+<p>这个问题几乎直接套用mergesort递归的代码就可以了。给出我的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Node *merge(Node *h1, Node *h2)&#123;</span><br><span class="line">    if( h1 &#x3D;&#x3D; NULL || h2 &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">        return h1 &#x3D;&#x3D; NULL ? h2 : h1;</span><br><span class="line">    &#125;</span><br><span class="line">    if(h1-&gt;val &gt; h2-&gt;val)&#123;</span><br><span class="line">        h2-&gt;next &#x3D; merge(h1, h2-&gt;next);</span><br><span class="line">        return h2;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        h1-&gt;next &#x3D; merge(h1-&gt;next, h2);</span><br><span class="line">        return h1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Node *merge_sort(Node **lists, int lo, int hi)&#123;</span><br><span class="line">    if(lo &#x3D;&#x3D; hi)&#123;</span><br><span class="line">        return lists[lo];</span><br><span class="line">    &#125;</span><br><span class="line">    int mid &#x3D; lo + (hi - lo) &#x2F; 2;</span><br><span class="line">    Node *left &#x3D; merge_sort(lists, lo, mid);</span><br><span class="line">    Node *right &#x3D; merge_sort(lists, mid+1, hi);</span><br><span class="line">    return merge(left, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看题解中有另一种递归思路，就是每个结点每个结点的递归，和上面那个merge代码的递归思路很像，不过就是拓展到了n个链表而已。于是我便开始写bug了…</p>
+<h2 id="碰到的问题"><a href="#碰到的问题" class="headerlink" title="碰到的问题"></a>碰到的问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Node *merge_by_node(Node **lists,int listsSize)&#123;</span><br><span class="line">    if(listsSize &#x3D;&#x3D; 0)&#123;</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    Node *curMin &#x3D; lists[0];</span><br><span class="line">    int idx &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 1; lists[i] !&#x3D; NULL &amp;&amp; i &lt; listsSize; i++)&#123;</span><br><span class="line">        if(curMin-&gt;val &gt; lists[i]-&gt;val)&#123;</span><br><span class="line">            curMin &#x3D; lists[i];</span><br><span class="line">            idx &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    lists[idx] &#x3D; curMin-&gt;next;</span><br><span class="line">    if(lists[idx] &#x3D;&#x3D; NULL)&#123;</span><br><span class="line">        lists[idx] &#x3D; lists[listsSize - 1];</span><br><span class="line">        listsSize--;</span><br><span class="line">    &#125;</span><br><span class="line">    curMin-&gt;next &#x3D; merge_by_node(lists, listsSize);</span><br><span class="line">    return curMin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码也很简单，不过我是用的C语言，因此不能直接将已经为空的链表从arraylist那种链表中直接remove，所以多了中间几行把非空的链表换到已经成空链表的位置，并且使listsSize减一。<br>实际上这个代码对于一部分case是有问题的，后来通过一些方法解决了，但是不是讨论的重点就不赘述了。<br>最初版本for循环里面的条件是<code>i &lt; listsSize</code>，后来测试发现如果lists中间如果有空链表那么会发生错误，对于非空的情况运行良好。因为当时误以为所有非空的链表都排在空链表的前面，所以我就改成了<code>lists[i] != NULL &amp;&amp; i &lt; listsSize</code>，乍一看好像没有什么问题，不过测试发现对于非空链表的case也过不了了。错误一直是堆溢出。反复检查代码后始终没有看出明显错误。最后定位到for循环里面出了问题才发现我的这个判断条件会导致bug…<br>具体的问题其实是条件判断的顺序是从左到右的，这里先判断<code>lists[i] != NULL</code>，很显然当<code>i = listsSize - 1</code>且循环结束了过后<code>i++</code>导致<code>i = ListsSize</code>，这里就越界了。<br>最开始写代码的时候会犯这种错误，结果写了这么久代码仍然会犯这种错误…浪费总时长不少于5个小时，太亏了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>对于是否越界的判断始记终放在第一个。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/26/daily-learning/memcpy%E4%B8%8Ememmove%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8CC%E8%AF%AD%E8%A8%80%E4%B8%AD%E6%8C%87%E9%92%88%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/26/daily-learning/memcpy%E4%B8%8Ememmove%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8CC%E8%AF%AD%E8%A8%80%E4%B8%AD%E6%8C%87%E9%92%88%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">memcpy与memmove的区别和C语言中指针的一些技巧</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-26 00:23:42" itemprop="dateCreated datePublished" datetime="2020-02-26T00:23:42+08:00">2020-02-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="memcpy和memmove"><a href="#memcpy和memmove" class="headerlink" title="memcpy和memmove"></a>memcpy和memmove</h2><p>在学习string.h标准库的时候注意到了两个功能十分类似的函数：memcpy和memmove。两个函数的十分相似：</p>
+<blockquote>
+<p>memcpy: copies one buffer to another</p>
+</blockquote>
+<blockquote>
+<p>memmove: moves one buffer to another</p>
+</blockquote>
+<p>常理来说同一个库下是不会重复实现同一个功能的，这就显得有些蹊跷。百度一下后，发现memcpy是无法保证内存重叠的情况下能正确复制，而memmove则保证复制的准确性。画个图理解一下：<br><img src="http://hollin.icu/2020-02-26_005035.png" alt="内存重叠且出错的情况"><br>可以看到，在这种情况下，本该位于6、7的d、e成了c、a。这也许和我们预想的结果不太相同（也没准有的人就是想要这种效果）。当然还有dest小于src的情况也可能产生内存重叠，但是这种内存重叠相当于把字符往前移动，不会出现意料之外的错误。<br>所以在string.h的中还有个memmove来弥补这一不足，memmove可以保证在内存重叠的情况下仍可以获得得正确的结果。那么memmove的实现实际上是单独向后移且内存重叠的情况拎出来实现，保证了结果的正确性。这里给出我自己的一种实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void *memmove(void *dest, const void *src, size_t n)</span><br><span class="line">&#123;</span><br><span class="line">    if (src &gt;&#x3D; dest || (char *)src + n &lt; (char *)dest)</span><br><span class="line">    &#123;</span><br><span class="line">        size_t i &#x3D; 0;</span><br><span class="line">        const char *prt1 &#x3D; src;</span><br><span class="line">        char *prt2 &#x3D; dest;</span><br><span class="line">        for (; i &lt; n; i++, prt1++, prt2++)</span><br><span class="line">        &#123;</span><br><span class="line">            *prt2 &#x3D; *prt1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        char *l &#x3D; (char *)src + n;</span><br><span class="line">        size_t len &#x3D; ((char *)dest - (char *)src);</span><br><span class="line">        while (l !&#x3D; (char *)src - 1)</span><br><span class="line">        &#123;</span><br><span class="line">            *(l + len) &#x3D; *l;</span><br><span class="line">            l--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实际上这些强制类型转换并不是必须的，但是vscode会报错，因此我还是将它们保留了。这是第二个话题将要谈到的问题。<br>当然自己的虽然实现了memmove的功能，我们也必须亲手去验证一下结论的正确性。是不是memcpy真的就没有保证内存重叠时的复制正确性呢？在Linux下我编写了如下的测试代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">        char str[10] &#x3D; &#123;&quot;abcdef&quot;&#125;;</span><br><span class="line">        memcpy(str + 3, str, 5);</span><br><span class="line">        printf(&quot;%s&quot;, str);</span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译过后的输出结果却并不如我所想的那样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;a.out</span><br><span class="line">abcabcde% </span><br></pre></td></tr></table></figure>
+<p>按照之前的分析这里的结果应该是<code>abcabcab</code>，然而运行的结果确实和memmove的结果一模一样。是大多数人都错了吗？我当时这么想来着，去更靠谱的网站查询了相关资料，发现原来是这样的：<br><img src="http://hollin.icu/2020-02-26_010743.png" alt="memcpy文档">  </p>
+<blockquote>
+<p>If the objects overlap (which is a violation of the restrict contract) (since C99), the behavior is undefined. The behavior is undefined if either dest or src is a null pointer.</p>
+</blockquote>
+<p>这里提到了当发生内存重叠的时候，它并没有一个标准的实现。也就是说，不同的平台下可能会有不同的实现方式。可能Linux下它的实现与memmove是一样的。<br>我自己也实现了一下memcpy，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void *memcpy(void *dest, const void *src, size_t n)</span><br><span class="line">&#123;</span><br><span class="line">    const char *prt1 &#x3D; src;</span><br><span class="line">    char *prt2 &#x3D; dest;</span><br><span class="line">    size_t i &#x3D; 0;</span><br><span class="line">    for (; i &lt; n; i++, prt1++, prt2++)</span><br><span class="line">    &#123;</span><br><span class="line">        *prt2 &#x3D; *prt1;</span><br><span class="line">    &#125;</span><br><span class="line">    return dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/Hooollin/re-examination/blob/master/algorithm/_string.c">我实现的string.h中的一些函数</a>  </p>
+<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><ul>
+<li>显然memcpy的速度会比memmove快一些, memmove要稳一点。</li>
+<li>不想因为跨平台的而出问题最好用memmove。</li>
+</ul>
+<h2 id="指针运算以及一些技巧"><a href="#指针运算以及一些技巧" class="headerlink" title="指针运算以及一些技巧"></a>指针运算以及一些技巧</h2><h3 id="指针的大小"><a href="#指针的大小" class="headerlink" title="指针的大小"></a>指针的大小</h3><p>指针的大小取决于三个方面：</p>
+<ul>
+<li>CPU的位数</li>
+<li>操作系统位数</li>
+<li>编译器的位数</li>
+</ul>
+<p>指针的大小受限于三者中最小那个，在32位操作系统中一般为4个字节，在64位操作系统中一般为8个字节。不论是int<em>、char</em>、还是void*的大小都是一样的。</p>
+<h3 id="int、char、void-的具体含义"><a href="#int、char、void-的具体含义" class="headerlink" title="int、char、void*的具体含义"></a>int<em>、char</em>、void*的具体含义</h3><p>比如说对于这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    int a &#x3D; 0;char b &#x3D; &#39;0&#39;;float c &#x3D; 0.0;</span><br><span class="line">    int *p1 &#x3D; &amp;a;char *p2 &#x3D; &amp;b; char *p3 &#x3D; &amp;c, void* p4 &#x3D; a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里<code>int*</code>代表了p1指向的是一个int类型的数据，那么你通过<code>*p1</code>访问a，无论p1指向的数据类型是不是a它都会将内存中的数据按照int来解释。<br>void*则代表当前的数据类型不确定，如果需要解应用必须强制类型转换，否则将会报错。但是任何类型的指针都可以复制给void *类型的指针。</p>
+<h3 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h3><p>最简单的指针运算无非是加一，减一，关键就是不同类型下它的计算方式稍有不同。</p>
+<ul>
+<li>int *p，p++使得p指向的地址在原来的基础上移动了int类型字节数。</li>
+<li>float *p，p++使得p指向的地址在原来的基础上增加了float类型的字节数。</li>
+<li>char *p，p++使得p指向的地址在原来的基础上增加了char类型的字节数。</li>
+<li>void *p，默认和char *一样。</li>
+</ul>
+<p>两个不同的指针之间的运算：</p>
+<ul>
+<li>前提是两个指针同类型。</li>
+<li>同类型指针之间的加减的结果是已经除过sizeof的了，也就是说结果不是间隔的字节数。</li>
+<li>可以直接比大小。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/23/daily-learning/%E9%93%BE%E8%A1%A8%E4%B8%ADswap%E4%B8%A4%E4%B8%AA%E7%BB%93%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/23/daily-learning/%E9%93%BE%E8%A1%A8%E4%B8%ADswap%E4%B8%A4%E4%B8%AA%E7%BB%93%E7%82%B9/" class="post-title-link" itemprop="url">链表中swap两个结点</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-23 22:58:43" itemprop="dateCreated datePublished" datetime="2020-02-23T22:58:43+08:00">2020-02-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>一开始想直接动手写链表的bubble sort，结果代码没写两行就卡壳了。在geeksforgeeks里面找了一下没有找到，不过却发现了swap两个结点的Puzzle，当实心里想这太基础了，不过刷了一眼分析发现问题可能比我想像中的要复杂一些，于是便想自己试一试能不能写出来。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>首先要想swap两个结点，是不是只需要分别记录一下prev结点和curr结点然后改一下指向就能解决的呢？一开始我是这么想的，于是写出了以下的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void swap(LinkedList *head, ListNode *node1, ListNode *node2)</span><br><span class="line">&#123;</span><br><span class="line">    ListNode *prev1 &#x3D; head, *curr1 &#x3D; head-&gt;next, *prev2 &#x3D; head, *curr2 &#x3D; head-&gt;next, *next;</span><br><span class="line">    for (; curr1 !&#x3D; node1; prev1 &#x3D; prev1-&gt;next, curr1 &#x3D; curr1-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    for (; curr2 !&#x3D; node2; prev2 &#x3D; prev2-&gt;next, curr2 &#x3D; curr2-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    next &#x3D; curr1-&gt;next;</span><br><span class="line">    curr1-&gt;next &#x3D; curr2-&gt;next;</span><br><span class="line">    curr2-&gt;next &#x3D; next;</span><br><span class="line">    prev1-&gt;next &#x3D; curr2;</span><br><span class="line">    prev2-&gt;next &#x3D; curr1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码结构很清晰，前两个循环用来定位，后面五行用来互换两个结点。乍一看好像挺对的，没什么问题。不过思考一下这种情况：<br><img src="http://hollin.icu/2020-02-23_231716.png" alt="过程图"><br>当node1和node2相邻的时候，会造成不止一个环路。<br>看来结点的位置关系会影响最后的结果，因此需要搞清楚这两个结点之间的关系：</p>
+<ul>
+<li>有没有结点是头结点？</li>
+<li>两个结点是否相邻？</li>
+</ul>
+<p>对于带头结点的链表我们不需要考虑是否其中一个为头结点，因为头结点的一个作用就是统一的操作的过程。<br>如果两个结点相邻，必然导致会有多余的指针，我们的代码中需要对它进行处理。不相邻的话初始版本的代码是正确的。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>基于以上分析给出swap两个结点的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void swap(LinkedList *head, ListNode *node1, ListNode *node2)</span><br><span class="line">&#123;</span><br><span class="line">    ListNode *prev1 &#x3D; head, *curr1 &#x3D; head-&gt;next, *prev2 &#x3D; head, *curr2 &#x3D; head-&gt;next, *next;</span><br><span class="line">    for (; curr1 !&#x3D; node1; prev1 &#x3D; prev1-&gt;next, curr1 &#x3D; curr1-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    for (; curr2 !&#x3D; node2; prev2 &#x3D; prev2-&gt;next, curr2 &#x3D; curr2-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    if (curr1-&gt;next &#x3D;&#x3D; curr2)</span><br><span class="line">    &#123;</span><br><span class="line">        next &#x3D; curr2-&gt;next;</span><br><span class="line">        curr2-&gt;next &#x3D; curr1;</span><br><span class="line">        curr1-&gt;next &#x3D; next;</span><br><span class="line">        prev1-&gt;next &#x3D; curr2;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (curr2-&gt;next &#x3D;&#x3D; curr1)</span><br><span class="line">    &#123;</span><br><span class="line">        next &#x3D; curr1-&gt;next;</span><br><span class="line">        curr1-&gt;next &#x3D; curr2;</span><br><span class="line">        curr2-&gt;next &#x3D; next;</span><br><span class="line">        prev2-&gt;next &#x3D; curr1;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        next &#x3D; curr1-&gt;next;</span><br><span class="line">        curr1-&gt;next &#x3D; curr2-&gt;next;</span><br><span class="line">        curr2-&gt;next &#x3D; next;</span><br><span class="line">        prev1-&gt;next &#x3D; curr2;</span><br><span class="line">        prev2-&gt;next &#x3D; curr1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试一下：<br><img src="http://hollin.icu/2020-02-23_232927.png" alt="测试结果">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/">geeksforgeeks上的解法</a></li>
+<li>多动手。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hollin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+</body>
+</html>

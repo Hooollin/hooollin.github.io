@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="第一章什么是因特网具体构成描述因特网实际上就是互联了所有计算机设备的网络。所有接入网络的设备都称为主机(host)**或着终端(end system)（比较早的时候可能只有传统的桌面PC、服务器等，现在汽车、手表等电子产品都算）。端系统通过通信链路(communication link)或者分组交换机(packet switch)连接到一起。通信链路实际上就是具体的物理连接方式，比如说电缆、铜线、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络第一章学习笔记">
+<meta property="og:url" content="http://example.com/2020/01/04/computer-networking/computer-networking-chapter1/index.html">
+<meta property="og:site_name" content="Hollin的代码之路">
+<meta property="og:description" content="第一章什么是因特网具体构成描述因特网实际上就是互联了所有计算机设备的网络。所有接入网络的设备都称为主机(host)**或着终端(end system)（比较早的时候可能只有传统的桌面PC、服务器等，现在汽车、手表等电子产品都算）。端系统通过通信链路(communication link)或者分组交换机(packet switch)连接到一起。通信链路实际上就是具体的物理连接方式，比如说电缆、铜线、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://q3l3n268t.bkt.clouddn.com/1-1.png">
+<meta property="og:image" content="http://q3l3n268t.bkt.clouddn.com/1-15.png">
+<meta property="og:image" content="http://q3l3n268t.bkt.clouddn.com/1-18.png">
+<meta property="og:image" content="http://q3l3n268t.bkt.clouddn.com/1-23.png">
+<meta property="og:image" content="http://q3l3n268t.bkt.clouddn.com/1-24.png">
+<meta property="article:published_time" content="2020-01-04T12:33:46.000Z">
+<meta property="article:modified_time" content="2020-11-23T09:21:38.561Z">
+<meta property="article:author" content="Hollin">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://q3l3n268t.bkt.clouddn.com/1-1.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/04/computer-networking/computer-networking-chapter1/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>计算机网络第一章学习笔记 | Hollin的代码之路</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hollin的代码之路</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="nav-number">1.1.</span> <span class="nav-text">什么是因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%9E%84%E6%88%90%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">具体构成描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BE%B9%E7%BC%98"><span class="nav-number">1.2.</span> <span class="nav-text">网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%85%A5%E7%BD%91"><span class="nav-number">1.2.1.</span> <span class="nav-text">接入网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%AA%92%E4%BB%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">物理媒介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A0%B8%E5%BF%83"><span class="nav-number">1.3.</span> <span class="nav-text">网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-packet-switching"><span class="nav-number">1.3.1.</span> <span class="nav-text">分组交换(packet switching)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BD%AC%E5%8F%91%E4%BC%A0%E8%BE%93-store-and-forward-transmission"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">存储转发传输(store-and-forward transmission)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%98%9F%E6%97%B6%E5%BB%B6%E5%92%8C%E5%88%86%E7%BB%84%E4%B8%A2%E5%A4%B1"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">排队时延和分组丢失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91%E8%A1%A8%E5%92%8C%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">转发表和路由选择协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-circuit-switching"><span class="nav-number">1.3.2.</span> <span class="nav-text">电路交换(circuit switching)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E5%92%8C%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.3.</span> <span class="nav-text">分组交换和电路交换的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="nav-number">1.3.4.</span> <span class="nav-text">网络的网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%841"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">网络结构1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%842"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">网络结构2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%843"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">网络结构3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%844"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">网络结构4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%845"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">网络结构5</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BB%B6%E3%80%81%E4%B8%A2%E5%8C%85%E5%92%8C%E5%90%9E%E5%90%90%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">分组交换中的时延、丢包和吞吐量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E4%B8%AD%E7%9A%84%E6%97%B6%E5%BB%B6%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">分组中的时延概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E5%BB%B6%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">时延的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%92%E9%98%9F%E6%97%B6%E5%BB%B6%E5%92%8C%E4%B8%A2%E5%8C%85"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">排队时延和丢包</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%92%E9%98%9F%E6%97%B6%E5%BB%B6"><span class="nav-number">1.4.1.2.1.</span> <span class="nav-text">排队时延</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%A2%E5%8C%85"><span class="nav-number">1.4.1.2.2.</span> <span class="nav-text">丢包</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E5%B1%82%E6%AC%A1%E5%8F%8A%E5%85%B6%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.</span> <span class="nav-text">协议层次及其服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B1%82%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.1.</span> <span class="nav-text">分层的体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E5%88%86%E5%B1%82"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">协议分层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">1.5.1.1.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82"><span class="nav-number">1.5.1.1.2.</span> <span class="nav-text">运输层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">1.5.1.1.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.5.1.1.4.</span> <span class="nav-text">链路层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">1.5.1.1.5.</span> <span class="nav-text">物理层</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">1.5.2.</span> <span class="nav-text">封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%AF%B9%E7%BD%91%E7%BB%9C%E7%9A%84%E6%94%BB%E5%87%BB"><span class="nav-number">1.6.</span> <span class="nav-text">面对网络的攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB-Denial-of-Service-DoS-attack"><span class="nav-number">1.6.1.</span> <span class="nav-text">拒绝服务攻击(Denial-of-Service (DoS) attack)</span></a></li></ol></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hollin</p>
+  <div class="site-description" itemprop="description">Coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Hooollin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Hooollin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hollinisme@gmail.com" title="E-Mail → mailto:hollinisme@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Hooollin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/04/computer-networking/computer-networking-chapter1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络第一章学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-04 20:33:46" itemprop="dateCreated datePublished" datetime="2020-01-04T20:33:46+08:00">2020-01-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="什么是因特网"><a href="#什么是因特网" class="headerlink" title="什么是因特网"></a>什么是因特网</h2><h3 id="具体构成描述"><a href="#具体构成描述" class="headerlink" title="具体构成描述"></a>具体构成描述</h3><p>因特网实际上就是互联了所有计算机设备的网络。所有接入网络的设备都称为<strong>主机(host)**或着</strong>终端(end system)<strong>（比较早的时候可能只有传统的桌面PC、服务器等，现在汽车、手表等电子产品都算）。<br><img src="http://q3l3n268t.bkt.clouddn.com/1-1.png" alt="avatar"><br>端系统通过</strong>通信链路(communication link)<strong>或者</strong>分组交换机(packet switch)<strong>连接到一起。通信链路实际上就是具体的物理连接方式，比如说电缆、铜线、光纤等。分组交换机主要就是</strong>路由器(router)<strong>和</strong>链路层交换机(link-layer switch)**。</p>
+<h3 id="什么是协议"><a href="#什么是协议" class="headerlink" title="什么是协议"></a>什么是协议</h3><p>简单来说就是一系列的动作，要求双方或者多方按照这一系列动作来行动，从而完成一项工作。</p>
+<h2 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h2><h3 id="接入网"><a href="#接入网" class="headerlink" title="接入网"></a>接入网</h3><p>**边缘路由器(edge router)**：端系统到任何其他远程端系统的路径上的第一台路由器。</p>
+<h3 id="物理媒介"><a href="#物理媒介" class="headerlink" title="物理媒介"></a>物理媒介</h3><ul>
+<li>物理媒体(physical medium)<ul>
+<li>导线型媒体(guided medium)<ul>
+<li>光缆</li>
+<li>双绞线</li>
+<li>电缆</li>
+</ul>
+</li>
+<li>非导线型媒体(unguided medium)<ul>
+<li>陆地无线电信号</li>
+<li>卫星无线电信号<h2 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h2><h3 id="分组交换-packet-switching"><a href="#分组交换-packet-switching" class="headerlink" title="分组交换(packet switching)"></a>分组交换(packet switching)</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>报文(message)**：顾名思义，端系统之间相互交换信息。<br>报文可能较长，不利于传输，由此将报文分成若干个较小的数据块，称为</strong>分组(packet)**。分组通过分组交换机（路由器或者链路层交换机）传送。很显然，传送一个L比特的分组，传送速度为R比特每秒，传送时间为L/R秒。</p>
+<h4 id="存储转发传输-store-and-forward-transmission"><a href="#存储转发传输-store-and-forward-transmission" class="headerlink" title="存储转发传输(store-and-forward transmission)"></a>存储转发传输(store-and-forward transmission)</h4><p>简单来说就是每个分组所有的比特接受完成后，才能向下一个分组交换机发送这个分组，不能边收边发，因此必须将分组缓存下来，接收完成时发送给下一个分组交换机。</p>
+<h4 id="排队时延和分组丢失"><a href="#排队时延和分组丢失" class="headerlink" title="排队时延和分组丢失"></a>排队时延和分组丢失</h4><p>理想情况下忽略排队时延和分组丢失的情况，然而实际情况并不是这样。<br>每个分组交换机都有一个<strong>输出队列(output queue)**，当输出队列不为空的时候，只有前面的分组被转发过后，当前分组才能被转发，因此就会导致</strong>排队时延(queue delay)<strong>。同时，输出队列的</strong>大小<strong>也是一定的，当缓冲队列满后，无法再接受新的分组，导致</strong>分组丢失(packet lost)**。</p>
+<h4 id="转发表和路由选择协议"><a href="#转发表和路由选择协议" class="headerlink" title="转发表和路由选择协议"></a>转发表和路由选择协议</h4><p>分组交换机检查分组中目的地字段，并查**转发表(forwarding table)**，通过路由选择协议(routing protocol)选择合适的下一个分组交换机转发分组。</p>
+<h3 id="电路交换-circuit-switching"><a href="#电路交换-circuit-switching" class="headerlink" title="电路交换(circuit switching)"></a>电路交换(circuit switching)</h3><p>电话的术语。简单来说就是两个人之间的数据交换必须要保持一个连接的状态，也就是所有进行此次数据交换的资源都被这两个人占用了（有点像操作系统里保持着互斥资源不放），那么这个连接就是一条**电路(circuit)**。</p>
+<h3 id="分组交换和电路交换的对比"><a href="#分组交换和电路交换的对比" class="headerlink" title="分组交换和电路交换的对比"></a>分组交换和电路交换的对比</h3><p>分组交换批评者的理由：</p>
+<ol>
+<li>延迟不可控。（排队时延以及分组丢失）  </li>
+</ol>
+<p>分组交换支持者的理由：</p>
+<ol>
+<li>提供更好的带宽。</li>
+<li>比电路交换简单。  </li>
+</ol>
+<p>分析一下具体的例子：</p>
+<blockquote>
+<p>假设多个用户共享一条1Mbps的链路，每个用户活跃的周期是变化的，时而以100kbps的恒定速率产生数据，时而静止。假设用户有10%的时间活跃，有90%的时间静止（很合理）。那么对于电路交换，需要为每个用户预留100kbps。因此这个电路只能支持10个用户的并发。而通过分组交换，当有十个或者更少的活跃用户时，基本没有延迟。甚至于三倍的用户量时，（35个用户时有11个用户并发使用的概率为大约0.0004），性能几乎相同。</p>
+</blockquote>
+<p>可见分组交换理论上来说是更有效的。</p>
+<h3 id="网络的网络"><a href="#网络的网络" class="headerlink" title="网络的网络"></a>网络的网络</h3><h4 id="网络结构1"><a href="#网络结构1" class="headerlink" title="网络结构1"></a>网络结构1</h4><p>网络结构1很简单，就是在全球范围内建立一个ISP(Internet Service Provider)，那么所有想接入（接入ISP称为**客户(client)**）互联网的人都必须接入这个ISP。</p>
+<h4 id="网络结构2"><a href="#网络结构2" class="headerlink" title="网络结构2"></a>网络结构2</h4><p>在网络结构1的基础上，多个公司建立了多个全球承载的ISP，那么这些ISP的网络之间必须是可以互通的。否则，只能于同在一个ISP网络下通信。所以在网络结构1的基础上，网络结构2分为居于顶层的多个全球ISP以及基于底层的接入ISP（客户）。</p>
+<h4 id="网络结构3"><a href="#网络结构3" class="headerlink" title="网络结构3"></a>网络结构3</h4><p>不仅第一层有多个ISP竞争，同时，每个区域也可能有多个ISP在竞争。那么此时，每个接入ISP向他接入的区域ISP付费，而区域ISP又向上层的如国家ISP付费，国家ISP接入第一层ISP。这个结构与现在的互联网结构类似，称为网络结构3。</p>
+<h4 id="网络结构4"><a href="#网络结构4" class="headerlink" title="网络结构4"></a>网络结构4</h4><p>与现在类似的互联网结构中，存在着一些**存在点(point of presence)**，多宿，对等，和因特网交换点。</p>
+<ul>
+<li>PoP：一台或多台路由器群组。给接入ISP提供高速链路直接相连。</li>
+<li>多宿(multi-home)：任何层的ISP(除了客户)可以选择为多宿，即代表它可以和两个或者多个ISP连接。它可以同时连接上层的ISP和同层的ISP，也可以连接多个上层的ISP。它的上层ISP出问题，它仍可以发送和接受分组。</li>
+<li>对等(peer)：位于同一层次的ISP能够对等。对等的ISP之间的流量直接连接而不是通过上层的ISP传输。对等的两个ISP之间流量传输不<del>产生费用</del>付费。</li>
+<li>因特网交换点(Internet Exchange Point, IXP):<strong>多个</strong>ISP在这里对等。<h4 id="网络结构5"><a href="#网络结构5" class="headerlink" title="网络结构5"></a>网络结构5</h4>它在网络结构4的顶层增加了<strong>内容提供商(content provider network)**。内容提供商例如谷歌，有很多数据中心。它的数据中心都是通过专用的TCP/IP相连，并且跨越全球，但独立于公共因特网。它的专用网络通过和较低层的ISP</strong>对等**，或者在IPX与他们相连，绕过了较高层的ISP，对他的服务如何交付给端用户有了更多的控制。<br><img src="http://q3l3n268t.bkt.clouddn.com/1-15.png" alt="avatar"><h2 id="分组交换中的时延、丢包和吞吐量"><a href="#分组交换中的时延、丢包和吞吐量" class="headerlink" title="分组交换中的时延、丢包和吞吐量"></a>分组交换中的时延、丢包和吞吐量</h2><h3 id="分组中的时延概述"><a href="#分组中的时延概述" class="headerlink" title="分组中的时延概述"></a>分组中的时延概述</h3>分组从一台主机出发，在另一台主机结束它的历程。分组在沿途中经受的延迟主要有：</li>
+</ul>
+<ol>
+<li>结点处理时延(nodal processing delay)</li>
+<li>排队时延(queuing delay)</li>
+<li>传输时延(transmission delay)</li>
+<li>传播时延(propagation delay)<h4 id="时延的类型"><a href="#时延的类型" class="headerlink" title="时延的类型"></a>时延的类型</h4></li>
+<li>处理时延（数量级为微妙级或更低）<ul>
+<li>检查分组首部</li>
+<li>决定分组到向何处</li>
+<li>比特级的差错检测过程</li>
+</ul>
+</li>
+<li>排队时延（数量级为毫秒到微秒级）<ul>
+<li>在链路上等待传输</li>
+</ul>
+</li>
+<li>传输时延（数量级为毫秒到微秒级)<ul>
+<li>分组从交换机传到链路上的时间</li>
+</ul>
+</li>
+<li>传播时延(广域网中为毫秒级)<ul>
+<li>分组在链路上的传播时间<h4 id="排队时延和丢包"><a href="#排队时延和丢包" class="headerlink" title="排队时延和丢包"></a>排队时延和丢包</h4><h5 id="排队时延"><a href="#排队时延" class="headerlink" title="排队时延"></a>排队时延</h5></li>
+</ul>
+</li>
+</ol>
+<p>**流量强度(traffic intensity)**：$La/R$ (L为分组长度，a为分组到达的平均速度，R为传输速度)，设计系统时流量强度不应该大于1。<br><img src="http://q3l3n268t.bkt.clouddn.com/1-18.png" alt="avatar"><br>很显然，$L/R\leq1$的时候，如果分组周期性到达，每$L/R$秒到达一个分组，那么将不会产生排队时延。但是当分组突发性到达，比如一次到达N个分组，那么第一个分组没有排队时延，第二个分组的排队时延为$(L/R)$秒；第N个分组的排队时延为$(L/R)*N$秒。因此可能有很大的排队时延。</p>
+<h5 id="丢包"><a href="#丢包" class="headerlink" title="丢包"></a>丢包</h5><p>排队的容量极大程度上依赖于路由器设计和成本。所以排队容量时有限的，当流量强队接近1的时候，那么到达的分组将可能发现一个满的队列。由于没有地方存储这个分组，路由器将<strong>丢弃(drop)**这个分组，这个分组将会</strong>丢失(lost)**。</p>
+<h2 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h2><h3 id="分层的体系结构"><a href="#分层的体系结构" class="headerlink" title="分层的体系结构"></a>分层的体系结构</h3><h4 id="协议分层"><a href="#协议分层" class="headerlink" title="协议分层"></a>协议分层</h4><p>为了给网络协议的设计提供一个结构，网络设计者以<strong>分层(layer)**的方式组织协议以及实现这些协议的网络硬件和软件。我们关注某层向上一层提供的</strong>服务(service)<strong>。例如，可能第$n$层提供的服务可能包括报文从网络的一边到另一边的可靠传送，这可能是通过第$n-1$层的不可靠报文传送加上第$n$层的检测和重传报文的功能来实现的。<br>各层所有的协议被称为</strong>协议栈(protocol stack)**。因特网的协议栈由五个层次组成：</p>
+<ol>
+<li>物理层</li>
+<li>链路层</li>
+<li>网络层</li>
+<li>运输层</li>
+<li>应用层  </li>
+</ol>
+<p><img src="http://q3l3n268t.bkt.clouddn.com/1-23.png" alt="avatar"><br>ISO制定的OSI(Open System Interconnection，刚好倒过来)模型中多了表示层和会话层。表示层的作用是使得通信的应用程序能够解时交换数据的含义。包括数据压缩和数据加密以及数据描述等服务。会话层提供了数据交换定界和同步功能（感觉没什么用），包括建立了检查点和回复方案的方法。<br>应用程序的开发者决定是否构建不属于因特网协议栈的功能，如果需要数据加密的功能，那么就在应用程序中实现这个功能。</p>
+<h5 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h5><p>处于应用层的信息分组称为**报文(message)**。应用层包括很多协议，主要有：</p>
+<ol>
+<li>HTTP：Web文档的请求和传送</li>
+<li>SMTP：电子邮件报文的传输</li>
+<li>FTP：文件传送</li>
+<li>DNS：将对人友好的端系统名字转换为网络地址<h5 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h5>运输层的分组称为**报文段(segment)**。运输层在应用程序端点之间传送报文段。因特网中有两个运输协议：</li>
+<li>TCP：对应用程序提供了面向连接的服务。服务包括确保传递、流量控制和拥塞控制。</li>
+<li>UDP：对应用程序提供无连接服务。没有可靠性，没有流量控制，没有拥塞控制。<h5 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h5>网络层的分组称为**数据包(datagram)**。网络层的作用是将分组从一台主机移动到另一台主机。<br>因特网的网络层包括著名的IP协议。仅有一个IP协议，所有具有网络层的因特网组件必须运行IP协议。网络层也包括路由选择协议，但是通常简单的称为IP层。<h5 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h5>链路层的分组称为**帧(frame)**。链路层向网络层提供将数据报沿着路劲传递给下一个结点的功能。在下个结点，链路层将数据包上传给网络层。<br>链路层提供的服务取决于链路层协议。<h5 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h5>物理层的任务是将帧中的每一个比特从一个结点移动到下一个结点。<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><img src="http://q3l3n268t.bkt.clouddn.com/1-24.png" alt="avatar"><br>应用层报文(application-layer message)被传给运输层，<strong>运输层收到报文并附上附加信息</strong>。应用层报文和运输层首部信息构成<strong>运输层报文段(tranport-layer segment)**。运输层向网络层传递该报文段，网络层又增加了首部信息，产生了网络层</strong>数据报(network-layer datagram)<strong>。同样的，网络层将数据报向下传给链路层，链路层增加首部信息并创建</strong>链路层帧(link-layer frame)<strong>。<br>所以，我们看到在每一层，一个分组都具有两个类型的字段：首部字段和</strong>有效载荷字段(payload field)**。首部字段是这一层加上的，有效载荷字段是来自上一层的分组。<h2 id="面对网络的攻击"><a href="#面对网络的攻击" class="headerlink" title="面对网络的攻击"></a>面对网络的攻击</h2>bad guys通过恶意软件(malware)进入并控制我们的设备。于是我们的主机可能称为数以千计类似受害设备网络中的一员，统称为僵尸网络(botnet)。  <h3 id="拒绝服务攻击-Denial-of-Service-DoS-attack"><a href="#拒绝服务攻击-Denial-of-Service-DoS-attack" class="headerlink" title="拒绝服务攻击(Denial-of-Service (DoS) attack)"></a>拒绝服务攻击(Denial-of-Service (DoS) attack)</h3>三种类型：</li>
+<li>弱点攻击。向一台目标主机上易受攻击的应用程序或操作系统发送<strong>制作精细</strong>的报文。</li>
+<li>带宽洪泛。向目标主机发送大量的分组，直接将接入目标主机的链路堵住，使得合法的分组无法到达服务器。</li>
+<li>连接洪泛。在目标主机中创建大量半开或者全开的TCP连接。  </li>
+</ol>
+<p>DDoS：攻击者通过控制的僵尸网络向目标主机发送海量流量。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/04/daily-learning/plan-for-vacation/" rel="prev" title="寒假计划">
+                  <i class="fa fa-chevron-left"></i> 寒假计划
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/05/course/c++/C-programming-language-chapter1/" rel="next" title="C语言程序设计第一章学习笔记">
+                  C语言程序设计第一章学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hollin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '8a7b02eb5d0c2de5e0d0',
+      clientSecret: '419871631462c7a557d7d2f166733a67dce88db',
+      repo        : 'Hooollin.github.io',
+      owner       : 'Hooollin',
+      admin       : ['Hooollin'],
+      id          : '16e4e1e34c0d294e0ca3cd0386628b3c',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

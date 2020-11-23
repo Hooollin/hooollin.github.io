@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="浮点数浮点表示对形如$V&#x3D;x\times2^y$的有理数进行编码。他对执行涉及非常大的数字以及非常接近0的数字，更普遍地作为实数运算的近似值的计算是很有用的。   二进制小数理解浮点数的第一步是考虑含有小数值的二进制数字。十进制表示法使用如下形式的表示：$$d_md_{m-1}···d_1d_0d_{-1}d_{-2}···d_{-n}$$其中每个十进制数$d_i$的取值范围是$0~9$，这个表达">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浮点数的表示">
+<meta property="og:url" content="http://example.com/2020/03/21/daily-learning/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/index.html">
+<meta property="og:site_name" content="Hollin的代码之路">
+<meta property="og:description" content="浮点数浮点表示对形如$V&#x3D;x\times2^y$的有理数进行编码。他对执行涉及非常大的数字以及非常接近0的数字，更普遍地作为实数运算的近似值的计算是很有用的。   二进制小数理解浮点数的第一步是考虑含有小数值的二进制数字。十进制表示法使用如下形式的表示：$$d_md_{m-1}···d_1d_0d_{-1}d_{-2}···d_{-n}$$其中每个十进制数$d_i$的取值范围是$0~9$，这个表达">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hollin.icu/csapp-2-32.png">
+<meta property="og:image" content="http://hollin.icu/csapp-2-33.png">
+<meta property="og:image" content="http://hollin.icu/csapp-2-34.png">
+<meta property="og:image" content="http://hollin.icu/csapp-2-35.png">
+<meta property="og:image" content="http://hollin.icu/csapp-2-37.png">
+<meta property="article:published_time" content="2020-03-21T08:51:41.000Z">
+<meta property="article:modified_time" content="2020-11-23T09:21:38.774Z">
+<meta property="article:author" content="Hollin">
+<meta property="article:tag" content="浮点数">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hollin.icu/csapp-2-32.png">
+
+
+<link rel="canonical" href="http://example.com/2020/03/21/daily-learning/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>浮点数的表示 | Hollin的代码之路</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hollin的代码之路</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">浮点数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B0%8F%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">二进制小数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IEEE%E6%B5%AE%E7%82%B9%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.</span> <span class="nav-text">IEEE浮点表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">数字示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%88%8D%E5%85%A5"><span class="nav-number">1.4.</span> <span class="nav-text">舍入</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hollin</p>
+  <div class="site-description" itemprop="description">Coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Hooollin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Hooollin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hollinisme@gmail.com" title="E-Mail → mailto:hollinisme@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Hooollin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/21/daily-learning/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浮点数的表示
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-21 16:51:41" itemprop="dateCreated datePublished" datetime="2020-03-21T16:51:41+08:00">2020-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h1><p>浮点表示对形如$V=x\times2^y$的有理数进行编码。他对执行涉及非常大的数字以及非常接近0的数字，更普遍地作为实数运算的近似值的计算是很有用的。  </p>
+<h2 id="二进制小数"><a href="#二进制小数" class="headerlink" title="二进制小数"></a>二进制小数</h2><p>理解浮点数的第一步是考虑含有小数值的二进制数字。十进制表示法使用如下形式的表示：<br>$$d_md_{m-1}···d_1d_0d_{-1}d_{-2}···d_{-n}$$<br>其中每个十进制数$d_i$的取值范围是$0~9$，这个表达描述的数值$d$的定义如下：<br>$$d=\sum_{i=-n}^m10^i\times d_i$$<br>数字权的定义域十进制小数点符号相关，小数点左边的数字的权是10的正幂，得到整数值，而小数点右边的数字的权是10的负幂，得到小数值。  </p>
+<p>那么，对于二进制的一个数字，<br>$$b_mb_{m-1}···b_1b_0b_{-1}b_{-2}···b_{-n}$$<br>他的每一位的取值范围是0和1，这种表示方法表示的数$b$定义如下：<br>$$b=\sum_{i=-n}^m2^i\times b_i$$<br>从这个等式里面可以容易的看出来，二进制小数点向左移动一位相当于这个数被2除。同理向右移动一位的时候相当于将该数乘2。  </p>
+<p>假设我们只考虑有限长度的编码，那么十进制法不能准确地表达像$\frac{1}{3}$这样的数。同理，小数的二进制表示法只能表示那些能够写成$x\times 2^y$的数。  </p>
+<h2 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h2><p>IEEE浮点标准用$V=(-1)^s\times M\times 2^E$的形式来表示一个数：</p>
+<ul>
+<li>符号（sign） $s$决定这个数是符数还是正数，对于数值0的符号位解释作为特殊情况处理。</li>
+<li>尾数（significand） M是一个二进制小数，他的范围是$1$<del>$2-\epsilon$，或者是$0$</del>$1-\epsilon$。</li>
+<li>阶码（exponent） $E$的最用是对浮点数加权，这个权重是2的$E$次幂（可能是负数）。</li>
+<li>一个单独的符号位$s$直接编码符号$s$。</li>
+<li>k位的阶码字段$exp=e_{k-1}···e_1e_0$编码阶码$E$。</li>
+<li>n位小数字段$frac=f_{n-1}···f_1f_0$编码尾数$M$，编码出来的值依赖于解码字段的值是否等于0。</li>
+</ul>
+<p>在单精度浮点格式中，$s$、$exp$和$frac$字段分别为1位、$k=8$位和$n=23$位。在双精度浮点格式中分别为1位、11位和52位。<br><img src="http://hollin.icu/csapp-2-32.png" alt="2-32">  </p>
+<p>给定位标识，根据$exp$的值，被编码的值可以分为三种不同的情况，图2-33说明了对单精度格式的情况。<br><img src="http://hollin.icu/csapp-2-33.png" alt="2-33">  </p>
+<ul>
+<li>情况1：规格化的值。当$exp$的位模式不全为0，也不全为1的时候，都属于这种情况。在这种情况中，阶码字段被解释为以偏置（biased）形式标识的有符号整数。也就是说，阶码的值是$E=e-Bias$，其中e是无符号数，而$Bias$是一个等于$2^{k-1}-1$的偏置值。因此产生了指数的取值范围，对于单精度来说是-126<del>+127，对于双精度是-1022</del>+1023。（不能全0或全1）小数字段$frac$被解释为描述小数值$f$，其中$0\le f&lt;1$，尾数定义为$M=1+f$，有时这种方式也被称为隐含的以1开头的（implied leading 1）表示。</li>
+<li>情况2：非规格化的值。当阶码域全为0时，所表示的数是非规格化形式。这种情况下，**阶码值是$E=1-Bias$**（非规格化的数向规格化的数的平滑过渡），而尾数的值是$M=f$，不包含隐含的开头的1。非规格化的数有两个用途，首先，他们提供了一种表示数值0的方法。因为在规格化的数中，$M\ge1$，因此我们就不能表示0。</li>
+<li>情况3：特殊值。当阶码全为1的时候出现。当小数域全为0的时候，得到的值表示无穷。当符号位$s=0$时是$+\infin$，当符号位$s=1$时是$-\infin$。当小数域非0的时候，结果值被称为$NaN$。  </li>
+</ul>
+<h2 id="数字示例"><a href="#数字示例" class="headerlink" title="数字示例"></a>数字示例</h2><p><img src="http://hollin.icu/csapp-2-34.png" alt="2-34"><br>图2-34展示了一组数值，可以用假定的6位格式来表示，有$k=3$的阶码位和$n=2$的尾数位。<br>阶码最大值为$110_{(2)}$，尾码最大值$11_{(2)}$，这里最大值为$(-1)^s\times 2^E \times M = 8 \times 1.75 = 14$。  </p>
+<p><img src="http://hollin.icu/csapp-2-35.png" alt="2-35"><br>图2-35展示了假定的八位浮点格式的示例，其中有$k=4$的阶码位和$n=3$的小数位。<br>当阶码位全0时，表示这个浮点数是非规格化数，此时$E=1-Bias$，故为-6。<br>当阶码位$-6\le e \le 14$时，表示这个浮点数是规格化数，此时$E=e-Bias$。<br>当阶码位全1时，且尾码全0，符号位$s=0$表示无穷大。</p>
+<h2 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h2><p>因为表示方法限制了浮点数的范围和精度，所以浮点运算只能近似地表示实数运算。舍入（rounding）运算的任务就是找到最接近一个值，可以用期望的浮点形式表示出来。<br><img src="http://hollin.icu/csapp-2-37.png" alt="2-37"><br>图2-37里面说明了几种舍入方式。<br>为什么选择向偶数舍入（最近值舍入，四舍五入）呢？因为一个数有50%的可能向上舍入，也有50%的可能向下舍入，这样避免了一组数的平均值的偏差。  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B5%AE%E7%82%B9%E6%95%B0/" rel="tag"># 浮点数</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/03/11/daily-learning/vim%E4%B8%ADinoremap%E4%B8%8D%E7%94%9F%E6%95%88%E5%8E%9F%E5%9B%A0/" rel="prev" title="vim中inoremap不生效原因">
+                  <i class="fa fa-chevron-left"></i> vim中inoremap不生效原因
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/11/23/course/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/%E6%94%BE%E7%90%83%E6%A8%A1%E5%9E%8B/" rel="next" title="放球模型">
+                  放球模型 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hollin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '8a7b02eb5d0c2de5e0d0',
+      clientSecret: '419871631462c7a557d7d2f166733a67dce88db',
+      repo        : 'Hooollin.github.io',
+      owner       : 'Hooollin',
+      admin       : ['Hooollin'],
+      id          : '1d4cc58c9bf63a4d0cefd85aa7c52696',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

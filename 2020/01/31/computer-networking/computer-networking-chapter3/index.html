@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.0.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="运输层运输层位于应用层和网络层之间，是分层网络体系结构中的重要部分。   概述和运输层服务运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信（logic communication）。简而言之就是两台主机之间好像是直接相连的。应用进程使用运输层提供的逻辑通信互相发送报文，不许考虑承载这些报文的物理设备。实际上运输层的协议是在端系统中实现的而不是在路由器中实现的（我的确认为是在路由器里面实现的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络第三章学习笔记">
+<meta property="og:url" content="http://example.com/2020/01/31/computer-networking/computer-networking-chapter3/index.html">
+<meta property="og:site_name" content="Hollin的代码之路">
+<meta property="og:description" content="运输层运输层位于应用层和网络层之间，是分层网络体系结构中的重要部分。   概述和运输层服务运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信（logic communication）。简而言之就是两台主机之间好像是直接相连的。应用进程使用运输层提供的逻辑通信互相发送报文，不许考虑承载这些报文的物理设备。实际上运输层的协议是在端系统中实现的而不是在路由器中实现的（我的确认为是在路由器里面实现的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hollin.icu/CN-3-1.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-2.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-3.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-4.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-6.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-7.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-8.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-9.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-10.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-11.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-12.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-15.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-16.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-19.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-20.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-21.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-23.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-27.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-table1.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-29.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-33.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-34.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-35.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-table1.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-39.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-40.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-41.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-43.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-44.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-45.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-46.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-47.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-48.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-51.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-52.png">
+<meta property="og:image" content="http://hollin.icu/CN-3-53.png">
+<meta property="article:published_time" content="2020-01-31T08:29:38.000Z">
+<meta property="article:modified_time" content="2020-11-23T09:21:38.591Z">
+<meta property="article:author" content="Hollin">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hollin.icu/CN-3-1.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/31/computer-networking/computer-networking-chapter3/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>计算机网络第三章学习笔记 | Hollin的代码之路</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hollin的代码之路</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">运输层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0%E5%92%8C%E8%BF%90%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.1.</span> <span class="nav-text">概述和运输层服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82%E5%92%8C%E7%BD%91%E7%BB%9C%E5%B1%82%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">运输层和网络层的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E8%BF%90%E8%BE%93%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">因特网运输层概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">多路复用与多路分解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.1.</span> <span class="nav-text">无连接的多路复用与多路分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">1.2.2.</span> <span class="nav-text">面向连接的多路复用与多路分解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E8%BF%90%E8%BE%93%EF%BC%9AUDP"><span class="nav-number">1.3.</span> <span class="nav-text">无连接运输：UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">UDP报文段结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP%E6%8A%A5%E6%96%87%E6%A3%80%E9%AA%8C%E5%92%8C"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">UDP报文检验和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">可靠数据传输原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.1.</span> <span class="nav-text">构造可靠数据传输协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%AE%8C%E5%85%A8%E5%8F%AF%E9%9D%A0%E4%BF%A1%E9%81%93%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%9Ardt-1-0"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">经完全可靠信道的可靠数据传输：rdt 1.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%85%B7%E6%9C%89%E6%AF%94%E7%89%B9%E5%B7%AE%E9%94%99%E4%BF%A1%E9%81%93%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%9Ardt-2-0"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">经具有比特差错信道的可靠数据传输：rdt 2.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%85%B7%E6%9C%89%E6%AF%94%E7%89%B9%E5%B7%AE%E9%94%99%E7%9A%84%E4%B8%A2%E5%8C%85%E4%BF%A1%E9%81%93%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%EF%BC%9Ardt-3-0"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">经具有比特差错的丢包信道的可靠数据传输：rdt 3.0</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.2.</span> <span class="nav-text">流水线可靠数据传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E9%80%80N%E6%AD%A5"><span class="nav-number">1.4.3.</span> <span class="nav-text">回退N步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0"><span class="nav-number">1.4.4.</span> <span class="nav-text">选择重传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%90%E8%BE%93%EF%BC%9ATCP"><span class="nav-number">1.5.</span> <span class="nav-text">面向连接的运输：TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.5.1.</span> <span class="nav-text">TCP连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.2.</span> <span class="nav-text">TCP报文段结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%8F%E5%8F%B7%E5%92%8C%E7%A1%AE%E8%AE%A4%E5%8F%B7"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">序号和确认号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4%E7%9A%84%E4%BC%B0%E8%AE%A1%E4%B8%8E%E8%B6%85%E6%97%B6"><span class="nav-number">1.5.3.</span> <span class="nav-text">往返时间的估计与超时</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%B0%E8%AE%A1%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4%EF%BC%88%E6%9C%AA%E6%B7%B1%E7%A9%B6%EF%BC%89"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">估计往返时间（未深究）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">可靠数据传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E7%A7%8D%E6%9C%89%E8%B6%A3%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">几种有趣的情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%85%E6%97%B6%E9%97%B4%E9%9A%94%E5%8A%A0%E5%80%8D"><span class="nav-number">1.5.3.4.</span> <span class="nav-text">超时间隔加倍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0"><span class="nav-number">1.5.3.5.</span> <span class="nav-text">快速重传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%9B%9E%E9%80%80N%E6%AD%A5%E8%BF%98%E6%98%AF%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0"><span class="nav-number">1.5.3.6.</span> <span class="nav-text">是回退N步还是选择重传</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">1.5.4.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="nav-number">1.5.5.</span> <span class="nav-text">TCP连接管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">拥塞控制原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E5%8E%9F%E5%9B%A0%E4%B8%8E%E4%BB%A3%E4%BB%B7"><span class="nav-number">1.6.1.</span> <span class="nav-text">拥塞原因与代价</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B51%EF%BC%9A%E4%B8%A4%E4%B8%AA%E5%8F%91%E9%80%81%E6%96%B9%E5%92%8C%E4%B8%80%E5%8F%B0%E5%85%B7%E6%9C%89%E6%97%A0%E7%A9%B7%E5%A4%A7%E7%BC%93%E5%AD%98%E7%9A%84%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">情况1：两个发送方和一台具有无穷大缓存的路由器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B52%EF%BC%9A%E4%B8%A4%E4%B8%AA%E5%8F%91%E9%80%81%E6%96%B9%E5%92%8C%E4%B8%80%E5%8F%B0%E5%85%B7%E6%9C%89%E6%9C%89%E9%99%90%E7%BC%93%E5%AD%98%E7%9A%84%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">情况2：两个发送方和一台具有有限缓存的路由器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%85%E5%86%B53%EF%BC%9A%E5%9B%9B%E4%B8%AA%E5%8F%91%E9%80%81%E6%96%B9%E5%92%8C%E5%85%B7%E6%9C%89%E6%9C%89%E9%99%90%E7%BC%93%E5%AD%98%E7%9A%84%E5%A4%9A%E5%8F%B0%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">情况3：四个发送方和具有有限缓存的多台路由器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95"><span class="nav-number">1.6.2.</span> <span class="nav-text">拥塞控制方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BE%85%E5%8A%A9%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E4%BE%8B%E5%AD%90%EF%BC%9AATM-ABR%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">1.6.3.</span> <span class="nav-text">网络辅助拥塞控制例子：ATM ABR拥塞控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="nav-number">1.7.</span> <span class="nav-text">TCP拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%85%A2%E5%90%AF%E5%8A%A8"><span class="nav-number">1.7.1.</span> <span class="nav-text">慢启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="nav-number">1.7.2.</span> <span class="nav-text">拥塞避免</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D"><span class="nav-number">1.7.3.</span> <span class="nav-text">快速恢复</span></a></li></ol></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Hollin</p>
+  <div class="site-description" itemprop="description">Coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Hooollin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Hooollin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hollinisme@gmail.com" title="E-Mail → mailto:hollinisme@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Hooollin" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/31/computer-networking/computer-networking-chapter3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络第三章学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-31 16:29:38" itemprop="dateCreated datePublished" datetime="2020-01-31T16:29:38+08:00">2020-01-31</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h1><p>运输层位于应用层和网络层之间，是分层网络体系结构中的重要部分。  </p>
+<h2 id="概述和运输层服务"><a href="#概述和运输层服务" class="headerlink" title="概述和运输层服务"></a>概述和运输层服务</h2><p>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信（logic communication）</strong>。简而言之就是两台主机之间好像是直接相连的。应用进程使用运输层提供的逻辑通信互相发送报文，不许考虑承载这些报文的物理设备。<br>实际上运输层的协议是在端系统中实现的<strong>而不是在路由器中实现的</strong>（我的确认为是在路由器里面实现的，哈哈）。运输层的协议在端系统中实现，并且将应用层中的报文转化为运输层分组<strong>报文段（segment）</strong>。网络层将报文段封装成数据报。网络路由器实际上只作用于这个数据报。</p>
+<p><img src="http://hollin.icu/CN-3-1.png" alt="运输层在应用进程间提供逻辑的而非物理的通信"><br>从图3-1中也可以看出来，这个连接两个不同局域网的路由器实际上就只到得了网络层，运输层的协议不是由它实现的。<br>网络应用程序可以使用多种的运输层协议。因特网由两种协议，即TCP和UDP。每种协议都能为调用的应用程序提供以组不同的运输层服务。</p>
+<h3 id="运输层和网络层的关系"><a href="#运输层和网络层的关系" class="headerlink" title="运输层和网络层的关系"></a>运输层和网络层的关系</h3><p>网络层提供了<strong>主机</strong>之间的逻辑通信，而运输层为运行在不同主机之上的<strong>进程</strong>提供了逻辑通信。<br>书上给出了一个非常好的例子：考虑有两个家庭，一家位于美国东海岸，一家位于美国西海岸，每家有12个孩子。这两家的孩子们喜欢彼此之间写信，每个人每星期要相互写一封信，每封信都用单独的信封通过传统的邮政服务传送。每一个家庭都有一个孩子负责发邮件，西海岸家庭是Ann而东海岸家庭是Bill。每星期Ann去它的所有兄弟姐妹那里收集信件，并将这些信件交付到每天到家门口来的邮政服务的邮车上。Bill和Ann做同样的工作。<br>在这个例子里面：</p>
+<ul>
+<li>邮政服务车为两个家庭提供了逻辑通信</li>
+<li>Ann和Bill为他们家的兄弟姐妹们提供了逻辑通信</li>
+<li>在Ann和Bill的兄弟姐妹眼里，邮件服务是Ann和Bill提供的，尽管Ann和Bill要把信件送到邮车上。</li>
+</ul>
+<p>所以在这个例子里面：</p>
+<ol>
+<li>应用层报文——信封里面的字符</li>
+<li>进程——堂兄弟姐妹</li>
+<li>主机（端系统）——房子</li>
+<li>网络层协议——邮车</li>
+<li>运输层协议——Ann和Bill</li>
+</ol>
+<p>那我们可以看到，Ann和Bill实际上是在房子里面做他们的工作的，所以说运输层协议确实是由端系统实现的。<br>假定Ann和Bill外出度假，另一对兄妹接替他们的工作，这个时候我们相当于把运输层协议换了一个。相当于从TCP换成UDP。</p>
+<h3 id="因特网运输层概述"><a href="#因特网运输层概述" class="headerlink" title="因特网运输层概述"></a>因特网运输层概述</h3><p>在学习UDP和TCP之前，需要简要了解一下因特网的网络层。因特网网络协议层有一个名字叫<strong>IP</strong>，即<strong>网络协议</strong>。IP为<strong>主机之间</strong>提供了逻辑通信。IP的服务模型是<strong>尽力而为交付服务（best-effort delivery service）</strong>，这意味着IP尽它“最大的努力”在同行的主机之间交付报文段，但不做任何确保。特别是，它不确保报文段的交付，不保证报文段的按需交付，不保证报文段中数据的完整性。出于这些原因，IP被称为<strong>不可靠服务（unreliable service）</strong>。<br>在有了对IP服务模型有了初步的了过后，我们总结一下UDP和TCP所提供的服务模型。UDP和TCP最基本的责任是，将两个端系统间的IP交付服务拓展为运行在端系统上的两个进程之间的交付服务。将主机之间的交付拓展到进程之间的交付被称为<strong>运输层的多路复用（transport-layer multiplexing）</strong>与<strong>多路分解（demultiplexing）</strong>。</p>
+<h2 id="多路复用与多路分解"><a href="#多路复用与多路分解" class="headerlink" title="多路复用与多路分解"></a>多路复用与多路分解</h2><p><img src="http://hollin.icu/CN-3-2.png" alt="3-2运输层的多路复用和多路分解"><br>一个进程由一个或多个<strong>套接字（socket）</strong>，它相当于从网络向进程传递数据和从进程向网络传递数据的门户。所以在接收主机的运输层实际上并没有直接将数据交付给进程，而且将数据交付给了一个中间的套接字。<br>那么主机怎样将一个到达的运输层报文定向到适当的套接字呢？为了达到这个目的，每个运输层报文段中<strong>具有几个字段</strong>。在接收端，运输层检查这些字段，标识处接收套接字，进而将报文段定向到该套接字。将运输层报文段中的数据交付到正确的套接字的工作称为<strong>多路分解（demultiplexing)**。而在源主机从不同的套接字中收集数据块，并为每个数据块封装上首部信息从而生成报文段，然后将报文段传递到网络层的工作称为</strong>多路复用（multiplexing）**。<br>和前面两个家庭的例子联系起来，Ann和Bill收集兄弟姐妹们的信件的过程实际上就是一个多路复用的过程；相反的，从邮车里面把信件分发给各个兄弟姐妹的过程就是一个多路分解的过程。<br>在上述的讨论中我们知道运输层多路复用的要求：</p>
+<ol>
+<li>套接字有一个唯一的标识符；</li>
+<li>每个报文段有特殊字段来指示该报文段索要交付到的套接字。</li>
+</ol>
+<p><img src="http://hollin.icu/CN-3-3.png" alt="3-3运输层报文段中的源与目的端口字段"><br>这些特殊字段是<strong>源端口号字段（source port number field）</strong>和<strong>目的端口号字段（destination port number field）</strong>。端口号是一个16比特的数，大小在0<del>65535之间。0</del>1023范围的端口号称为<strong>周知端口号（well-know port number）</strong>，是受限的，保留给HTTP以及FTP等周知应用层协议来使用。</p>
+<h3 id="无连接的多路复用与多路分解"><a href="#无连接的多路复用与多路分解" class="headerlink" title="无连接的多路复用与多路分解"></a>无连接的多路复用与多路分解</h3><p>假定在主机A中的一个进程具有UDP端口191517，它要发送一个应用程序数据块位于主机B中的一个进程具有UDP端口464248。主机A中的运输层船舰一个运输层报文段，其中包括应用程序数据，源端口号（191517）、目睹端口号（46428）和其他两个值。然后运输层将得到的报文段传递给网络层。网络层将该报文段封装到一个IP数据包中，并尽力交付给接收主机。如果该报文顺利到达接收主机B，接收主机运输层就检查该报文段中目的端口字段并将报文段交付给对应的套接字。<br>一个UDP套接字是由一个二元组来全面标识的，该二元组包含一个目的IP地址和一个目的端口号。如果两个UDP报文段由不同的源IP地址和/或端口号，但是<strong>具有相同的目的IP地址和目的端口号</strong>，那么这两个报文段将通过相同的目的套接字被定向到<strong>相同的目的进程</strong>。<br><img src="http://hollin.icu/CN-3-4.png" alt="3-4源端口号与目的端口号的反转">  </p>
+<h3 id="面向连接的多路复用与多路分解"><a href="#面向连接的多路复用与多路分解" class="headerlink" title="面向连接的多路复用与多路分解"></a>面向连接的多路复用与多路分解</h3><p>TCP套接字与UDP套接字之间的一个细微差别是，TCP套接字是由一个四元组（源IP地址， 源端口号，目的IP地址， 目的端口号）来识别的。这样，当一个TCP报文段从网络到达一台主机时候，该主机使用全部四个值来讲报文段定向（分解）到响应的套接字。与UDP不同的是，<strong>两个具有不同的源IP地址或源端口号的到达TCP将被定向到两个不同的套接字</strong>，除非TCP报文段写带了初始创建连接的请求。<br>服务器主机可以支持很多并行的TCP套接字，每个套接字与一个进程相联系，并由四元组来标识每个套接字。当一个TCP报文到达主机时候，所有的四个字段都将被用来将报文段分解到相应的套接字。</p>
+<h2 id="无连接运输：UDP"><a href="#无连接运输：UDP" class="headerlink" title="无连接运输：UDP"></a>无连接运输：UDP</h2><p>应用选用UDP的原因主要有一下几点：</p>
+<ul>
+<li>关于何时、发送什么数据的应用层控制更为精细。采用UDP只需要应用进程将数据传递给UDP，UDP就会将数据打包进UDP报文段并且理解传递给网络层。TCP相比较而言会通过三次握手建立连接并且受限于拥塞控制。</li>
+<li>无需连接建立。</li>
+<li>无连接状态。</li>
+<li>分组首部开销小。</li>
+</ul>
+<p><img src="http://hollin.icu/CN-3-6.png" alt="3-6流行的因特网应用以及其下的运输协议"><br>实际上可以在应用层面上拓展UDP，使其实现可靠数据传输。这样就可以避免TCP的拥塞控制机制并且保证进程的可靠通信。缺点是会导致开发人员的开发周期以及调试难度增大。</p>
+<h4 id="UDP报文段结构"><a href="#UDP报文段结构" class="headerlink" title="UDP报文段结构"></a>UDP报文段结构</h4><p><img src="http://hollin.icu/CN-3-7.png" alt="3-7UDP报文段结构"></p>
+<h4 id="UDP报文检验和"><a href="#UDP报文检验和" class="headerlink" title="UDP报文检验和"></a>UDP报文检验和</h4><p>UDP检验和提供了差错检测的功能。发送方的UDP对报文段中的所有16比特字的和进行反码运算，求和时遇到的任何溢出都被回卷（所谓 “回卷” 就是当进行 16 比特的加法运算的时候，如果进位到 17位，则将第17位和后16位进行加法和运算）。得到的结果被放在UDP报文段中的检验和字段。<br>比如说我们有下面三个16比特的字：<br>$$0110011001100000$$<br>$$0101010101010101$$<br>$$1000111100001100$$<br>这16比特的字前两个的和为：<br>$$1011101110110101$$<br>此时没有溢出，不需要回卷。再将上面的和与第三个字相加，我们可以得出：<br>$$0100101011000010$$<br>此次加法有溢出，被回卷。最后我们将这串二进制字进行取反云散放到检验和字段上。<br>接收方接收到报文后只需要将全部的四个16比特字加起来，如果接收方的和为$1111111111111111$，那就说明报文没有出错。如果其中有一个比特为0，我们就可以很有信心的说报文再传送过程中出错了。<br>UDP只提供了差错检验的方法，，但是对差错是无力恢复的。所以一部分UDP的实现是丢弃出差错的报文段；而有的UDP是提供给应用进程并发出警告。</p>
+<h2 id="可靠数据传输原理"><a href="#可靠数据传输原理" class="headerlink" title="可靠数据传输原理"></a>可靠数据传输原理</h2><p>书上说这是最为重要网络问题中的榜首候选者。<br><strong>可靠数据传输协议（reliable data transfer protocol）</strong>:数据可以通过一条可靠的信道进行传输，借助于可靠信道，传输数据比特就不会收到损坏或丢失，并且所有的数据都是按照其发送顺序进行交付的。<br>要知道下层协议也许是不可靠的，因此要实现可靠数据传输是一项困难的任务。<br><img src="http://hollin.icu/CN-3-8.png" alt="3-8可靠数据传输：服务模型与服务实现">  </p>
+<h3 id="构造可靠数据传输协议"><a href="#构造可靠数据传输协议" class="headerlink" title="构造可靠数据传输协议"></a>构造可靠数据传输协议</h3><h4 id="经完全可靠信道的可靠数据传输：rdt-1-0"><a href="#经完全可靠信道的可靠数据传输：rdt-1-0" class="headerlink" title="经完全可靠信道的可靠数据传输：rdt 1.0"></a>经完全可靠信道的可靠数据传输：rdt 1.0</h4><p><img src="http://hollin.icu/CN-3-9.png" alt="3-9用于完全可靠信道的协议"><br>这个状态机没什么号说的，因为完全可靠的信道，那么发送方和接收方都可以很轻松的发送和接收分组。</p>
+<h4 id="经具有比特差错信道的可靠数据传输：rdt-2-0"><a href="#经具有比特差错信道的可靠数据传输：rdt-2-0" class="headerlink" title="经具有比特差错信道的可靠数据传输：rdt 2.0"></a>经具有比特差错信道的可靠数据传输：rdt 2.0</h4><p>底层信道更为实际的模型是分组中的比特可能受损。在分组的传输、传播或缓存的过程中，这些比特差错通常会出现在网络的物理部件中。<br>在这种情况下，人类一般的处理方式就是请求确认，如果双方对话过程中有一个人没说清楚，那么我们一般会让他重复一下。自然而然的，我们可以建立一个类似的协议来实现库靠数据传输协议，称之为<strong>自动重传请求（Automatic Repeat reQuest, ARQ）协议</strong>。<br>在这种情况下，我们还需要另外三种协议功能来处理存在比特差错的情况：</p>
+<ul>
+<li>差错检测。自然而言的，我们需要一中方式来确认收到的分组是否出现差错。</li>
+<li>接收方反馈。通过差错检测的机制我们可以检测分组是否出现差错，接着需要向发送方反馈我们的接收情况。</li>
+<li>重传。当接收方接收的分组出现差错，发送方需要重传分组。</li>
+</ul>
+<p><img src="http://hollin.icu/CN-3-10.png" alt="3-10用于具有比特差错信道的协议"><br>图3-10的状态机很详细的描述了这一过程。<br>rdt 2.0的发送端有两个状态，发送端协议整当代来自上层传下来的数据。当产生rdt_send（data）事件时，发送方将产生一个包含待发送数据的分组，然后经由udt_send（sndpkt）发送这个分组。在右边的状态中我们需要等待接收方的ACK或者NAK分组。如果收到一个ACK分组，说明发送的分组被无差错地接收，这时我们就可以返回到等待上层调用的状态。注意到下列事实很重要：当发送方处于等待ACK或NAK的状态时，它无法从上层获得更多的数据。在这种行为下，rdt 2.0这样的协议被称为<strong>停等（stop-and-wait）</strong>协议。<br>rdt 2.0接收方的状态机任然只有一个状态。当分组到达时，接收方要么回答一个ACK，要么回答一个NAK。<br>rdt 2.0看上去好像可以运行了，但是它有一个致命的缺陷：ACK或NAK的分组可能受损！（我确实也以为可以运行了哈哈哈）那么我们至少需要在ACK或者NAK中添加检验和比特来检测这样的差错。更男的问题是协议应该怎样纠正ACK和NAK分组中的差错。<br>处理受损ACK和NAK时的三种可能性：</p>
+<ul>
+<li>考虑发送方的可能做法。不具备可操作性。</li>
+<li>增加足够的检验和比特，使发送方不仅可以检测差错，还可以恢复差错。如果有这样的技术为什么不直接采用呢…</li>
+<li>发送方接收到含糊不清的ACK或者NAK分组时，只需要重传当前数据分组即可。这样虽然会导致一点<strong>冗余分组（duplicate packet）</strong>。冗余分组的根本困难在接收方不知道它上次发送的ACK或者NAK是否被发送方正确的收到，因此它就不知道这个分组是新的分组还是重传的分组。</li>
+</ul>
+<p>在数据分组中添加一个字段，发送方对其数据分组编号，将发送数据分组的<strong>序号（sequence number）</strong>放在该字段。那么接收方只需要检查序号则可以确定接收到的分组是不是一次重传。<br>对于停等协议这种简单情况，一个比特的序号就足够了，它可以让接收方知道发送方是否正在重传前一个发送分组。<br><img src="http://hollin.icu/CN-3-11.png" alt="3-11rdt2.1发送方"><br><img src="http://hollin.icu/CN-3-12.png" alt="3-12rdt2.1接收方">  </p>
+<h4 id="经具有比特差错的丢包信道的可靠数据传输：rdt-3-0"><a href="#经具有比特差错的丢包信道的可靠数据传输：rdt-3-0" class="headerlink" title="经具有比特差错的丢包信道的可靠数据传输：rdt 3.0"></a>经具有比特差错的丢包信道的可靠数据传输：rdt 3.0</h4><p>有很多可能的方法用于解决丢包问题。最简单的就是发送方在等待足够长的时间中都没有接收到接收方的响应分组，那么我们就可以确定分组已经丢失，进而发送方重传分组。<br>发送方需要等待多久才能确认分组已经丢失呢？很明显发送方至少要等待发送方与接收方之间的一个往返时延加上接收方处理一个分组所需的时间。然而在很多网络中，想要确定最坏情况下的最大时延是很难估算的。<br>因此在实际中的做法是发送方明智的选择一个时间值，以判定可能发生了丢包。如果在这个时间内没有收到ACK，则重传该分组。在这种情况下可能出现<strong>冗余数据分组（duplicate data packet）</strong>。通过序号的方法我们已经处理了冗余分组的情况。<br>在这种基于时间的重传机制下，需要一个<strong>倒计数计时器（countdown timer）</strong>，在一个给定的时间量过后，可以中断发送方。因此，发送方需要能够：</p>
+<ol>
+<li>每次发送一个分组时便启动一个定时器。</li>
+<li>响应定时器中断。</li>
+<li>中止定时器。</li>
+</ol>
+<p><img src="http://hollin.icu/CN-3-15.png" alt="3-15rdt3.0发送方"><br><img src="http://hollin.icu/CN-3-16.png" alt="3-16rdt3.0的运行，比特交换协议"></p>
+<h3 id="流水线可靠数据传输协议"><a href="#流水线可靠数据传输协议" class="headerlink" title="流水线可靠数据传输协议"></a>流水线可靠数据传输协议</h3><p>书上基于rdt 3.0停等协议分析了完整发送一个分组所需的时间以及链路的利用率，指出停等协议是十分浪费网络资源的。因此我们采用一种<strong>流水线（pipelining）</strong>的技术来向接收方发送分组。流水线技术对于可靠数据传输协议会产生以下的影响：</p>
+<ul>
+<li>必须增加序号范围。因为每个运输中的分组必须有一个唯一的序号，而且也须有多个在传输中未确认的报文。</li>
+<li>协议的发送方和接收方必须缓存多个分组。发送方最少应该缓存没有被接收方确认的分组；接收方至少能够缓存已经正确接收的分组。</li>
+<li>所需的序号范围和对缓冲的要求取决于数据传输协议如何处理丢失、损坏以及延时过大的分组。解决流水线的差错恢复有两种基本方式：<strong>回退N步（Go-Back_N, GBN）</strong>和<strong>选择重传（Selective Repeat, SR）</strong>。</li>
+</ul>
+<h3 id="回退N步"><a href="#回退N步" class="headerlink" title="回退N步"></a>回退N步</h3><p>回退N步协议允许发送方发送多个分组而不需要等待确认。但是流水线中的分组数不允许超过最大步数N。<br><img src="http://hollin.icu/CN-3-19.png" alt="3-19在GBN中发送方看到的序号"><br>在图3-19中可以看到，处于base号之前的分组是已发送并且已经确认接收的分组.处于base到nextseqnum之间的分组是已发送但是未被确认的分组。nextseqnum是下一个待发分组的序号。处于nextseqnum到窗口长度的最后一个分组的序号能用于那些要被立即发送的分组，大于窗口长度的最后一个分组的序号是不能被使用的，直到当前流水线中未被确认的分组（特别是base）得到确认过后为止。<br><img src="http://hollin.icu/CN-3-20.png" alt="3-20GBN发送方的拓展FSM描述"><br><img src="http://hollin.icu/CN-3-21.png" alt="3-21GBN接收方的拓展FSM描述"><br>GBN发送方必须响应三种类型的事件：</p>
+<ul>
+<li>上层的调用。当上层调用rdt_send()时，发送方首先检测发送窗口是否已满。未满的话就发送这个分组，否则只需要将数据换回给上层，隐式地指示上层该窗口已满。在实际现实中只需要做一个同步机制即可。</li>
+<li>收到一个ACK。在GBN协议中，对于序号为N的分组的确认采取的是<strong>累计确认（cumulative acknowledgment）</strong>的方式，表明接收方已正确接收到序号为n的以前且包括n在内的所有分组。</li>
+<li>超时事件。出现超时发送方重传已发送但是还未被确认过的分组。</li>
+</ul>
+<p>接收方的动作也很简单。如果一个序号为n的分组被正确接收到，并且上次交付给上层的数据是序号为n-1的分组，那么接收方为分组n发送一个ACK，并将该分组中的数据部分交付到上层。在所有其他情况下，接收方丢弃该分组，并为最近按序接收的分组重新发送ACK。<br>在GBN协议中，接收方丢弃所有的失序分组。接收方必须按序号将数据交付给上层。  </p>
+<p>GBN协议缺点：</p>
+<ol>
+<li>存在性能问题。当窗口长度和带宽时延积都很大时，单个分组就可能引起GBN重传大量分组，尽管很多分组根本没有必要重传。</li>
+</ol>
+<h3 id="选择重传"><a href="#选择重传" class="headerlink" title="选择重传"></a>选择重传</h3><p>选择重传协议通过让发送方仅重传那些它怀疑在接收方出错（丢失或受损）的分组而避免了不必要的重传。<br><img src="http://hollin.icu/CN-3-23.png" alt="3-23选择重传发送方与接收方的序号空间"><br>在选择重传的情况下，发送方的窗口大小和接收方的窗口大小就有一定的讲究。书上给了两种情况：<br><img src="http://hollin.icu/CN-3-27.png" alt="3-27接收方窗口太大"><br>对于a)情况和可以很明显的看到，发送方重传的分组0在接收方看来是无法确定的，接收方不知道是ACK分组接收失败还是新的序号为0的分组。b)情况中也是一样。a)和b)分别说明了不管是发送方还是接收方都无法保证不出现丢包的情况。<br>书上提出了这个问题，对于窗口大小需要做出一定的限制。查阅了相关资料过后想明白了这个问题：接收窗口大小不能大于$2^n$，n为序号的位数。为了解释这个问题，首先要想清楚两个问题：</p>
+<ul>
+<li>发送方的窗口大小能否大于接收方的窗口大小？<ul>
+<li>发送方的窗口大小大于接受方的窗口大小无意义。因为接收方的窗口大小固定，那么一部发送方的分组是无论如何无法缓存的。</li>
+</ul>
+</li>
+<li>接收方的窗口大小能否大于发送方的窗口大小？<ul>
+<li>接收方的窗口大于发送方的窗口也无意义。发送方能发送的分组数量一定少于接收方的窗口大小，因此接收方的一部分空间是浪费掉的。</li>
+</ul>
+</li>
+</ul>
+<p>所以接收方的窗口大小等于发送方的窗口大小是一个合理的解决方案。基于这种条件下，如果发送方的窗口和接收方的窗口重合，那么就一定会产生无法确定是首次发送还是重传的分组。比如说序号位数为2且窗口大小为3：<br>$$发送方：012 30123$$<br>$$接收方：012 301 23$$<br>对于发送方，012还未确认；012的确认分组已经发出；此时无法确保012的确认分组能够顺利到达发送方，因此发送方发出的下次发出的0号分组在接收方的眼中也不能确定是重传还是新的分组。<br>当窗口大小为2时，这时将不会产生分组的二义性。</p>
+<p><img src="http://hollin.icu/CN-3-table1.png" alt="3-1表可靠传输机制及其用途的总结">  </p>
+<h2 id="面向连接的运输：TCP"><a href="#面向连接的运输：TCP" class="headerlink" title="面向连接的运输：TCP"></a>面向连接的运输：TCP</h2><h3 id="TCP连接"><a href="#TCP连接" class="headerlink" title="TCP连接"></a>TCP连接</h3><p>TCP被称为<strong>面向连接的（connection-oriented）</strong>。<br>因为这种TCP“连接”状态保留在两个端系统中，所以它不是一条端到端的电路，也不是一条虚电路。TCP只运行在端系统中，而不再中间的网络元素中运行，因此路由器对于TCP连接完全视而不见，他们看到的是数据报，而不是连接。<br>TCP连接提供的是<strong>全双工服务（full-duplex service）</strong>：数据可以从A主机流向B，也可以从B主机流向A。<br>TCP连接建立的过程：客户端首先发送一个特殊的TCP报文段，服务器用另一个特殊的TCP报文段来响应，最后，客户再用第三个特殊报文段作为响应。其中，前两个报文段不承载有效荷载，而第三个报文段可以承载有效荷载。这个过程称为三次握手（three-way handshake）。<br>数据从客户进程向服务器进程发送数据的过程：</p>
+<ol>
+<li>客户进程通过套接字将传递数据流。</li>
+<li>TCP将这些数据引导到该连接的<strong>发送缓存（send buffer）</strong>。</li>
+<li>TCP时不时从发送缓存中取出一块数据。TCP规范中并没有体积应该何时实际发送缓存里的数据，只描述为“TCP应该在它方便的时候以报文段的形式发送数据”。TCP从缓存中取出的数据受限于<strong>最大报文段长度（Maximum Segment Size, MSS）</strong>。MSS取决于最大链路层帧长度，即<strong>最大传输单元（Maximum Transmission Unit, MTU）</strong>。以太网和PPP链路层协议都具有1500字节的MTU，预留出40字节给TCP/IP首部，典型的MSS长度为1460字节。</li>
+<li>TCP为取出的数据配上一个TCP首部，从而形成多个<strong>TCP报文段（TCP Segment）</strong>。这些报文段被下传给网络层，网络层将其分别封装在网络层IP数据报中，并发送到网络中。</li>
+<li>TCP在另一端接收到一个报文段后，报文段数据就被放入TCP连接的接收缓存中。</li>
+<li>应用程序从接收缓存中读取数据流。</li>
+</ol>
+<h3 id="TCP报文段结构"><a href="#TCP报文段结构" class="headerlink" title="TCP报文段结构"></a>TCP报文段结构</h3><p><img src="http://hollin.icu/CN-3-29.png" alt="3-29TCP报文段结构"><br>TCP发送大文件时，将会把该文件划分成长度为MSS的若干块。<br>首部包括<strong>源端口号</strong>，<strong>目的端口号</strong>，用于多路复用/分解。TCP首部也包括<strong>检验和字段（checksum field）</strong>。同时还包括：</p>
+<ul>
+<li>32比特的<strong>序号字段（sequence number field）</strong>和32比特的<strong>确认号字段（acknowledgment number field）</strong>，用于实现可靠数据传输服务。</li>
+<li>16比特的<strong>接收窗口字段（receive window field）</strong>，用于流量控制。用于指示接收方愿意接收的字节数量。</li>
+<li>4比特的<strong>首部长度字段（header length field）</strong>。指示了以32比特的字作为单位的TCP首部长度。</li>
+<li>可选与变长的<strong>选项字段（option field）</strong>。</li>
+<li>6比特的<strong>标志字段（flag field）</strong>。<ul>
+<li>ACK比特用与对一个已被成功接收报文段的确认。</li>
+<li>RST、SYN和FIN比特用于连接建立和拆除。</li>
+<li>PSH比特用于指示接收方应该立即将数据交给上层。</li>
+<li>URG比特用于指示报文段里存在被发送端上层置为“紧急”的数据。紧急数据的最后一个字节由16比特的紧急数据<strong>指针字段指出</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="序号和确认号"><a href="#序号和确认号" class="headerlink" title="序号和确认号"></a>序号和确认号</h4><p>TCP把数据堪称是一个无结构、有序的字节流。<br>一个<strong>报文段的序号（sequence number for a segment）</strong>是该报文段首字节的字节流编号。也就是说A给B发送数据时在报文段中的序号字段添上报文段的序号。<br>TCP是全双工的，因此A在向B发送报文段的同时，B也有可能需要向A发送报文段。因此确认号中填的内容是自己所希望从对方获取的报文段序号的数据。  </p>
+<h3 id="往返时间的估计与超时"><a href="#往返时间的估计与超时" class="headerlink" title="往返时间的估计与超时"></a>往返时间的估计与超时</h3><h4 id="估计往返时间（未深究）"><a href="#估计往返时间（未深究）" class="headerlink" title="估计往返时间（未深究）"></a>估计往返时间（未深究）</h4><p>报文段的样本RTT就是从某报文段被发出（交给IP）到对该报文段的确认被收到之间的时间量。大多数TCP的实现仅在某个时刻做一次SampleRTT的测量，而不是为每个发送的报文段测量一个SampleRTT。</p>
+<h4 id="可靠数据传输"><a href="#可靠数据传输" class="headerlink" title="可靠数据传输"></a>可靠数据传输</h4><p>TCP在IP不可靠的尽力而为服务之上创建了一种<strong>可靠数据传输服务（reliable data transfer service）</strong>，确保一个进程从其接收缓存中读出的数据流是无损坏，无间隔，非冗余和按序的数据流。<br>那么一个只包括超时重传的简化TCP的工作过程如下图：<br><img src="http://hollin.icu/CN-3-33.png" alt="3-33简化的TCP发送方">  </p>
+<h4 id="几种有趣的情况"><a href="#几种有趣的情况" class="headerlink" title="几种有趣的情况"></a>几种有趣的情况</h4><p><img src="http://hollin.icu/CN-3-34.png" alt="3-34确认丢失而重传"><br>图3-34中的确认的分组丢失导致主机A超时重传。<br><img src="http://hollin.icu/CN-3-35.png" alt="3-35报文段100没有重传"><br>图3-35中主机A采用流水线技术发送分组，一次发送了两个分别包含八个字节数据以及二十个字节数据的分组。两个确认分组都没有顺利返回发送方A导致超时，此时发送方只会重传第一个分组。当ACK = 120的分组顺利接收时主机A不会重传任何一个分组。（累计确认）</p>
+<h4 id="超时间隔加倍"><a href="#超时间隔加倍" class="headerlink" title="超时间隔加倍"></a>超时间隔加倍</h4><p>每当超时时间发生时，TCP重传具有最小序号的还未被确认的报文段。每次TCP的重传时都会将下次的超时间隔设置为之前的<strong>两倍</strong>而不是用EstimatedRTT和DevRTT推算出来的值。很容易看出来，超时间隔在每次重传过后会以指数型增长。超时间隔会在<strong>收到新的数据</strong>以及<strong>收到ACK分组</strong>后重新使用EstimatedRTT和DevRTT推算得到。</p>
+<h4 id="快速重传"><a href="#快速重传" class="headerlink" title="快速重传"></a>快速重传</h4><p>超时触发重传存在的问题之一时<strong>超时周期可能相对较长</strong>。发送方可以在超时时间发生之前通过<strong>冗余ACK（duplicate ACK）</strong>来检测到丢包的情况。<br>那么我们首先要搞清楚什么情况下接收方会发送冗余ACK。图3-2中列出了产生TCP ACK的建议。<br><img src="http://hollin.icu/CN-3-table1.png" alt="3-2表产生TCPACK的建议"><br>因为发送方经常一个接一个地发送大量的报文段，如果一个报文段丢失，就很可能引起许多一个接一个的冗余ACK。如果TCP发送方接收到对相同数据的3个冗余ACK，他就把当成一种指示，跟在这个已被确认过三次的报文段之后的半文端已经丢失。一旦收到三个冗余ACK，TCP就执行<strong>快速重传（fast retransmit）</strong>。<br>关于为什么是三次冗余ACK就启动快速重传的原因：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21789252">三次ACK快速重传原理</a></p>
+<h4 id="是回退N步还是选择重传"><a href="#是回退N步还是选择重传" class="headerlink" title="是回退N步还是选择重传"></a>是回退N步还是选择重传</h4><p>TCP采取的策略既不是GBN也不是选择重传，更像是一种混合体。</p>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><p>TCP提供<strong>流量控制服务（flow-control service）</strong>以消除发送方使接收方缓存溢出的可能性。TCP发送方也可能因为IP网络的拥塞而被遏制，这种形式的发送方的控制称为<strong>拥塞控制（congestion control)**。（两个不同的术语）<br>TCP通过让发送方维护一个称为</strong>接收窗口（receive window）**的变量来提供流量控制。接收窗口就是用来指示发送方——该接收方还有多少可用的缓存空间。TCP是全双工通信，在连接两端的发送方都各自维护一个接收窗口。<br>假设主机A通过一条TCP连接向主机B发送了一个大文件。主机B为该链接分配了一个接收缓存，RcvBuffer表示其大小。有以下定义：</p>
+<ul>
+<li>LastByteRead：主机B上的应用程序从缓存中读出的数据流的最后一个字节的编号。</li>
+<li>LastByteRcvd：从网络中到达的并且已经放入主机B接收缓存中的数据流的最后一个字节的编号。</li>
+</ul>
+<p>由于TCP不允许已分配的缓存溢出，那么下面的等式必须成立：<br>$$LastByteRcvd - LastByteRead \le RcvBuffer$$<br>接收窗口用rwnd表示，根据缓存可用空间的数量来设置：<br>$$rwnd = RcvBuffer - [lastByteRcvd - LastByteRead]$$<br>该空间是动态变化的，所以rwnd是动态的。<br>连接通过rwnd提供流量控制服务的方式：</p>
+<ul>
+<li>主机B通过把当前的rwnd值放入它发送给主机A的报文段接收窗口字段中，通知主机A它的缓存中还有多少可用空间。开始时rwnd=RcvBuffer，同时跟踪几个与连接有关的变量。</li>
+<li>主机A也需要跟踪两个变量，LastByteSent和LastByteAcked。那么LastByteAcked - LastByteSent就是主机A发送但未被确认的数据量。那么A在连接的整个生命周期内必须保证：<br>$$LastByteSent - LastByteAcked \le rwnd$$</li>
+</ul>
+<p>TCP仅当在它有数据或者有确认要发送才会发送报文段给主机A。在这种情况下，如果B没有数据要发送给A，并且B的rwnd=0已经发送给A了，那么A就会一直处于堵塞的状态。所以在这种情况下A会继续给B主机发送只有一个字节数据的报文段，这些报文段将会被接收方确认。并且确认报文里面含一个非0的rwnd值。</p>
+<h3 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h3><p>TCP连接是如何建立的：</p>
+<ul>
+<li>第一步：客户端TCP首先向服务器端的TCP发送一个特殊的TCP报文段。这个报文段中不包含应用层的数据。报文段的首部中SYN标志位被置为1。这个报文段被称为SYN报文段。客户会随机选择一个初始序号（client_isn），并将这个编号放置到TCP SYN报文段的序号字段中。该报文段会被封装在一个IP数据报中，并发送给服务器。</li>
+<li>第二步：一旦包含TCP SYN报文段的IP数据报到达服务器主机。服务器会从该数据报中提出TCP SYN报文段，并未该TCP连接分配缓存和变量，并向该客户TCP发送允许连接的报文段。这个允许连接的报文段也不包含应用层数据。但是首部却包含三个重要的信息。<ol>
+<li>首部的SYN比特被置为1。</li>
+<li>TCP首部的确认号字段被置为client_isn + 1。</li>
+<li>服务器选择自己的初始序号server_isn，并将其放置到TCP报文段首部的序号字段中。</li>
+</ol>
+</li>
+<li>第三步：收到SYNACK报文段后，客户也需要给该链接分配缓存和变量。客户主机则向服务器发送另一个报文段；这个报文段对服务器的讯息连接的报文段进行了确认。因为连接已经建立了，SYN比特被置为0。这一步中客户可以在报文段负载中写带客户到服务器的数据。</li>
+</ul>
+<p><img src="http://hollin.icu/CN-3-39.png" alt="3-39TCP三次握手：报文段交换"><br>TCP连接的中止：</p>
+<ul>
+<li>任何一方都可以中止该连接。连接结束后，主机中的资源将被释放。</li>
+<li>TCP连接中止具体过程如图3-40。<ol>
+<li>客户发送一个将FIN比特置为1的报文段，服务器返回对这个报文段的确认报文段。</li>
+<li>服务器向客户发送一个将FIN置为1的报文段，客户返回这个报文段的确认报文段。</li>
+</ol>
+</li>
+</ul>
+<p><img src="http://hollin.icu/CN-3-40.png" alt="3-40关闭一条TCP连接"><br><img src="http://hollin.icu/CN-3-41.png" alt="3-41客户TCP经历的典型的TCP状态序列">  </p>
+<p>SYN泛洪攻击（SYN flood attack）：由于服务器在响应客户的SYN时分配了相关资源，如果客户不发送ACK来完成该三次握手的第三步，那么服务器在某一时间段内的资源就被浪费掉了。SYN泛洪攻击就是利用这一点，在短时间内发送大量的TCP SYN报文段，导致服务器的连接资源被消耗殆尽。  </p>
+<h2 id="拥塞控制原理"><a href="#拥塞控制原理" class="headerlink" title="拥塞控制原理"></a>拥塞控制原理</h2><h3 id="拥塞原因与代价"><a href="#拥塞原因与代价" class="headerlink" title="拥塞原因与代价"></a>拥塞原因与代价</h3><h4 id="情况1：两个发送方和一台具有无穷大缓存的路由器"><a href="#情况1：两个发送方和一台具有无穷大缓存的路由器" class="headerlink" title="情况1：两个发送方和一台具有无穷大缓存的路由器"></a>情况1：两个发送方和一台具有无穷大缓存的路由器</h4><p><img src="http://hollin.icu/CN-3-43.png" alt="3-43拥塞情况1：两条连接共享具有无限大缓存的单跳路由"><br>输出链路容量为R，两个发送方A和B，两个接收方C和D。<br><img src="http://hollin.icu/CN-3-44.png" alt="3-44拥塞情况1：吞吐量、时延与主机发送速率的函数关系"><br>很显然，接收方只能以$R/2$的吞吐量接收分组。当发送方A、B发送分组的速度超过$R/2$将会导致大量分组排在路由器的缓存队列中。即发送方发送分组的速度超过$R/2$将会导致大量分组在路由器中排队。<br>从时延的图中可以看到，虽然很容易先入为主的想充分利用输出链路，因此取得$R/2$的每连接吞吐量应该是最合适的，但是事实恰好相反。<br>从吞吐量的角度来看，运行在总吞吐量接近R的状态也许是一个理想状态，但是从时延的角度来看，却远不是一个理想状态。</p>
+<h4 id="情况2：两个发送方和一台具有有限缓存的路由器"><a href="#情况2：两个发送方和一台具有有限缓存的路由器" class="headerlink" title="情况2：两个发送方和一台具有有限缓存的路由器"></a>情况2：两个发送方和一台具有有限缓存的路由器</h4><p>在这种情况下，由于路由器的缓存是有限的，将导致已满缓存的路由器丢弃到达的分组。<br><img src="http://hollin.icu/CN-3-45.png" alt="3-45两台主机与一台拥有有限缓存的路由器"><br><img src="http://hollin.icu/CN-3-46.png" alt="3-46具有有限缓存的情况2的性能"><br>在这种情况下，a）是分组不丢失的情况，b）是平均角度下（即$1/3$的概率重发分组）分组丢失的情况，c）是大时延的情况。</p>
+<h4 id="情况3：四个发送方和具有有限缓存的多台路由器"><a href="#情况3：四个发送方和具有有限缓存的多台路由器" class="headerlink" title="情况3：四个发送方和具有有限缓存的多台路由器"></a>情况3：四个发送方和具有有限缓存的多台路由器</h4><p><img src="http://hollin.icu/CN-3-47.png" alt="3-47四个发送方和具有有限缓存的多台路由器"><br>在这种情况下，当一个分组沿着一条路径被丢弃时，每个上游路由器用于转发改分组到丢弃该分组而使用的传输容量最终被浪费掉了。<br><img src="http://hollin.icu/CN-3-48.png" alt="3-48性能图">  </p>
+<h3 id="拥塞控制方法"><a href="#拥塞控制方法" class="headerlink" title="拥塞控制方法"></a>拥塞控制方法</h3><p>根据网络层是否为运输层拥塞控制提供显式帮助区分拥塞控制方法：</p>
+<ul>
+<li><strong>端到端的拥塞控制</strong>。在这种情况下，网络层没有为运输层提供<strong>显式支持</strong>。也就是说运输层判断是否出现拥塞全靠自己。</li>
+<li><strong>网络辅助的拥塞控制</strong>。在这种情况下，网络层构件方发送方提供关于网络中拥塞状态的显示反馈信息。</li>
+</ul>
+<p>对于网络辅助的拥塞控制，拥塞信息反馈到发送方一般采用两种方式：</p>
+<ul>
+<li>网络路由器直接发送给发送方。这种形式通常直接发送一个<strong>阻塞分组（choke packet）</strong>。</li>
+<li>第二种形式是路由器标记分组中的某个字段来指示产生了拥塞。接收方接收到了被标记的分组后就会向发送方通知该网络拥塞指示。这种形式的通知至少要经过一个完整的往返时间。</li>
+</ul>
+<h3 id="网络辅助拥塞控制例子：ATM-ABR拥塞控制"><a href="#网络辅助拥塞控制例子：ATM-ABR拥塞控制" class="headerlink" title="网络辅助拥塞控制例子：ATM ABR拥塞控制"></a>网络辅助拥塞控制例子：ATM ABR拥塞控制</h3><p>了解。</p>
+<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><p>TCP采用的是端到端的拥塞控制。<br>TCP所采用的方法是让每一个发送方根据所感知到的网络来限制其能向连接发送流量的速率。如果发送方感觉网络不拥塞，TCP发送方增加其发送速率；反之限制其发送速率。在这种方法下有三个需要解决的问题：</p>
+<ol>
+<li>一个TCP发送方如何限制它向其连接发送流量的速率。</li>
+<li>一个TCP发送方如何感知它到目的地路径上存在拥塞。</li>
+<li>当发送方感知到了拥塞，该采用什么算法来改变其发送速率。</li>
+</ol>
+<p>TCP发送方如何限制其连接发送流量的。在有拥塞的情况下，发送方还需要跟踪一个额外的变量：<strong>拥塞窗口（congestion window）</strong>。表示为cwnd。在这种情况下：<br>$$LastByteSent - LastByAcked \le min(cwnd, rwnd)$$<br>通过限制cwnd的值，我们就可以控制发送数据的速率了。  </p>
+<p>TCP发送方是如何感知它与目的地之间的路径上出现了拥塞。如果出现了以下两种情况之一即说明路径出现了拥塞：</p>
+<ul>
+<li>接收到三个冗余ACK。说明极大可能丢包。</li>
+<li>超时。极大可能出现丢包。</li>
+</ul>
+<p>当确认以较快的速度到达时，拥塞窗口将会增长迅速；当确认以较慢速度到达时，拥塞窗口将会增长缓慢。TCP使用确认来触发增大它的拥塞窗口长度，因此是<strong>自计时（self-clocking）</strong>的。  </p>
+<p>尽管这样，问题还是没有得到解决：TCP发送方如何确认它应当的发送速率。如果发送太快，将会导致网络拥塞。太慢了又不能很好地利用网络带宽。TCP采用下列的指导性原则：</p>
+<ul>
+<li>一个丢失的报文段表意味着拥塞，因此当求实报文段时应该降低TCP发送方的速率。</li>
+<li>一个确认报文段指示该网络正在向接收方交付发送方的报文段，因此，当对先前未确认报文段的确认到达，能够增加发送方的速率。</li>
+<li>带宽探测。</li>
+</ul>
+<h3 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h3><p>TCP连接开始时，cwnd的值通常设置为一个MSS的较小值。如果MSS=500字节且RTT=200ms，那么初始发送速率大概只有20kbps。实际上可用带宽可能比20kbps大得多，因此在慢启动（slow-start）状态，cwnd的值以1一个MSS开始并且每当传输的报文段首次被确认就增加一个MSS。<br><img src="http://hollin.icu/CN-3-51.png" alt="3-51TCP慢启动"><br>TCP虽然启动的时候cwnd设置为一个MSS，但是它的增长速度为指数型。<br>对于这种指数增长何时结束的几种方案：</p>
+<ol>
+<li>当产生了丢包事件，TCP发送方将cwnd设置为1并且重新开始慢启动过程。同时将第二个状态变量的值ssthresh（慢启动阈值）设置为cwnd/2。</li>
+<li>产生丢包事件时直接与ssthresh值相关联。检测到拥塞时将ssthresh设为cwnd的值的一半。当cwnd的值等于sshtresh时结束慢启动并且TCP转移到拥塞避免模式。</li>
+<li>检测到三个冗余ACK时候执行一种快速重传并进入快速恢复状态。</li>
+</ol>
+<p><img src="http://hollin.icu/CN-3-52.png" alt="3-52TCP拥塞控制的FSM描述"><br>TCP拥塞控制的有限状态机。</p>
+<h3 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h3><p>一旦进入拥塞避免状态，那么cwnd的值大约是上次遇到拥塞时的值的一半，距离拥塞并不遥远。所以TCP不能盲目地将cwnd的值翻倍，而是采用一个较为保守的办法，每个RTT只将cwnd的值增加一个MSS。<br>在这种情况下，丢包事件出现时，ssthresh的值被更新为cwnd值的一半。但是丢包事件中超时的情况更为严重，而收到三个冗余ACK的情响下处理不应该这么剧烈。因此当收到三个冗余ACK时，将ssthresh的值设置cwnd的一半，接下来进入快速恢复阶段。</p>
+<h3 id="快速恢复"><a href="#快速恢复" class="headerlink" title="快速恢复"></a>快速恢复</h3><p>很显然如果丢包事件是三次冗余ACK，网络拥塞的概率很低，如果直接将cwnd重新置为1是很浪费网络带宽的行为。TCP早期版本Tahoe没有实现快速恢复，而后期的Tahoe版本中实现了快速恢复，下图是分别在两种版本TCP下的拥塞窗口情况。<br><img src="http://hollin.icu/CN-3-53.png" alt="3-53TCP拥塞窗口的演化"><br>在TCP Tahoe版本中，ssthresh初值为8个MSS。前八个回合里面Tahoe和Reno采取了同样的动作。在第八个回合处出现了三次冗余ACK。在Tahoe版本下ssthresh被置为6，cwnd重置为0。而在Reno版本中，由于是三次冗余ACK导致的丢包事件，采取快速恢复，拥塞窗口设置为$ssthresh+3=9MSS$。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/29/course/c++/C%E8%AF%AD%E8%A8%80scanf%E5%8E%9F%E7%90%86/" rel="prev" title="C语言scanf原理">
+                  <i class="fa fa-chevron-left"></i> C语言scanf原理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/02/course/c++/C%E8%AF%AD%E8%A8%80%E8%80%83%E7%82%B9%E5%BD%92%E7%BA%B3/" rel="next" title="C语言考点归纳">
+                  C语言考点归纳 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hollin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '8a7b02eb5d0c2de5e0d0',
+      clientSecret: '419871631462c7a557d7d2f166733a67dce88db',
+      repo        : 'Hooollin.github.io',
+      owner       : 'Hooollin',
+      admin       : ['Hooollin'],
+      id          : '1acb56e83a325defdd1ee72756a96620',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
