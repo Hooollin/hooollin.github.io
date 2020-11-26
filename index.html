@@ -182,19 +182,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -234,6 +234,388 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/26/course/computer-architechture/chapter-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/11/26/course/computer-architechture/chapter-1/" class="post-title-link" itemprop="url">引言</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-26 14:14:08" itemprop="dateCreated datePublished" datetime="2020-11-26T14:14:08+08:00">2020-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="量化设计与分析基础"><a href="#量化设计与分析基础" class="headerlink" title="量化设计与分析基础"></a>量化设计与分析基础</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="冯诺依曼体系结构"><a href="#冯诺依曼体系结构" class="headerlink" title="冯诺依曼体系结构"></a>冯诺依曼体系结构</h3><p>冯诺依曼设计计算机的主要思想：</p>
+<ol>
+<li>用二进制的代码表示程序和数据；</li>
+<li><strong>计算机采用存储程序的工作方式</strong>；</li>
+<li>计算机硬件由存储器、运算器、控制器、输入设备和输出设备等五大部件组成。</li>
+</ol>
+<p>冯诺依曼体系结构：</p>
+<ol>
+<li>包括了Central Processing Unit单元：算数逻辑单元、处理器寄存器、控制单元</li>
+<li>包括了存储器（数据和指令）</li>
+<li>输入输出机制</li>
+</ol>
+<p>冯诺依曼体系结构的两个核心是<strong>数据</strong>和对<strong>数据的操作</strong>。  </p>
+<h3 id="哈弗体系结构"><a href="#哈弗体系结构" class="headerlink" title="哈弗体系结构"></a>哈弗体系结构</h3><p>哈弗体系结构特点：</p>
+<ol>
+<li>存储程序系统</li>
+<li>有独立的数据存储区和数据总线</li>
+<li>有独立的指令存储区和指令总线</li>
+</ol>
+<p>基于哈弗体系结构的典型处理器有DSP。</p>
+<h3 id="冯诺依曼vs哈弗"><a href="#冯诺依曼vs哈弗" class="headerlink" title="冯诺依曼vs哈弗"></a>冯诺依曼vs哈弗</h3><p>相同点：</p>
+<ul>
+<li>都采用了存储程序的工作方式</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>冯诺依曼体系结构中存储器不仅存放指令，还存放数据；哈弗体系结构中有独立的数据、指令存储器和数据、指令总线。</li>
+</ul>
+<h2 id="计算机的分类"><a href="#计算机的分类" class="headerlink" title="计算机的分类"></a>计算机的分类</h2><h3 id="Flynn’s-分类：基于指令流和数据流的计算机结构分类"><a href="#Flynn’s-分类：基于指令流和数据流的计算机结构分类" class="headerlink" title="Flynn’s 分类：基于指令流和数据流的计算机结构分类"></a>Flynn’s 分类：基于指令流和数据流的计算机结构分类</h3><p>指令流：机器执行的指令序列。<br>数据流：由指令流调用的数据序列， 包括输入数据和中间结构，不包括输出数据。<br>多倍性：在系统性能瓶颈上同时处于同一执行阶段的指令或数据的最大可能个数。</p>
+<ul>
+<li>SISD(Single Instruction Single Data)<ul>
+<li>Uniprocessors</li>
+<li>传统的顺序执行的单处理器计算机，其指令部件每次只对一条指令进行译码，并只对一个操作部件分配数据。冯诺依曼架构。</li>
+</ul>
+</li>
+<li>MISD(Multiple Instruction Single Data)<ul>
+<li>???</li>
+</ul>
+</li>
+<li>SIMD(Single Instruction Multiple Data)<ul>
+<li>IIIiac-IV, CM-2</li>
+<li>Simple programming model</li>
+<li>Low overhead</li>
+<li>Flexibility</li>
+<li>All custom</li>
+<li>并行处理机（阵列处理机）为代表，并行处理机包括多个重复的处理单元，由单一指令部件控制，按照同一指令流的要求为他们分配各自所需要的不同数据。</li>
+</ul>
+</li>
+<li>MIMD(Multpiple instruction Multiple Data)<ul>
+<li>SPARCCenter, T3D</li>
+<li>Flexible</li>
+<li>Use off-the-shelf micros</li>
+<li>实现作业、任务、指令等各级全面并行的多机系统。多处理机属于MIMD。无论是大规模并行处理机还是对称多处理机，都属于MIMD。</li>
+</ul>
+</li>
+</ul>
+<h2 id="需求分类"><a href="#需求分类" class="headerlink" title="需求分类"></a>需求分类</h2><table>
+<thead>
+<tr>
+<th>个人移动设备</th>
+<th>桌面计算机</th>
+<th>服务器</th>
+<th>集群、仓库级计算机</th>
+<th>嵌入式计算机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成本，功耗，媒体性能，响应率</td>
+<td>性价比，图形性能，能耗</td>
+<td>可靠性，吞吐量，可拓展性</td>
+<td>性价比，吞吐量，能耗，均衡性</td>
+<td>价格，工号，专门应用的性能</td>
+</tr>
+</tbody></table>
+<p>桌面计算机：</p>
+<ul>
+<li>构成：CPU、内存、硬盘、鼠标、键盘、显示器等</li>
+<li>指标：性能、基本功能、拓展功能、价格</li>
+</ul>
+<p>服务器：</p>
+<ul>
+<li>作用：文件存储、计算、业务处理等</li>
+<li>指标：性能、可靠性、有效性、能耗、价格</li>
+</ul>
+<p>嵌入式计算机：</p>
+<ul>
+<li>作用：作为一个大系统的一部分</li>
+<li>指标：性能、功耗、价格</li>
+</ul>
+<h2 id="计算机系统结构定义与计算机的设计任务"><a href="#计算机系统结构定义与计算机的设计任务" class="headerlink" title="计算机系统结构定义与计算机的设计任务"></a>计算机系统结构定义与计算机的设计任务</h2><p>计算机系统结构的原始概念：由程序员（机器语言）看见的（计算）系统属性，即概念性结构和功能行为，以及区分数据流动和控制逻辑设计的组成及物理实现。  </p>
+<p>Instruction Set Architecture：<strong>硬件和软件</strong>之间的接口。</p>
+<h3 id="指令集结构设计"><a href="#指令集结构设计" class="headerlink" title="指令集结构设计"></a>指令集结构设计</h3><p>一个好的接口需要具备的特点：</p>
+<ul>
+<li>允许有多种实现（portability, compatability）——对于指令集本身来说</li>
+<li>用在很多不同的方面（generality）——对于指令集本身来说</li>
+<li>为更高层提供方便的功能——指令集为更高层提供的服务</li>
+<li>允许更底层能有效实现——指令集在下层中的实现</li>
+</ul>
+<p>ISA的七个<strong>重要要素</strong>：</p>
+<ul>
+<li>ISA的类型：现代通用寄存器结构，早期累加器结构</li>
+<li>存储器的访问方式：按字节访问或按字访问</li>
+<li>寻址方式</li>
+<li>操作数的类型和大小：8位字符，32位整型数</li>
+<li>操作类型：数据传输，算术、逻辑运算</li>
+<li>控制流指令：转移，子程序调用/返回</li>
+<li>ISA编码：固定长度，可变长度</li>
+</ul>
+<p>计算机系统结构：满足功能、性能和价格目标的条件下，设计、选择和互连硬件部件构成计算机。</p>
+<p>系统结构包括：</p>
+<ul>
+<li>指令系统设计</li>
+<li>组成（Organization）：计算机设计方面的高层次<ul>
+<li>CPU内部结构、存储器、I/O系统、多处理器、网络</li>
+</ul>
+</li>
+<li>硬件：计算机的具体实现技术<ul>
+<li>详细逻辑设计、封装、冷却系统、工号</li>
+</ul>
+</li>
+</ul>
+<p>影响计算机系统结构的因素：</p>
+<ul>
+<li>实现技术</li>
+<li>应用程序</li>
+<li>编程语言</li>
+<li>编译器</li>
+<li>操作系统</li>
+<li>…</li>
+</ul>
+<h2 id="实现技术的趋势"><a href="#实现技术的趋势" class="headerlink" title="实现技术的趋势"></a>实现技术的趋势</h2><p>摩尔定律（Moore Law）：集成在一个计算机芯片上的元件数量每年翻一番。75年更新为每两年翻一番。</p>
+<p>集成电路逻辑技术：</p>
+<ul>
+<li>晶体管密度：增加35% per year</li>
+<li>Die size(芯片尺寸)：10%-20% per year</li>
+<li>每个芯片晶体管数量：50-55% per year</li>
+</ul>
+<p>半导体DRAM：</p>
+<ul>
+<li>容量：40% per year</li>
+<li>访问速度：10% per year</li>
+</ul>
+<p>磁盘技术：</p>
+<ul>
+<li>密度：30% per year after 2005</li>
+<li>容量：60% per year</li>
+</ul>
+<p>网络</p>
+<ul>
+<li>带宽 10Mb-&gt;100Mb-&gt;1Gb</li>
+</ul>
+<p>性能趋势：带宽改进优于时延</p>
+<p>性价比表<br>Vacuum tube | Transistor | Integrated circuit | Very large sclae IC | Ultra large scale IC<br>—- | —- | —- | —- | —-<br>1 | 35 | 900 | 2,400,000 | 6,200,000,000</p>
+<h2 id="集成电路功耗的趋势"><a href="#集成电路功耗的趋势" class="headerlink" title="集成电路功耗的趋势"></a>集成电路功耗的趋势</h2><p>从第一个微处理器的1Hz/10watt到现在的2GHz/135watt，功耗对芯片的规模也提出了挑战<br>技术挑战：</p>
+<ul>
+<li>分配功率</li>
+<li>散热</li>
+<li>避免过热点</li>
+</ul>
+<p>动态功率：开关晶体管产生的功耗</p>
+<ul>
+<li>$power_dynamic=\frac{1}{2} * Capacitive\quad load * Voltage^2 * Frequency\quad switched$</li>
+<li>$Energy_dynamic=Capacitive\quad load * Voltage^2$<br>静态功率：晶体管在关闭时漏电产生的功耗</li>
+<li>$Power_static=current\quad static*Voltage$</li>
+</ul>
+<p>经验法则：电压减少10%-&gt;频率减少10%，功率减少30%，性能减少小于10%</p>
+<p>对于多核，每瓦提供更多性能</p>
+<p>假设一个small core的功率为1，性能为1，那么一个big core的功率为4，性能为2，4个small core的功率为4，性能为4，可以得出：</p>
+<ul>
+<li>功耗与面积成正比</li>
+<li>单线程性能与面积增加倍数的一半成正比</li>
+<li>多核有更高的功率利用率</li>
+</ul>
+<h2 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h2><p>可靠性：广义上包括可靠性、安全性和可用性  </p>
+<p>计算机系统的可靠性：用于表示系统提供给用户服务的质量，这里”可靠性“可用”信任“代替。（dependability $=$ reliance）</p>
+<p>模块可靠性：从模块可用到出现故障的持续服务度量</p>
+<ul>
+<li>MTTF(mean time to failure)：平均无故障时间，$\frac{1}{FIT}$</li>
+<li>MTTR(mean time to repair)：平均修复时间</li>
+<li>FIT(故障率)：$\frac{1}{MTTF}$</li>
+<li>MTBF(平均故障间隔时间) = MTTF + MTTR</li>
+</ul>
+<p>模块可用性</p>
+<ul>
+<li>$\frac{MTTF}{MTTF + MTTR} = \frac{MTTF}{MTBF}$</li>
+</ul>
+<p>提高可靠性的方法：</p>
+<ul>
+<li>冗余（Redundancy）：<ul>
+<li>时间冗余（重复操作直到无错）</li>
+<li>资源冗余（配置另外的相同部件，有错时用于替代出错部件）</li>
+</ul>
+</li>
+</ul>
+<h2 id="测量、报告和总结计算机性能"><a href="#测量、报告和总结计算机性能" class="headerlink" title="测量、报告和总结计算机性能"></a>测量、报告和总结计算机性能</h2><p>计算机性能的定义：</p>
+<ul>
+<li>响应时间：Response time，针对单任务<ul>
+<li>从提出请求到被执行的时间</li>
+</ul>
+</li>
+<li>吞吐率：Throughput，针对数据中心<ul>
+<li>单位时间内所做的工作</li>
+</ul>
+</li>
+</ul>
+<p>工业性能指标：MIPS</p>
+<ul>
+<li>MIPS-Millions of Instructions per Second</li>
+<li>用相同的指令集比较两台机器的MIPS一般是公平的</li>
+<li>MIPS可能是一个”无意义的性能指标”</li>
+<li>$MIPS = \frac{\frac{number\quad of \quad instructions}{benchmark} * \frac{benchmark}{total\quad runtime}}{1,000,000}=\frac{number\quad of\quad instructions}{totalruntime * 1,000,000,000}$</li>
+</ul>
+<p>CPU时间：执行某一任务在CPU的花费的时间</p>
+<p>时钟周期：Clock cycle，$\frac{1}{时钟频率}$</p>
+<p>计算公式：$CPU时间=CPU时钟周期数*时钟周期=\frac{CPU时钟周期数}{时钟频率}$</p>
+<p>改进行性能的方法：</p>
+<ul>
+<li>减少时钟周期数；</li>
+<li>增加时钟频率（减少时钟周期）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/25/competitive-programming/extreme-subtraction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/11/25/competitive-programming/extreme-subtraction/" class="post-title-link" itemprop="url">1443D Extreme Subtraction</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-25 16:18:00" itemprop="dateCreated datePublished" datetime="2020-11-25T16:18:00+08:00">2020-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/competitive-programming/" itemprop="url" rel="index"><span itemprop="name">competitive programming</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><blockquote>
+<p>You are given an array a of n positive integers.  </p>
+<p>You can use the following operation as many times as you like: select any integer 1≤k≤n and do one of two things:  </p>
+<ul>
+<li>decrement by one k of the first elements of the array.</li>
+<li>decrement by one k of the last elements of the array.  </li>
+</ul>
+<p>For example, if $n=5$ and $a=[3,2,2,1,4]$, then you can apply one of the following operations to it (not all possible options are listed below):  </p>
+<ul>
+<li>decrement from the first two elements of the array. After this operation $a=[2,1,2,1,4]$;</li>
+<li>decrement from the last three elements of the array. After this operation $a=[3,2,1,0,3]$;</li>
+<li>decrement from the first five elements of the array. After this operation $a=[2,1,1,0,3]$;</li>
+</ul>
+<p>Determine if it is possible to make all the elements of the array equal to zero by applying a certain number of operations.</p>
+</blockquote>
+<p>简单翻译一下就是给定一个数组，可以从把这个数组中前面$k$个数都减$1$，或者把这个数组中的后面$k$个数减$1$，问最后能不能使整个数组中的元素都等于$0$。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先考虑<strong>只能</strong>把这个数组后面的$k$个数减$1$，那么这个数组必须满足：<br>$$a[i + 1] &gt;= a[i]$$<br>因为很显然，如果$a[i + 1] &lt; a[i]$，当$a[i + 1]$被减到$0$时，$a[i] &gt; 0$，此时已经无法将$a[i]$减到$0$。<br>得到这个重要的性质后，现在考虑可以把数组的前面或后面$k$个数都减$1$都情况。<br>我们知道如果这个数组非递减的，那么一定可以将所有的元素都变为0。对于数组并不是非递减的情况，其中的某个元素$a_i$，有$a_{i + 1} &lt; a_i$，那么我们已经无法从数组后面将$a_i$变为0，只能考虑从数组前面把$a[i]$变为0。<br>那么$a[i]$什么情况下可以从前面变为0呢？不难发现是否能从前面进行修改，使得数组满足$a[i + 1] &gt;= a[i]$这条性质，取决于$a[i]$还可以减少的数量$k$。如果有$k \geq a[i] - a[i + 1]$，那么我们可以从前面将$a[i]$减小至$a[i+1]$，使数组满足$a[i + 1] &gt;= a[i]$这条性质。如果$k &lt; a[i] - a[i + 1]$，那么这个数组中的元素就无法都变为0。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">const int maxn &#x3D; 3e5 + 50;</span><br><span class="line">const int inf &#x3D; 1e7;</span><br><span class="line">int v[maxn];</span><br><span class="line"> </span><br><span class="line">int main()&#123;</span><br><span class="line">    ios::sync_with_stdio(0);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    cout.tie(0);</span><br><span class="line"> </span><br><span class="line">    int T;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    while(T-- &gt; 0)&#123;</span><br><span class="line">        int n;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        </span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            cin &gt;&gt; v[i];</span><br><span class="line">        &#125;</span><br><span class="line">        int k &#x3D; v[0];</span><br><span class="line">        bool f &#x3D; true;</span><br><span class="line">        for(int i &#x3D; 1; i &lt; n; i++)&#123;</span><br><span class="line">            if(v[i] &lt; v[i - 1])&#123;</span><br><span class="line">                if(k &lt; v[i - 1] - v[i])&#123;</span><br><span class="line">                    f &#x3D; false;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                k -&#x3D; v[i - 1] - v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; (f? &quot;YES&quot; : &quot;NO&quot;) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1027,228 +1409,6 @@
 <p>代码也很简单，不过我是用的C语言，因此不能直接将已经为空的链表从arraylist那种链表中直接remove，所以多了中间几行把非空的链表换到已经成空链表的位置，并且使listsSize减一。<br>实际上这个代码对于一部分case是有问题的，后来通过一些方法解决了，但是不是讨论的重点就不赘述了。<br>最初版本for循环里面的条件是<code>i &lt; listsSize</code>，后来测试发现如果lists中间如果有空链表那么会发生错误，对于非空的情况运行良好。因为当时误以为所有非空的链表都排在空链表的前面，所以我就改成了<code>lists[i] != NULL &amp;&amp; i &lt; listsSize</code>，乍一看好像没有什么问题，不过测试发现对于非空链表的case也过不了了。错误一直是堆溢出。反复检查代码后始终没有看出明显错误。最后定位到for循环里面出了问题才发现我的这个判断条件会导致bug…<br>具体的问题其实是条件判断的顺序是从左到右的，这里先判断<code>lists[i] != NULL</code>，很显然当<code>i = listsSize - 1</code>且循环结束了过后<code>i++</code>导致<code>i = ListsSize</code>，这里就越界了。<br>最开始写代码的时候会犯这种错误，结果写了这么久代码仍然会犯这种错误…浪费总时长不少于5个小时，太亏了。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>对于是否越界的判断始记终放在第一个。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/26/daily-learning/memcpy%E4%B8%8Ememmove%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8CC%E8%AF%AD%E8%A8%80%E4%B8%AD%E6%8C%87%E9%92%88%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hollin">
-      <meta itemprop="description" content="Coder">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hollin的代码之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/02/26/daily-learning/memcpy%E4%B8%8Ememmove%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8CC%E8%AF%AD%E8%A8%80%E4%B8%AD%E6%8C%87%E9%92%88%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">memcpy与memmove的区别和C语言中指针的一些技巧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-02-26 00:23:42" itemprop="dateCreated datePublished" datetime="2020-02-26T00:23:42+08:00">2020-02-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="memcpy和memmove"><a href="#memcpy和memmove" class="headerlink" title="memcpy和memmove"></a>memcpy和memmove</h2><p>在学习string.h标准库的时候注意到了两个功能十分类似的函数：memcpy和memmove。两个函数的十分相似：</p>
-<blockquote>
-<p>memcpy: copies one buffer to another</p>
-</blockquote>
-<blockquote>
-<p>memmove: moves one buffer to another</p>
-</blockquote>
-<p>常理来说同一个库下是不会重复实现同一个功能的，这就显得有些蹊跷。百度一下后，发现memcpy是无法保证内存重叠的情况下能正确复制，而memmove则保证复制的准确性。画个图理解一下：<br><img src="http://hollin.icu/2020-02-26_005035.png" alt="内存重叠且出错的情况"><br>可以看到，在这种情况下，本该位于6、7的d、e成了c、a。这也许和我们预想的结果不太相同（也没准有的人就是想要这种效果）。当然还有dest小于src的情况也可能产生内存重叠，但是这种内存重叠相当于把字符往前移动，不会出现意料之外的错误。<br>所以在string.h的中还有个memmove来弥补这一不足，memmove可以保证在内存重叠的情况下仍可以获得得正确的结果。那么memmove的实现实际上是单独向后移且内存重叠的情况拎出来实现，保证了结果的正确性。这里给出我自己的一种实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void *memmove(void *dest, const void *src, size_t n)</span><br><span class="line">&#123;</span><br><span class="line">    if (src &gt;&#x3D; dest || (char *)src + n &lt; (char *)dest)</span><br><span class="line">    &#123;</span><br><span class="line">        size_t i &#x3D; 0;</span><br><span class="line">        const char *prt1 &#x3D; src;</span><br><span class="line">        char *prt2 &#x3D; dest;</span><br><span class="line">        for (; i &lt; n; i++, prt1++, prt2++)</span><br><span class="line">        &#123;</span><br><span class="line">            *prt2 &#x3D; *prt1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        char *l &#x3D; (char *)src + n;</span><br><span class="line">        size_t len &#x3D; ((char *)dest - (char *)src);</span><br><span class="line">        while (l !&#x3D; (char *)src - 1)</span><br><span class="line">        &#123;</span><br><span class="line">            *(l + len) &#x3D; *l;</span><br><span class="line">            l--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>实际上这些强制类型转换并不是必须的，但是vscode会报错，因此我还是将它们保留了。这是第二个话题将要谈到的问题。<br>当然自己的虽然实现了memmove的功能，我们也必须亲手去验证一下结论的正确性。是不是memcpy真的就没有保证内存重叠时的复制正确性呢？在Linux下我编写了如下的测试代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">        char str[10] &#x3D; &#123;&quot;abcdef&quot;&#125;;</span><br><span class="line">        memcpy(str + 3, str, 5);</span><br><span class="line">        printf(&quot;%s&quot;, str);</span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译过后的输出结果却并不如我所想的那样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;a.out</span><br><span class="line">abcabcde% </span><br></pre></td></tr></table></figure>
-<p>按照之前的分析这里的结果应该是<code>abcabcab</code>，然而运行的结果确实和memmove的结果一模一样。是大多数人都错了吗？我当时这么想来着，去更靠谱的网站查询了相关资料，发现原来是这样的：<br><img src="http://hollin.icu/2020-02-26_010743.png" alt="memcpy文档">  </p>
-<blockquote>
-<p>If the objects overlap (which is a violation of the restrict contract) (since C99), the behavior is undefined. The behavior is undefined if either dest or src is a null pointer.</p>
-</blockquote>
-<p>这里提到了当发生内存重叠的时候，它并没有一个标准的实现。也就是说，不同的平台下可能会有不同的实现方式。可能Linux下它的实现与memmove是一样的。<br>我自己也实现了一下memcpy，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void *memcpy(void *dest, const void *src, size_t n)</span><br><span class="line">&#123;</span><br><span class="line">    const char *prt1 &#x3D; src;</span><br><span class="line">    char *prt2 &#x3D; dest;</span><br><span class="line">    size_t i &#x3D; 0;</span><br><span class="line">    for (; i &lt; n; i++, prt1++, prt2++)</span><br><span class="line">    &#123;</span><br><span class="line">        *prt2 &#x3D; *prt1;</span><br><span class="line">    &#125;</span><br><span class="line">    return dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://github.com/Hooollin/re-examination/blob/master/algorithm/_string.c">我实现的string.h中的一些函数</a>  </p>
-<h3 id="区别总结"><a href="#区别总结" class="headerlink" title="区别总结"></a>区别总结</h3><ul>
-<li>显然memcpy的速度会比memmove快一些, memmove要稳一点。</li>
-<li>不想因为跨平台的而出问题最好用memmove。</li>
-</ul>
-<h2 id="指针运算以及一些技巧"><a href="#指针运算以及一些技巧" class="headerlink" title="指针运算以及一些技巧"></a>指针运算以及一些技巧</h2><h3 id="指针的大小"><a href="#指针的大小" class="headerlink" title="指针的大小"></a>指针的大小</h3><p>指针的大小取决于三个方面：</p>
-<ul>
-<li>CPU的位数</li>
-<li>操作系统位数</li>
-<li>编译器的位数</li>
-</ul>
-<p>指针的大小受限于三者中最小那个，在32位操作系统中一般为4个字节，在64位操作系统中一般为8个字节。不论是int<em>、char</em>、还是void*的大小都是一样的。</p>
-<h3 id="int、char、void-的具体含义"><a href="#int、char、void-的具体含义" class="headerlink" title="int、char、void*的具体含义"></a>int<em>、char</em>、void*的具体含义</h3><p>比如说对于这段代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">    int a &#x3D; 0;char b &#x3D; &#39;0&#39;;float c &#x3D; 0.0;</span><br><span class="line">    int *p1 &#x3D; &amp;a;char *p2 &#x3D; &amp;b; char *p3 &#x3D; &amp;c, void* p4 &#x3D; a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里<code>int*</code>代表了p1指向的是一个int类型的数据，那么你通过<code>*p1</code>访问a，无论p1指向的数据类型是不是a它都会将内存中的数据按照int来解释。<br>void*则代表当前的数据类型不确定，如果需要解应用必须强制类型转换，否则将会报错。但是任何类型的指针都可以复制给void *类型的指针。</p>
-<h3 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h3><p>最简单的指针运算无非是加一，减一，关键就是不同类型下它的计算方式稍有不同。</p>
-<ul>
-<li>int *p，p++使得p指向的地址在原来的基础上移动了int类型字节数。</li>
-<li>float *p，p++使得p指向的地址在原来的基础上增加了float类型的字节数。</li>
-<li>char *p，p++使得p指向的地址在原来的基础上增加了char类型的字节数。</li>
-<li>void *p，默认和char *一样。</li>
-</ul>
-<p>两个不同的指针之间的运算：</p>
-<ul>
-<li>前提是两个指针同类型。</li>
-<li>同类型指针之间的加减的结果是已经除过sizeof的了，也就是说结果不是间隔的字节数。</li>
-<li>可以直接比大小。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/23/daily-learning/%E9%93%BE%E8%A1%A8%E4%B8%ADswap%E4%B8%A4%E4%B8%AA%E7%BB%93%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hollin">
-      <meta itemprop="description" content="Coder">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hollin的代码之路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/02/23/daily-learning/%E9%93%BE%E8%A1%A8%E4%B8%ADswap%E4%B8%A4%E4%B8%AA%E7%BB%93%E7%82%B9/" class="post-title-link" itemprop="url">链表中swap两个结点</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-02-23 22:58:43" itemprop="dateCreated datePublished" datetime="2020-02-23T22:58:43+08:00">2020-02-23</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">日常学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>一开始想直接动手写链表的bubble sort，结果代码没写两行就卡壳了。在geeksforgeeks里面找了一下没有找到，不过却发现了swap两个结点的Puzzle，当实心里想这太基础了，不过刷了一眼分析发现问题可能比我想像中的要复杂一些，于是便想自己试一试能不能写出来。</p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>首先要想swap两个结点，是不是只需要分别记录一下prev结点和curr结点然后改一下指向就能解决的呢？一开始我是这么想的，于是写出了以下的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void swap(LinkedList *head, ListNode *node1, ListNode *node2)</span><br><span class="line">&#123;</span><br><span class="line">    ListNode *prev1 &#x3D; head, *curr1 &#x3D; head-&gt;next, *prev2 &#x3D; head, *curr2 &#x3D; head-&gt;next, *next;</span><br><span class="line">    for (; curr1 !&#x3D; node1; prev1 &#x3D; prev1-&gt;next, curr1 &#x3D; curr1-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    for (; curr2 !&#x3D; node2; prev2 &#x3D; prev2-&gt;next, curr2 &#x3D; curr2-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    next &#x3D; curr1-&gt;next;</span><br><span class="line">    curr1-&gt;next &#x3D; curr2-&gt;next;</span><br><span class="line">    curr2-&gt;next &#x3D; next;</span><br><span class="line">    prev1-&gt;next &#x3D; curr2;</span><br><span class="line">    prev2-&gt;next &#x3D; curr1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码结构很清晰，前两个循环用来定位，后面五行用来互换两个结点。乍一看好像挺对的，没什么问题。不过思考一下这种情况：<br><img src="http://hollin.icu/2020-02-23_231716.png" alt="过程图"><br>当node1和node2相邻的时候，会造成不止一个环路。<br>看来结点的位置关系会影响最后的结果，因此需要搞清楚这两个结点之间的关系：</p>
-<ul>
-<li>有没有结点是头结点？</li>
-<li>两个结点是否相邻？</li>
-</ul>
-<p>对于带头结点的链表我们不需要考虑是否其中一个为头结点，因为头结点的一个作用就是统一的操作的过程。<br>如果两个结点相邻，必然导致会有多余的指针，我们的代码中需要对它进行处理。不相邻的话初始版本的代码是正确的。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>基于以上分析给出swap两个结点的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void swap(LinkedList *head, ListNode *node1, ListNode *node2)</span><br><span class="line">&#123;</span><br><span class="line">    ListNode *prev1 &#x3D; head, *curr1 &#x3D; head-&gt;next, *prev2 &#x3D; head, *curr2 &#x3D; head-&gt;next, *next;</span><br><span class="line">    for (; curr1 !&#x3D; node1; prev1 &#x3D; prev1-&gt;next, curr1 &#x3D; curr1-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    for (; curr2 !&#x3D; node2; prev2 &#x3D; prev2-&gt;next, curr2 &#x3D; curr2-&gt;next)</span><br><span class="line">        ;</span><br><span class="line">    if (curr1-&gt;next &#x3D;&#x3D; curr2)</span><br><span class="line">    &#123;</span><br><span class="line">        next &#x3D; curr2-&gt;next;</span><br><span class="line">        curr2-&gt;next &#x3D; curr1;</span><br><span class="line">        curr1-&gt;next &#x3D; next;</span><br><span class="line">        prev1-&gt;next &#x3D; curr2;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (curr2-&gt;next &#x3D;&#x3D; curr1)</span><br><span class="line">    &#123;</span><br><span class="line">        next &#x3D; curr1-&gt;next;</span><br><span class="line">        curr1-&gt;next &#x3D; curr2;</span><br><span class="line">        curr2-&gt;next &#x3D; next;</span><br><span class="line">        prev2-&gt;next &#x3D; curr1;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        next &#x3D; curr1-&gt;next;</span><br><span class="line">        curr1-&gt;next &#x3D; curr2-&gt;next;</span><br><span class="line">        curr2-&gt;next &#x3D; next;</span><br><span class="line">        prev1-&gt;next &#x3D; curr2;</span><br><span class="line">        prev2-&gt;next &#x3D; curr1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试一下：<br><img src="http://hollin.icu/2020-02-23_232927.png" alt="测试结果">  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/">geeksforgeeks上的解法</a></li>
-<li>多动手。</li>
 </ul>
 
       

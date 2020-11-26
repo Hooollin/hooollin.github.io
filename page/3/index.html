@@ -182,19 +182,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -234,6 +234,621 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/07/computer-networking/computer-networking-chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/07/computer-networking/computer-networking-chapter2/" class="post-title-link" itemprop="url">计算机网络第二章学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-07 20:57:12" itemprop="dateCreated datePublished" datetime="2020-01-07T20:57:12+08:00">2020-01-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><p>应用层很重要。为什么重要？因为如果我们不能构想出任何有用的应用，也就没有必要去设计支持它们的网络协议了。</p>
+<h2 id="应用层协议原理"><a href="#应用层协议原理" class="headerlink" title="应用层协议原理"></a>应用层协议原理</h2><h3 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h3><h4 id="客户-服务器体系结构-client-server-architecture"><a href="#客户-服务器体系结构-client-server-architecture" class="headerlink" title="客户-服务器体系结构(client-server architecture)"></a>客户-服务器体系结构(client-server architecture)</h4><p>在这个体系结构中，有一个总是打开的主机称为<strong>服务器</strong>，它服务于来自许多其他称为<strong>客户</strong>的主机的请求。如apache就是一个非常著名的Web服务器。这种体系结构中，客户之间不相互直接通信。主机拥有一个固定的IP地址，客户就可以通过向这个固定的IP地址发送分组来与其联系。<br>采用了客户-服务器体系结构的应用程序包括：</p>
+<ul>
+<li>Web</li>
+<li>FTP</li>
+<li>Telnet</li>
+<li>电子邮件</li>
+</ul>
+<h4 id="P2P体系结构-P2P-architecture"><a href="#P2P体系结构-P2P-architecture" class="headerlink" title="P2P体系结构(P2P architecture)"></a>P2P体系结构(P2P architecture)</h4><p>在P2P体系结构中，对于服务器的以来没有那么大（或者直接没有），相反，应用程序在间断连接的<strong>主机对</strong>之间使用直接通信。这些主机对被称为<strong>对等方</strong>。目前须有流行的、流量密集型的应用都是通过P2P体系结构的。包括：</p>
+<ul>
+<li>文件共享(BitTorrent)</li>
+<li>对等方协助下载加速器(迅雷)</li>
+<li>因特网电话(skype)</li>
+<li>IPTV(PPstream)</li>
+</ul>
+<p>P2P体系结构最引人入胜(NB)的特性之一是它的自扩展性(self-scalability)。例如，在一个P2P文件共享型应用中，景观每个对等方都由于请求文件产生工作量，但每个对等方通过向其他对等方发送文件也为系统郑家了服务能力（人人为我，我为人人）。P2P同时也是成本有效的（省钱）。P2P应用面临的三个主要挑战：</p>
+<ul>
+<li>ISP友好。接入ISP的一般受限于<strong>非对称</strong>的带宽应用，下载要比上载多得多。所以需要一个对ISP更友好的模式。</li>
+<li>安全性。它的高度分布和开放性给安全带来了巨大挑战。</li>
+<li>激励。说服用户提供带宽、存储和计算资源。</li>
+</ul>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>网络间的进程通信和操作系统中的进程通信是有区别的，这里我们更关注端系统到端系统之间的进程进行通信。<br>在两个不同的端系统中，通过跨越计算机网络交换**报文(message)**而相互通信。</p>
+<h4 id="客户和服务器进程"><a href="#客户和服务器进程" class="headerlink" title="客户和服务器进程"></a>客户和服务器进程</h4><p>网络应用程序由成对的应用组成。这些进程之间相互发送报文。对于每对通信，我们通常将这两个进程之一标识为<strong>客户(client)**，而另一个进程标识为</strong>服务器(server)<strong>。通常来说</strong>发起通信<strong>的被标识为客户，而</strong>等待联系**的是服务器。</p>
+<h4 id="进程与计算机网络之间的接口"><a href="#进程与计算机网络之间的接口" class="headerlink" title="进程与计算机网络之间的接口"></a>进程与计算机网络之间的接口</h4><p>进程通过<strong>套接字（socket）</strong>的<strong>软件接口</strong>向网络发送接收报文。把进程比作一座房子，那么套接字就是它的门，它通过这个门把报文送出去。<br>套接字是同一台主机内应用层与运输层之间的接口，也称为应用程序和网络之间的**应用程序编程接口(Application Programming Interface)**。应用程序的开发者能且只能控制套接字在应用层端的一切，对运输层端几乎没有控制权。应用程序的开发者对应用层的控制仅限于：</p>
+<ol>
+<li>选择运输层协议。</li>
+<li>也许能设定几个运输层参数，如最大缓存和最大报文长度。<h4 id="进程寻址"><a href="#进程寻址" class="headerlink" title="进程寻址"></a>进程寻址</h4>不同端系统之间的进程要想通信，需要明确：</li>
+<li>主机的地址。</li>
+<li>定义在目的主机中的接收进程标识符。</li>
+</ol>
+<p>在因特网中，主机由其<strong>IP地址(IP address)**标识。接收进程用</strong>端口号(port number)**指定。</p>
+<h3 id="可供应用程序使用的运输服务"><a href="#可供应用程序使用的运输服务" class="headerlink" title="可供应用程序使用的运输服务"></a>可供应用程序使用的运输服务</h3><p>根据应用程序的不同服务要求，我们大体可以从这四个方面对要求的运输层服务进行分类：</p>
+<ol>
+<li>可靠数据传输</li>
+<li>吞吐量</li>
+<li>定时</li>
+<li>安全</li>
+</ol>
+<h4 id="可靠数据传输"><a href="#可靠数据传输" class="headerlink" title="可靠数据传输"></a>可靠数据传输</h4><p>第一章中谈到了分组的丢失(lost)，然而在一些情况下我们必须保证数据正确、完成的交付给应用程序的另一端。如果一个协议提供了这样的确保数据交付的服务，就认为提供了**可靠数据传输(reliable data transfer)**。这时在应用层编程的我们只需要将数据传给套接字就可以完全相信数据会无误地传给接收进程。</p>
+<h4 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h4><p>越大越好。</p>
+<h4 id="定时"><a href="#定时" class="headerlink" title="定时"></a>定时</h4><p>耍游戏的时候延迟太高了影响游戏体验。运输层协议也能提供定时保证。（这么牛皮？）</p>
+<h4 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h4><p>运输协议能够为应用程序提供一种或多种安全性服务。如加密所有数据等。</p>
+<h3 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h3><p>因特网（更一般的是TCP/IP网络）为应用程序提供两个运输成协议，UDP和TCP。</p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>数据丢失</th>
+<th>带宽</th>
+<th>时间敏感</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件传输</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>不</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>不</td>
+</tr>
+<tr>
+<td>Web文档</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>不</td>
+</tr>
+<tr>
+<td>因特网电话/视频会议</td>
+<td>容忍丢失</td>
+<td>音频（几kbps<del>1Mbps）/ 视频(10kbps</del>5Mbps)</td>
+<td>是，100ms</td>
+</tr>
+<tr>
+<td>存储音频/视频</td>
+<td>容忍丢失</td>
+<td>同上</td>
+<td>是，几秒</td>
+</tr>
+<tr>
+<td>交互式游戏</td>
+<td>容忍丢失</td>
+<td>几kpbs~10kbps</td>
+<td>是，100ms</td>
+</tr>
+<tr>
+<td>即时通讯</td>
+<td>不能丢失</td>
+<td>弹性</td>
+<td>是或不是</td>
+</tr>
+</tbody></table>
+<h4 id="TCP服务"><a href="#TCP服务" class="headerlink" title="TCP服务"></a>TCP服务</h4><p>TCP服务模型包括面向连接服务和可靠数据传输服务。当某个应用程序调用TCP作为它的运输协议时，这个应用程序就获得了来自TCP这两种服务：</p>
+<ol>
+<li>面向连接的服务：在应用层数据报文开始流动之前，TCP让客户和服务器相互交换运输层控制信息。这个所谓的握手过程提示客户和服务器，使他们为大量分组的到来做好准备。在握手阶段后，一个**TCP连接(TCP connection)**就可以在两个套接字之间建立。这个连接是全双工的（连接的双方都可以在这个连接上同时进行报文的收发）。应用程序结束报文的发送时，必须拆除该连接。</li>
+<li>可靠的数据传送服务：通信进程可以依赖TCP进行无差错、按适当顺序交付所有发送的数据。应用程序一端将字节流传入套接字时，它可以依靠TCP将相同的字节流家父给接收方的套接字，并且没有字节的丢失和冗余。</li>
+</ol>
+<p>TCP还具有拥塞控制机制。它不一定能为通信进程带来好处，但是它对因特网整体来说是有益的。</p>
+<h4 id="UDP服务"><a href="#UDP服务" class="headerlink" title="UDP服务"></a>UDP服务</h4><p>UDP是一种轻量级的运输协议，它提供最小服务。UDP的特点如下：</p>
+<ul>
+<li>无连接</li>
+<li>不可靠</li>
+</ul>
+<h4 id="TCP和UDP的安全性"><a href="#TCP和UDP的安全性" class="headerlink" title="TCP和UDP的安全性"></a>TCP和UDP的安全性</h4><p>无论是TCP还是UDP都没有提供任何加密机制。<br>对于TCP，已经有**安全套接字层（Secure Sockets Layer, SSL)**，用SSL加强的TCP不仅能够做到传统的TCP可以做到的一切，并且提供关键的进程到进程的安全性服务，包括：</p>
+<ul>
+<li>加密</li>
+<li>数据完整性</li>
+<li>端点鉴别</li>
+</ul>
+<p>但是SSL<strong>并不是</strong>TCP和UDP在相同层次上的第三种因特网运输协议（也就是说SSL<strong>并不是</strong>一种因特网运输层的运输协议），而是对TCP的一种加强，并且这种加强是在<strong>应用层</strong>上实现的。</p>
+<h3 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h3><p>**应用层协议(application layer protocol)**定义了运行在不同端系统上的应用程序进程如何相互传递报文。它定义了：</p>
+<ul>
+<li>交换的报文类型，例如请求报文和响应报文。</li>
+<li>各种报文类型的语法，如报文中的各个字段以及这些字段是如何描述的。</li>
+<li>字段的语义，即这些字段中包含信息的含义。</li>
+<li>一个进程何时以及如何发送报文，对报文的响应规则。</li>
+</ul>
+<p>有些应用层协议由RFC文档定义的，因此他们位于<strong>公共域</strong>中。例如Web应用层协议HTTP([RFC2616])。如果浏览器开发者村从HTTP RFC规则，所开发出的浏览器就能访问任何遵从该文档标准的Web服务器并获取相应的Web页面。有的应用层协议是<strong>专用的</strong>，有意不为公共域使用。</p>
+<h2 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h2><h3 id="HTTP概况"><a href="#HTTP概况" class="headerlink" title="HTTP概况"></a>HTTP概况</h3><p>Web的应用层协议是<strong>超文本传输协议（HyperText Transfer Protocol）</strong>，它是Web的核心。定义在[RFC 1945]和[RFC 2616]中。HTTP由两个程序实现。一个客户端程序，一个服务器程序。他们运行在不同的端系统中，通过交换HTTP报文进行会话。<br>Web术语：**Web页面(Web page)**（也叫文档）是由对象组成的。一个对象(object)只是一个文件，如一个HTML文件、一个JPEG图形、一个Java小程序或者一个视频片段。且他们可以通过一个URL地址寻址。多数Web页面含有一个HTML基本文件(base HTML file)以及几个引用对象。例如：一个Web页面包含HTML文本和5个JPEG图形，那么这个Web页面有六个对象：一个HTML基本文件加5个图形。Web浏览器(Web browser)实现了HTTP客户端，Web服务器(Web server)实现了HTTP的服务器端，用于存储Web对象，对每个对象用URL寻址。<br>HTTP定义了Web客户向Web服务器请求Web页面的方式，以及服务器向客户传送Web页面的方式。<br>HTTP使用TCP作为它支撑运输的协议。HTTP客户首先发起一个与服务器的TCP连接。一旦连接建立，该浏览器和服务器进程就可以通过套接字接口访问TCP。<br>HTTP是一个无状态协议(stateless protocol)。也就是说在某个时刻客户请求了一个对象，在下一次请求这个对象的时候服务器不会因为刚才已经为客户提供了这个对象而不再响应这个请求，而是重新发送这个对象。</p>
+<h3 id="非持续连接和持续连接"><a href="#非持续连接和持续连接" class="headerlink" title="非持续连接和持续连接"></a>非持续连接和持续连接</h3><ol>
+<li><p>非持续连接下的请求Web页面的步骤：</p>
+<ol>
+<li>HTTP客户进程在端口号80（HTTP默认端口号）发起一个到服务器例如<a href="Hooollin.github.io">Hooolin.github.io</a>的TCP连接，在客户和服务器上分别有一个套接字与该连接相关联。</li>
+<li>HTTP客户通过它的套接字想服务器发送一个HTTP请求报文。请求报文中包含了/路径名/index.html。</li>
+<li>HTTP服务器进程经它的套接字接收该请求报文，从存储器中检索出对象<a href="Hooollin.github.io/index.html">Hooollin.github.io/index.html</a>，在一个HTTP响应报文中封装对象，并通过其套接字向客户发送响应报文。</li>
+<li>HTTP服务器通过TCP断开该TCP连接。（实际上是TCP确认客户已经完整的收到报文为止，它才会实际中断连接）。</li>
+<li>HTTP客户接收响应报文，TCP连接关闭。报文指出封装的对象是一个HTML文件，客户从响应报文中提取该文件，检查该HTML，得到对10个JPEG图形的引用。</li>
+<li>对每个引用的JPEG图形对象重复前4个步骤。</li>
+</ol>
+<p>从上面的步骤可以看到，每个TCP连接都是在服务器发送一个对象之后关闭，并没有为其他的对象而持续下来。<strong>值得注意</strong>的是每个TCP连接只传输一个请求报文和一个响应报文。本例中用户请求该Web网页时，要产生11个TCP连接。  </p>
+<p>**往返时间(Round-Trip Time, RTT)**：指一个短分组从客户到服务器然后再返回客户所花费的时间。RRT包括：</p>
+<ul>
+<li>分组传播时延</li>
+<li>排队时延</li>
+<li>处理时延</li>
+</ul>
+<p>那么简单估算一下从客户请求HTML基本文件到客户收到整个文件所花费的时间。当用户点击超链接时，会英气浏览器和Web服务器之间发起一个TCP连接，涉及一个三次握手的过程。即：</p>
+<ol>
+<li>客户向服务器发送一个小TCP报文段。</li>
+<li>服务器用一个小TCP报文段做出确认和响应。</li>
+<li>最后，客户向服务器返回确认。</li>
+</ol>
+<p><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-7.png" alt="avatar"><br>从2-7可以看出，是三次握手中的前两个部分用去了一个RTT。第三部分向TCP连接发送一个HTTP请求报文，一旦请求报文达到服务器，服务器就在TCP连接上发送HTML文件。该HTTP请求/响应用了另一个RTT。粗略的说，总的响应时间就是两个RTT加上服务器传输HTML文件的时间。</p>
+</li>
+<li><p>采用持续连接的HTTP<br>非持续连接有一些缺点：</p>
+<ul>
+<li><p>必须为每一个请求的对象建立和维护一个全新的连接。这样给Web服务器带来了严重的负担。</p>
+</li>
+<li><p>每一个对象经受两倍的RTT的交付延迟。</p>
+<p>在采用持续连接的情况下，服务器在发送响应后保持该TCP连接打开。在相同的客户与服务器之间的后续请求和响应报文能够通过相同的连接进行传送。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="HTTP报文格式"><a href="#HTTP报文格式" class="headerlink" title="HTTP报文格式"></a>HTTP报文格式</h3><h4 id="HTTP请求报文"><a href="#HTTP请求报文" class="headerlink" title="HTTP请求报文"></a>HTTP请求报文</h4><p>典型的HTTP请求报文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;somedir&#x2F;page.html HTTP&#x2F;1.1</span><br><span class="line">Host: www.someschool.edu</span><br><span class="line">Connection: close</span><br><span class="line">User-agent: Mozilla&#x2F;5.0</span><br><span class="line">Accept-language: fr</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>HTTP请求报文的第一行叫做<strong>请求行(request line)**，其后继的行叫做</strong>首部行(header line)<strong>。请求行有三个字段：方法字段、URL字段和HTTP版本字段。方法字段可以取GET、POST、HEAD、PUT和DELETE。<br>首部行的作用很显然。<br><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-8.png" alt="avatar"><br>从通用格式中可以看到，在首部行后一个一个</strong>实体体(entity body)**。使用GET方法时实体体为空，使用POST方法时才使用该实体体。</p>
+<h4 id="HTTP响应报文"><a href="#HTTP响应报文" class="headerlink" title="HTTP响应报文"></a>HTTP响应报文</h4><p>典型的HTTP响应报文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Connection: close</span><br><span class="line">Date: Tue, 09 Aug 2019 00:18:20 GMT</span><br><span class="line">Server: Apache&#x2F;2.2.3(CentOs)</span><br><span class="line">Last-Modified: Tue, 09 Aug 2019 15:11:03 GMT</span><br><span class="line">Content-Length: 6821</span><br><span class="line">Content-Type: text&#x2F;html</span><br><span class="line"></span><br><span class="line">(data data data data ...)</span><br></pre></td></tr></table></figure>
+<p><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-9.png" alt="avatar"><br>响应报文分为三个部分：</p>
+<ul>
+<li>**状态行(status line)**。包括三个字段：协议版本字段、状态码字段和响应状态信息字段。</li>
+<li>**首部行(header line)**。对象类型应该正式地由Content-Type指出而不是用文件拓展名来指示。</li>
+<li>**实体体(entity body)**。</li>
+</ul>
+<p>常见的状态码和状态短语包括：</p>
+<ul>
+<li>200 OK:请求成功，信息在返回的响应报文中。</li>
+<li>301 Moved Permanently:请求的对象已经被永久转移了，心的URL定义在响应报文中的Location:首部行中。客户软件自动获取心的URL。</li>
+<li>400 Bad Request:一个通用差错代码，指示该请求不能被服务器理解。</li>
+<li>404 Not Found:被请求的文档不再服务器上。</li>
+<li>505 HTTP Version Not Supported:服务器不支持请求报文使用的HTTP协议版本。</li>
+</ul>
+<h3 id="用户与服务器的交互：cookie"><a href="#用户与服务器的交互：cookie" class="headerlink" title="用户与服务器的交互：cookie"></a>用户与服务器的交互：cookie</h3><p>HTTP是无状态的。但是一个Web站点其实希望能够识别用户，将用户身份与内容联系起来。为此，HTTP使用了cookie。<br><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-10.png" alt="avatar"><br>cookie技术有四个组件：</p>
+<ol>
+<li>在HTTP响应报文中的一个cookie首部行；</li>
+<li>在HTTP请求报文中的一个cookie首部行；</li>
+<li>在用户端系统中保留有一个cookie文件，并由用户的浏览器进行管理；</li>
+<li>位于Web站点的一个后端数据库。</li>
+</ol>
+<h3 id="Web缓存"><a href="#Web缓存" class="headerlink" title="Web缓存"></a>Web缓存</h3><p><strong>Web缓存器(Web cache)**也叫做</strong>代理服务器(proxy server)**，它是能够代表初始Web服务器来满足HTTP请求的网络实体。<br>Web缓存器中有自己的磁盘存储空间，并在存储空间中保存最近请求过的对象副本。可以通过配置客户的浏览器，使得用户的所有HTTP请求首先指向Web缓存器。举例来说，假设客户正在请求一个对象，将会发生如下情况：</p>
+<ol>
+<li>浏览器建立一个到Web缓存器的TCP连接，并向Web缓存器中的对象发送一个HTTP请求。</li>
+<li>Web缓存器进行检查，看看本地是否存储了该对象副本。如果有，Web存储器用HTTP响应报文返回该对象。</li>
+<li>如果Web存储器中没有该对象，他就打开一个与该对象的初始服务器的TCP连接，并发送一个对该对象的HTTP请求。初始服务器收到这个请求后，向Web缓存器发送具有该对象的HTTP的响应。</li>
+<li>当Web缓存器接收到了该对象后，将在本地存储空间中存储一份副本，并向客户的浏览器用HTTP响应报文发送该副本。</li>
+</ol>
+<p>在因特网上部署Web服务器有两个原因：</p>
+<ul>
+<li>Web缓存器可以大大减少对客户请求的响应时间。特别是当客户与初始服务器之间的瓶颈带宽远低于客户与Web缓存器之间的瓶颈带宽时更是如此。</li>
+<li>Web缓存器能够大大减少一个机构的接入链路到因特网的通信量。比如说我们学校配置一台Web缓存器供全校使用，在校园局域网内链路速度是100Mbps，而接入公共英特网的链路只有15Mbps的速度，那么我们通过访问Web缓存器获取对象的速度要比通过访问初始服务器的速度快得多。（涉及到命中以及未命中的情况）</li>
+</ul>
+<p>**内容分发网络(Content Distribution Network, CDN)**，使得Web缓存器的作用越来越重要。</p>
+<h3 id="条件GET方法"><a href="#条件GET方法" class="headerlink" title="条件GET方法"></a>条件GET方法</h3><p>尽管高速缓存能够减少用户感受到的响应时间，但也引入了一个显而易见的问题：存放在缓存器中的对象副本可能是陈旧的（原对象已被修改）。<br>HTTP协议中的**条件GET(conditional GET)**可以解决这个问题。如果请求报文中：</p>
+<ol>
+<li>使用GET方法；</li>
+<li>包含一个”If-Modified-Since”首部行</li>
+</ol>
+<p>那么这个HTTP请求报文就是一个条件GET请求报文。<br>例如一个代理缓存器访问初始服务器获取对象并通过条件GET更新对象的过程大致如下：</p>
+<ol>
+<li>代理缓存器向某Web服务器发送一个HTTP请求报文。</li>
+<li>Web服务器向缓存器发送具有被请求对象的响应报文。并且返回的响应报文中包含”Last-Modified”的首部行。</li>
+<li>代理缓存器缓存该对象，同时也存储了最后修改日期。</li>
+<li>一段时间后，代理服务器向Web服务器发送一个条件GET执行最新检查。</li>
+<li>Web服务器返回一个响应报文，状态行为<code>HTTP/1.1 304 NOT Modified</code>。</li>
+<li>代理缓存器接收到响应报文，并确定对象副本并没有被修改。</li>
+</ol>
+<h2 id="文件传输协议：FTP"><a href="#文件传输协议：FTP" class="headerlink" title="文件传输协议：FTP"></a>文件传输协议：FTP</h2><p>FTP使用了两个并行的TCP连接来传输文件，一个是<strong>控制连接(control connection)**（TCP控制连接端口21），一个是</strong>数据连接(data connection)<strong>。（TCP数据连接端口20）控制连接用于在量主机之间阐述控制信息，如用户标识、口令、改变远程目录的命令以及“存放(put)”和“获取(get)”文件的命令。数据连接用于实际发送一个文件。因为一个FTP协议使用一个独立的控制连接，所以我们也称FTP的控制信息是</strong>带外(out-of-band)<strong>传送的。HTTP协议事在传输文件的同一个TCP连接中发送请求和响应首部行的，因此HTTP也可以说是</strong>带内(in-band)<strong>发送控制信息的。<br>FTP服务器必须在整个会话期间保留用户的</strong>状态(state)**。</p>
+<h3 id="FTP的命令和回答"><a href="#FTP的命令和回答" class="headerlink" title="FTP的命令和回答"></a>FTP的命令和回答</h3><p>有兴趣再了解。</p>
+<h3 id="因特网中的电子邮件"><a href="#因特网中的电子邮件" class="headerlink" title="因特网中的电子邮件"></a>因特网中的电子邮件</h3><p>因特网中电子邮件组成部分：<br><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-16.png" alt="avatar">  </p>
+<ul>
+<li>**用户代理(user agent)**：用户代理允许用户阅读、回复、转发、保存和撰写报文。</li>
+<li><strong>邮件服务器(mail server)**：电子邮件体系的核心。每个接收方在某个邮件服务器上有一个</strong>邮箱(mailbox)**。邮箱管理和维护着发送给他的报文。</li>
+<li><strong>简单邮件传输协议(SMTP)</strong></li>
+</ul>
+<p>一个典型的邮件发送过程：从发送方的用户代理开始，传输到发送方的邮件服务器，再传输到接收方的邮件服务器，然后在这里被分发到接收方的邮箱中。</p>
+<h2 id="DNS：因特网的目录服务"><a href="#DNS：因特网的目录服务" class="headerlink" title="DNS：因特网的目录服务"></a>DNS：因特网的目录服务</h2><p>主机可以有多种表示形式，其中一种方式是通过<strong>主机名(hostname)**来标识。比如说baidu.com、bilibili.com等。这种表示方式对人较为友好，但是它几乎没有提供什么有用的信息，并且主机名可能由不定长的字母数字组成，路由器很难处理。因此，主机也可用</strong>IP地址(IP address)**进行表示。</p>
+<h3 id="DNS提供的服务"><a href="#DNS提供的服务" class="headerlink" title="DNS提供的服务"></a>DNS提供的服务</h3><p>人们便于记忆主机名地标识方式，但是路由器更喜欢定长的、有结构层次的IP地址。那么一种折中的方法就是**域名系统(Domain Name System, DNS)**。<br>DNS是：</p>
+<ol>
+<li>一个由分层的**<strong>DNS服务器(DNS server)**</strong>实现的分布式数据库。</li>
+<li>一个使得主机能够查询分布式数据库的应用层协议。</li>
+</ol>
+<p>DNS服务器通常是运行BIND(Berkeley Internet Name Domain)软件的UNIX机器，运行在UDP之上，使用53号端口。<br>DNS通常是由其他应用层协议所使用的，包括HTTP、SMTP、FTP，将用户提供的主机名解析为IP地址。<br>一个典型的地址转换过程如下：</p>
+<ol>
+<li>用户主机上运行着DNS应用的客户端。</li>
+<li>浏览器从用户访问的URL中抽取出主机名，并将这台主机名传给DNS应用的客户端。</li>
+<li>DNS客户向DNS服务器发送一个包含主机名的请求。</li>
+<li>DNS客户最终会收到一份回答报文，其中含有对应于该主机名的IP地址。</li>
+<li>一旦浏览器接收到来自DNS的该IP地址，它能够向位于该IP地址80端口的HTTP服务器进程发起一个TCP连接。</li>
+</ol>
+<p>除了进行主机名到IP地址的转换，DNS还提供一些重要的服务：</p>
+<ul>
+<li>**主机别名(host aliasing)**。有复杂主机名的主机可能有一个或者多个别名。通常来说主机别名比规范主机名更加好记一些。</li>
+<li>**邮件服务器别名(cannonical hostname)**。</li>
+<li><strong>负载分配(load distribution)**。繁忙的站点被冗余分布在多台服务器上，每台服务器都运行在不同的端系统上，每个都有着不同的IP地址。一个</strong>IP地址集合**与同一个规范主机名相联系。</li>
+</ul>
+<h3 id="DNS工作机理概述"><a href="#DNS工作机理概述" class="headerlink" title="DNS工作机理概述"></a>DNS工作机理概述</h3><p>DNS的一种简单设计（最容易想到）就是在全球范围内搞一个DNS服务器，这个服务器包含所有的主机名和IP地址的映射。这种集中式的设计不适用于当今的因特网，是因为因特网有着数量庞大的主机。除此之外还有一些设计问题，包括：</p>
+<ul>
+<li>单点故障(a single point of failure)。如果DNS服务器崩溃，整个因特网随之崩溃。</li>
+<li>通信容量(traffic volume)。单个DNS服务器要处理全球所有的DNS查询。</li>
+<li>远距离的集中式数据库(distant centralized database)。很显然DNS服务器不可能临近所有查询的客户。这将导致很严重的时延。</li>
+<li>维护。单个DNS服务器不得不为所有的因特网主机保留记录。所以这个中央数据库会非常庞大，难以维护。</li>
+</ul>
+<p>总的来说，单一DNS服务器上运行集中式数据库完全没有可拓展能力。所以DNS采用了<strong>分布式</strong>的设计方案。</p>
+<h4 id="分布式、层次数据库"><a href="#分布式、层次数据库" class="headerlink" title="分布式、层次数据库"></a>分布式、层次数据库</h4><p>为了处理拓展性问题，DNS使用了大量的DNS服务器，以层次方式组织，并且分布在全世界范围内。没有一台DNS服务器拥有因特网上所有主机的映射。<br><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-19.png" alt="avatar"><br>有三种类型的DNS服务器：</p>
+<ul>
+<li>根DNS服务器。根服务器位于层次结构的最顶层。根服务器中的每个都可以视为单个的服务器，但每台服务器实际上是一个冗余服务器的网络，以提供安全性和可靠性。</li>
+<li>顶级域(Top-Level Domain, TLD)DNS服务器。这些服务器负责顶级域名如com、org、net、edu和gov,以及所有国家的顶级域名如uk、fr、和ca。</li>
+<li>权威DNS服务器。在因特网上具有公共可访问主机的每个组织机构必须提供公共可访问的DNS记录，这些记录将这些主机的名字映射为IP地址。一个组织机构的权威DNS服务器收藏了这些DNS记录。（比如说阿里云里面注册一个域名，他就相当于一个权威DNS服务器的提供商）。</li>
+</ul>
+<p>除了根、TLD和权威DNS服务器之外，还有一类重要的DNS，称为**本地DNS服务器(local DNS server)**。本地DNS服务器骑着代理的作用，并将该请求转发到DNS服务器层次结构中。  </p>
+<p>看一个简单的查询过程的例子。假设主机cis.poly.edu想知道主机gaia.cs.umass.edu的IP地址。同时假设理工大学(Polytechnic)的本地DNS服务器为dns.poly.edu，并且gaia.cs.umass.edu的权威DNS服务器为dns.umass.edu。</p>
+<ol>
+<li>主机cis.poly.edu首先向他的本地DNS服务器dns.poly.edu发送一个DNS查询报文。该查询报文含有被转换的主机名 gaia.cs.umass.edu。</li>
+<li>本地DNS服务器将该报文转发到根DNS服务器。</li>
+<li>根DNS服务器注意到其edu的前缀并向本地DNS然会负责edu的TLD的IP地址列表。</li>
+<li>该本地DNS服务器则向TLD发送一个查询报文。</li>
+<li>TLD服务器注意到 umass.edu的前缀，并用权威DNS服务器的IP地址进行响应，返回负责马萨诸塞大学的权威DNS服务器 dns.umass.edu。</li>
+<li>最后，本地DNS服务器直接向 dns.umass.edu重发查询报文，dns.umass.edu用 gaia.cs.umass.edu的IP地址进行响应。</li>
+</ol>
+<p><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-21.png" alt="avatar"><br>整个过程一共发送了四份查询报文和四分回答报文。开销较大。</p>
+<p>这个例子中利用了<strong>递归查询(recursive query)**和</strong>迭代查询(iterative query)**。通常来说，主机到本地DNS服务器的查询通常是递归的，其余的查询通常是迭代的。</p>
+<h4 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h4><p>DNS缓存技术非常简单，但是运用十分广泛。简而言之就是DNS服务器可以缓存主机到IP地址的映射，但是会在一段时间后丢弃缓存信息。</p>
+<h3 id="DNS记录和报文"><a href="#DNS记录和报文" class="headerlink" title="DNS记录和报文"></a>DNS记录和报文</h3><p>共同实现DNS分布式数据库的所有DNS服务器存储了**资源记录(Resource Record, RR)**，RR提供了主机名到IP地址的映射。每个DNS回答报文包含了一条或者多条资源记录。<br>资源记录是一个包含了下列字段的四元组：(Name, Value, Type, TTL)。<br>TTL是该记录的生存时间，他决定了资源记录应当从缓存中删除的时间。Name和Value的值取决于Type：</p>
+<ul>
+<li>如果Type = A，则Name是主机名，Value是该主机名对应的IP地址。一条类型为A的资源记录提供了标准的主机名到IP地址的映射。</li>
+<li>如果Type = NS，则Name是个域（如foo.com)，而Value是个知道如何获得该域中主机IP地址的权威DNS服务器的主机名。这个记录用于沿着查询链来路由DNS查询。</li>
+<li>如果Type = CNAME, 那么Value是别名为Name的主机对应的规范主机名。这个记录能过向查询主机提供一个主机名对应的规范主机名。</li>
+<li>如果Type = MX，则Value是个别名为Name的邮件服务器的规范主机名。</li>
+</ul>
+<h4 id="DNS报文"><a href="#DNS报文" class="headerlink" title="DNS报文"></a>DNS报文</h4><p>DNS查询报文和回答报文有着相同的格式。<br><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-23.png" alt="avatar">  </p>
+<ul>
+<li>前12个字节是首部区域，包括几个字段。第一个字段是一个16比特的数，用来标识该查询。这个标识符会被复制到对查询的回答报文中，以便让客户用它来匹配发送的请求和接收到的回答。</li>
+<li>问题区域包括正在进行的查询信息。该区域包括：<ul>
+<li>名字字段，指出被查询主机的名字；</li>
+<li>类型字段，指出有关该名字的正被询问的问题类型；</li>
+</ul>
+</li>
+<li>回答区域包含了对最初请求的名字的资源记录。回答报文的回答区域中可以包含多条RR，因此一个主机名可能有多个对应IP地址（冗余服务器）。</li>
+<li>权威区域包含了其他权威服务器的记录。</li>
+<li>附加区域包含了其他有帮助的信息。</li>
+</ul>
+<h4 id="在DNS数据库中插入记录"><a href="#在DNS数据库中插入记录" class="headerlink" title="在DNS数据库中插入记录"></a>在DNS数据库中插入记录</h4><p>比如说我创建了一个教育机构叫做HollinEducation，那么我需要去注册登记机构上注册域名<a href="">hollineducation.edu</a>。注册登记机构(registrar)是一个商业实体，它验证该域名的唯一性，将该域名输入DNS数据库，并收取少量的费用。<br>当我注册域名的时候，我需要向该机构提供我的基本和辅助权威DNS服务器的名字和IP地址。假定该名字和IP地址是dns1.hollineducation.com以及212.212.212.1。该注册登记机构将我的资源记录插入到DNS系统中。</p>
+<h2 id="P2P应用"><a href="#P2P应用" class="headerlink" title="P2P应用"></a>P2P应用</h2><h3 id="P2P文件分发"><a href="#P2P文件分发" class="headerlink" title="P2P文件分发"></a>P2P文件分发</h3><p>现在最常见的文件下载方式就是从单一的服务器向大量的主机（称为对等方）分发一个大文件。在这种情况下，服务器必须向每个对等方发送一个文件的副本，这样就会占用大量的服务器带宽，使得服务器承受极大的压力。<br>在P2P文件分发中，每个对等方能够重新分发它所有的该文件的任何部分，从而在分发的过程中协助该服务器。现在最为流行的P2P文件共享协议是BitTorrent。</p>
+<h4 id="P2P体系结构的拓展性"><a href="#P2P体系结构的拓展性" class="headerlink" title="P2P体系结构的拓展性"></a>P2P体系结构的拓展性</h4><p><img src="http://q3l3n268t.bkt.clouddn.com/CN-2-24.png" alt="文件分发问题示意图">  </p>
+<p>对于客户-服务器体系结构的分发时间可以很容易计算出来：</p>
+<ul>
+<li>服务器对于每个客户都需要传送一份文件，那么总的分发文件长度为$NF$，分发该文件的时间为$NF/u$。</li>
+<li>每个客户接收文件的速度都不同，那么最长的接收时间就是$F/d_{min}$。</li>
+</ul>
+<p>那么最后的结果就是<br>$$D_{cs} \geq max{( \frac{NF}{u_s},;\frac{F}{d_{min}} )}$$<br>对于P2P体系的体系结构分发时间进行分析可以得到：</p>
+<ul>
+<li>首先只有服务器有要分发的文件，服务器至少要将这个文件的每个bit都经过其接入链路。所以最小分发时间至少是$\frac{F}{u}$。</li>
+<li>现在考虑每个对等方，他们都不能以小于$\frac{F}{d_{min}}$秒的分发时间获得所有的比特。</li>
+<li>系统整体的总上载能力等于服务器上载速率加上每个单独的对等放的上载速度。$u_{total}=u_s+u_1+u2+…+u_N$。系统必须向这N个对等方的每个交付F比特，所以总共交付$NF$比特。这不能以快于$u_{total}$的速率完成。所以最小分发时间至少是$\frac{NF}{u_s+u_1+…+u_N}$。</li>
+</ul>
+<h4 id="BitTorrent"><a href="#BitTorrent" class="headerlink" title="BitTorrent"></a>BitTorrent</h4><p>BitTorrent是用于一种文件分发的P2P协议。参与一个特定文件分发的所有对等方的集合被称为一个<strong>洪流(torrent)**。在一个洪流中的对等方下载等长度的</strong>文件块(chunk)<strong>，典型的块长度为256KB。当一个对等方首次加入一个洪流时，它没有块。随着时间的流逝，它积累了越来越多的块。当它下载块时，也为其他对等方上载了多个块。一旦某个对等方获得了整个文件，那么它也许会离开洪流，或留在该洪流中并继续向其他对等方上载块。<br>BitTorrent运行的过程大致如下：每个洪流具有一个基础设施节点，称为</strong>追踪器(tracker)**。当一个对等方加入某洪流时，他向追踪器注册自己，并周期性地通知追踪器它仍在洪流中。以这种方式，追踪器追踪正参与在洪流中的对等方。一个给定的洪流可能在任何时候具有数以千计的对等方。</p>
+<h4 id="分布式散列表"><a href="#分布式散列表" class="headerlink" title="分布式散列表"></a>分布式散列表</h4><p>考虑如何通过一个P2P网络实现一个简单的分布式数据库。那么在P2P网络中的分布式数据库，每个对等方只保持总体的一个子集。允许任何一对对等方通过键来查询分布式数据库，并且我们数据库应该具备定位拥有该键值对的对等方并返回查询结果的能力。任何对等方也允许在数据库中插入新的键值对。那么这样一种分布式数据库被称为**分布式散列表(Distributed Hash Table, DHT)**。<br>在P2P文件共享的环境中DHT服务的方式如下：</p>
+<ul>
+<li>键是一个目录名，值是拥有该目录副本的对等方IP的地址。</li>
+<li>由于DHT数据库分布在一些对等方上，所以某些对等方需要对特定的键负责，并且具有相应的键值对。</li>
+<li>假设某个对等方需要获得一个副本，它在下载这个副本之前，必须清楚那个对等方拥有这个副本。为此，用所需副本为键来查询DHT。</li>
+<li>DHT确定负责这个键的对等方，并从这个对等方那里查询出数据，然后传送回来。</li>
+</ul>
+<p><strong>待完善</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/05/course/c++/C-programming-language-chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hollin">
+      <meta itemprop="description" content="Coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hollin的代码之路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/05/course/c++/C-programming-language-chapter2/" class="post-title-link" itemprop="url">C语言程序设计第二章学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-05 22:07:18" itemprop="dateCreated datePublished" datetime="2020-01-05T22:07:18+08:00">2020-01-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-23 17:21:38" itemprop="dateModified" datetime="2020-11-23T17:21:38+08:00">2020-11-23</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="基本数据类型及运算"><a href="#基本数据类型及运算" class="headerlink" title="基本数据类型及运算"></a>基本数据类型及运算</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
+<li>数据类型<ul>
+<li>基本类型<ul>
+<li>整型 int</li>
+<li>字符型 char</li>
+<li>单精度浮点型 float</li>
+<li>双精度浮点型 double</li>
+</ul>
+</li>
+<li>构造类型<ul>
+<li>数组</li>
+<li>结构</li>
+<li>联合</li>
+<li>枚举</li>
+</ul>
+</li>
+<li>指针类型</li>
+<li>空类型  </li>
+</ul>
+</li>
+</ul>
+<p>四种基本数据类型  </p>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">类型关键字</th>
+<th align="center">长度</th>
+<th align="center">位数</th>
+<th align="center">范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">字符型</td>
+<td align="center">char</td>
+<td align="center">1字节</td>
+<td align="center">8</td>
+<td align="center">-128~127</td>
+</tr>
+<tr>
+<td align="center">整型</td>
+<td align="center">int</td>
+<td align="center">2字节</td>
+<td align="center">32</td>
+<td align="center">$-2^{31}$ ~ $2^{31} - 1$</td>
+</tr>
+<tr>
+<td align="center">单精度浮点型</td>
+<td align="center">float</td>
+<td align="center">4字节</td>
+<td align="center">32</td>
+<td align="center">$\pm(10^{-38}$ ~ $10^{38})$</td>
+</tr>
+<tr>
+<td align="center">双精度浮点型</td>
+<td align="center">double</td>
+<td align="center">8字节</td>
+<td align="center">64</td>
+<td align="center">$\pm(10^{-308}$ ~ $10^{308})$</td>
+</tr>
+</tbody></table>
+<p>C语言没有具体规定整型数据所占内存的字节数，一般来说，$2=short \leq int\leq long=4$。<br>字符型的数据是根据其对应的ASCII码存储，所以字符型数据可以看做成整型数据，也可以表示为unsigned char，范围从0~255，此时ASCII大于127的字符为扩充的ASCII码字符。</p>
+<h2 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h2><p>单目运算符：只接受一个操作数的操作符。<br>双目运算符：或者要求运算对象的个数是2的运算符称为双目运算符。<br>运算优先级：</p>
+<ol>
+<li>基本表达式 (expression)，加括号</li>
+<li>后缀表达式<ul>
+<li>数组下标运算</li>
+<li>结构体成员访问</li>
+<li>后缀自增</li>
+<li>后缀自减</li>
+</ul>
+</li>
+<li>单目/一元运算<ul>
+<li>前缀自增</li>
+<li>前缀自减</li>
+<li>取地址</li>
+<li>sizeof</li>
+</ul>
+</li>
+<li>强制类型表达式 强制类型转换</li>
+<li>乘法表达式<ul>
+<li>$*$</li>
+<li>$/$</li>
+<li>%</li>
+</ul>
+</li>
+<li>加法运算符<ul>
+<li>$+$</li>
+<li>$-$</li>
+</ul>
+</li>
+<li>移位运算符<ul>
+<li>$&lt;&lt;$</li>
+<li>$&gt;&gt;$</li>
+</ul>
+</li>
+<li>关系运算符<ul>
+<li>$&lt;$</li>
+<li>$&lt;=$</li>
+<li>$&gt;$</li>
+<li>$&gt;=$</li>
+</ul>
+</li>
+<li>相等运算符<ul>
+<li>$==$</li>
+<li>$!=$</li>
+</ul>
+</li>
+<li>位于运算符<ul>
+<li>$&amp;$</li>
+</ul>
+</li>
+<li>位异或运算符<ul>
+<li>$^$</li>
+</ul>
+</li>
+<li>位或运算符<ul>
+<li>$|$</li>
+</ul>
+</li>
+<li>逻辑与运算符<ul>
+<li>&amp;&amp;</li>
+</ul>
+</li>
+<li>逻辑或运算符<ul>
+<li>||</li>
+</ul>
+</li>
+<li>三元条件运算符<ul>
+<li>?</li>
+</ul>
+</li>
+<li>赋值运算符<ul>
+<li>=</li>
+<li>+=</li>
+<li>-=</li>
+<li>*=</li>
+<li>&lt;&lt;=</li>
+<li>&amp;=</li>
+<li>|=</li>
+<li>^=</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://q3l3n268t.bkt.clouddn.com/C-2-11.png" alt="avatar"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
